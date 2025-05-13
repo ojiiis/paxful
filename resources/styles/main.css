@@ -16,7 +16,7 @@
     --large-fs:1.4rem;
     --medium-fs:1.2rem;
     --xxlarge-fs:3rem;
-    --max-full-width:1000px;
+    --max-full-width:1400px;
 }
 
 .alert{
@@ -35,10 +35,32 @@ body{
 }
 #wrapper{
    margin:0 auto;
-   width:99.9vw;
    max-width: var(--max-full-width);
+   width:99.9vw;
    overflow-y: hidden;
 }
+.icon{
+    display:inline-block;
+    width: var(--base-int);
+    height:var(--base-int);
+    border-radius:calc(var(--base-int) / 2);
+   
+}
+.icon.bitcoin{
+     background-image: url(../images/icons/bitcoin.png);
+      background-size: cover;
+    background-position: center;
+}
+.icon.ethereum{
+     background-image: url(../images/icons/ethereum.png);
+      background-size: cover;
+    background-position: center;
+}
+.icon.usdt{
+     background-image: url(../images/icons/usdt.png);
+ background-size: cover;
+    background-position: center;
+    }
 h1,h2,h3,h4,h5,h6,p{
     padding:0;
     margin: 0;
@@ -63,18 +85,18 @@ ul li{
 .flex-y{
     display:flex;
     flex-direction: column;
-    gap:calc(var(--base-int));
+    gap:var(--base-int);
 }
 .flex{
     display:flex;
     align-items: center;
-    gap:calc(var(--base-int));
+    gap:var(--base-int);
 }
 .space-between{
     display:flex;
     justify-content: space-between;
     align-items: center;
-     gap:calc(var(--base-int));
+     gap:var(--base-int);
     
 }
 
@@ -158,12 +180,48 @@ ul li{
    display: flex;
    justify-content: center;
 }
+.capsule-form-inline{
+    width:50vw;
+    margin:0 auto;
+}
+.capsule-form-inline .input{
+   border-radius: var(--base-int);
+    border:1px solid var(--bg);
+}
+.capsule-form-inline .dropdown-label{
+    padding:var(--base-int);
+     /* background-color: red; */
+    position: relative;
+}
+.capsule-form-inline .dropdown-label::after{
+    content:"";
+    width:2px;
+    height:20px;
+    background: #ddd;
+    position: absolute;
+    right:0;
+    top:50%;
+    transform: translate(0,-50%);
+}
+.capsule-form-inline .dropdown-value{
+    padding:var(--base-int);
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+    /* background-color: red; */
+}
 
+.capsule-form-inline .dropdown-value .value i{
+ margin-left:5px;
+}
+.capsule-form-inline .options{
+    display:none;
+}
 #body{
     margin-top: calc(40px + var(--pd-y)*2);
     overflow-y: auto;
     overflow-x: hidden;
-    height: 1300px;
     padding:0;
     max-width: var(--max-full-width);
     
@@ -182,8 +240,8 @@ ul li{
     transform: translate(-50%,0);
    /* border-bottom: 1px solid #6f6b6b; */
 }
-#nav h2{
-   margin-right: calc(var(--base-int) * 2);
+#nav h2,#auth{
+   margin:0 var(--base-int);
 }
 #nav h2 img{
    height: var(--base-int);
@@ -299,6 +357,11 @@ justify-content: center;
    padding:none;  
    background-image:url(../images/crypto-globe-mobile.png);   
 }
+
+.capsule-form-inline{
+    width:90vw;
+}
+
 }
 
 .fill{
@@ -307,4 +370,8 @@ justify-content: center;
 }
 .full-width{
     width:100%
+}
+.no-gap{
+    display:flex;
+    gap:none;
 }
