@@ -36,7 +36,7 @@ body{
 #wrapper{
    margin:0 auto;
    max-width: var(--max-full-width);
-   width:99.9vw;
+   width:99.98vw;
    overflow-y: hidden;
 }
 .icon{
@@ -64,6 +64,7 @@ body{
 h1,h2,h3,h4,h5,h6,p{
     padding:0;
     margin: 0;
+     font-weight: 300;
 }
 .pd{
     padding:var(--pd-y)
@@ -152,6 +153,9 @@ ul li{
   background: var(--fg); 
   width: calc(100% - var(--pd-y));
 }
+#cookie-pop button{
+   font-size:var(--small-fs)
+}
 .curve-input-n-btn{
     width: 100%;
     display:flex;
@@ -159,7 +163,6 @@ ul li{
     border-radius: var(--base-int);
     border:1px solid var(--tint);
     overflow: hidden;
-   
 }
 .curve-input-n-btn input{
     width: 55%;
@@ -196,28 +199,15 @@ ul li{
 }
 .capsule-form-inline .inner-capsule{
   flex-shrink: 0;
-  width: auth;
-} 
-/* .capsule-form-inline .inner-capsule > div:first-child{
-  background: orange;
-} 
-.capsule-form-inline .inner-capsule > div:nth-child(2){
-
+  width: auto;
 } 
 
-.capsule-form-inline .inner-capsule .type-one > div:nth-child(1){
-width: 30%;
-} 
-.capsule-form-inline .inner-capsule .type-one > div:nth-child(2){
-width: 70%;
-}  */
 .capsule-form-inline .input{
    border-radius: var(--base-int);
     border:1px solid var(--bg);
 }
 .capsule-form-inline .dropdown-label{
     padding:var(--base-int);
-     /* background-color: red; */
     position: relative;
 }
 .capsule-form-inline .dropdown-label::after,.capsule-form-inline .capsule-input::after{
@@ -282,8 +272,7 @@ width: 70%;
     overflow-x: hidden;
     padding:0;
     max-width: var(--max-full-width);
-    
-    /* width:100%; */
+  
 }
 
 #nav{
@@ -296,10 +285,13 @@ width: 70%;
     width:100%;
     max-width: calc(var(--max-full-width) - var(--pd-x) * 2);
     transform: translate(-50%,0);
-   /* border-bottom: 1px solid #6f6b6b; */
+  z-index: 500;
 }
 #nav h2,#auth{
    margin:0 var(--base-int);
+}
+#auth a{
+   font-size: var(--small-fs);
 }
 #nav h2 img{
    height: var(--base-int);
@@ -315,15 +307,25 @@ width: 70%;
     color:var(--fg);
     padding:calc(var(--pd-y) / 2) var(--pd-x);
     border-radius: calc(var(--pd-y) * 2);
+    font-size: var(--large-fs);
     /* margin:var(--mg-y) var(--mg-x); */
     
 }
+.btn-left-curve{
+    background-color: var(--ca);
+    color:var(--fg);
+    padding:calc(var(--pd-y) / 2) var(--pd-x);
+    border-radius: calc(var(--pd-y) * 2) 0 0 calc(var(--pd-y) * 2);
+     font-size: var(--large-fs);
+}
+
 .btn-nbg{
     background-color: transparent;
     color:var(--fg);
     border:1px solid var(--fg);
     padding:calc(var(--pd-y) / 2) var(--pd-x);
     border-radius: calc(var(--pd-y) * 2);
+    font-size: var(--large-fs);
     /* margin:var(--mg-y) var(--mg-x); */
 }
 .no-mobile{
@@ -365,9 +367,69 @@ width: 70%;
 }
 #buy-crypto{
     color:var(--bg);
+    padding: var(--pd-x) 0;
 }
 #buy-crypto h4{
     font-size: var(--xxlarge-fs);
+   
+}
+.send-money-style{
+    padding: var(--pd-x) 0;
+    width: 100%;
+    text-align: right;
+    align-items: flex-start;
+}
+.send-money-style > div:nth-child(1){
+     width: 60%;
+     height: 400px;
+}
+.send-money-style > div:nth-child(2){
+     width: 40%;
+     padding-right: var(--pd-x);
+}
+.send-money-style div h4{
+    margin-bottom: var(--base-int);
+    color:var(--bg);
+    font-size:var(--xlarge-fs);
+}
+.send-money-style div p{
+    color:var(--bg);
+    margin-bottom: var(--base-int);
+}
+.p2p-style{
+    background-color: #2b2828;
+    padding:var(--base-int);
+}
+.p2p-style h4{
+ font-size:var(--xlarge-fs);
+ text-align: center;
+ margin:var(--pd-x);
+}
+.flex-list{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap:5%;
+}
+
+.flex-list div{
+    width:25%;
+    flex-shrink: 0;
+    text-align: center;
+    margin-bottom: calc(var(--base-int) * 4);
+}
+.flex-list p{
+    font-size: var(--large-fs);
+    margin-bottom: var(--base-int);
+     margin-top: var(--base-int);
+}
+.flex-list span{
+    font-size: var(--small-fs);
+
+}
+.flex-list i{
+    font-size: var(--xxlarge-fs);
+   
 }
 @media screen and (max-width:950px){
   
@@ -424,6 +486,23 @@ justify-content: center;
 }
 .capsule-form-inline .capsule-input input{
 max-width:120px;
+}
+.send-money-style > div:nth-child(2){
+    width:calc(100% - var(--pd-x));
+    text-align: right;
+    order: 1;
+}
+.send-money-style > div:nth-child(1){
+    width:calc(100% - var(--pd-x));
+    text-align: right;
+    order: 2;
+}
+.flex-list{
+    justify-content: center;
+}
+.flex-list div{
+   width: 70%;
+   
 }
 }
 

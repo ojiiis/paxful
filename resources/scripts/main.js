@@ -21,6 +21,23 @@
     }
         
      }
-    //console.log();
+   
   });
   
+
+[...document.querySelectorAll('.options span')].forEach((elements)=>{
+    elements.onclick = ()=>{
+       // console.log(elements.innerText);
+        [...elements.parentElement.children].forEach(elem=>{
+            if(elem != elements){
+                elem.classList.remove("selected");
+            }
+        });
+        let value = elements.textContent, content = elements.innerHTML;
+        elements.parentElement.parentElement.children[0].innerHTML = content+' <i class="bi bi-arrow-down"></i>';
+        elements.classList.add("selected");
+        elements.parentElement.style.display = "none";
+        elements.parentElement.parentElement.children[2].value= value;
+    }
+  // 
+});

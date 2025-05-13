@@ -77,7 +77,7 @@
                         <li><a href="javascript:void(0)"><i class="bi bi-instagram"></i></a></li>
                     </ul>
                     <div class="flex-y mobile-text-center">
-                        <h4>The <span style="color:var(--tint)">people-powered</span> way to move money <i style="color:var(--tint)" class="bi bi-arrow-up-right"></i></h4>
+                        <h4>The <span style="color:var(--tint)">people-<br>powered</span> way <br>to move <br>money <i style="color:var(--tint)" class="bi bi-arrow-up-right"></i></h4>
                         <p>The largest P2P marketplace to buy, sell, send, and receive crypto and local currencies.</p>
                         <form class="curve-input-n-btn">
                             <input placeholder="Enter email here...">
@@ -102,6 +102,7 @@
                                         <span class="selected">Buy</span>
                                         <span>Sell</span>
                                     </div>
+                                    <input type="hidden" name="action">
                                 </div>
                                 <div class="dropdown-value">
                                     <div class="value flex capsule-show-options"><i class="icon bitcoin"></i> Bitcoin <i class="bi bi-arrow-down"></i></div>
@@ -110,6 +111,7 @@
                                         <span><i class="icon ethereum"></i>Ethereum</span>
                                         <span><i class="icon usdt"></i>Usdt</span>
                                     </div>
+                                    <input type="hidden" name="cryto_currency_type">
                                 </div>
                              </div>
                          </div>
@@ -117,7 +119,7 @@
                              <div class="label">for</div>
                              <div class="input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number"></div>
+                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number" name="amount"></div>
                                 </div>
                                 <div class="dropdown-value">
                                     <div class="value flex capsule-show-options">USD <i class="bi bi-arrow-down"></i></div>
@@ -126,20 +128,24 @@
                                         <span>NGN</span>
                                         <span>EU</span>
                                     </div>
+                                    <input type="hidden" name="currency">
                                 </div>
                              </div>
                          </div>
                          <div class="inner-capsule flex responsive">
                              <div class="label">with</div>
                              <div class="input flex no-gap">
-                               
+                                 <div>
+                                 
+                                </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex">All payment methods <i class="bi bi-arrow-down"></i></div>
+                                    <div class="value flex capsule-show-options">All payment methods <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
-                                        <span>USD</span>
-                                        <span>NGN</span>
-                                        <span>EU</span>
+                                        <span>Bank transfer</span>
+                                        <span>Gift cards</span>
+                                        <span>Bank deposit</span>
                                     </div>
+                                    <input type="hidden" name="payment_method">
                                 </div>
                              </div>
                          </div>
@@ -148,6 +154,51 @@
                          </div>
                     </div>
                 </form>
+            </div>
+            <div class="pd space-between responsive send-money-style">
+                  <div>
+                       dsd
+                  </div>
+                  <div>
+                        <h4><i class="bi bi-send"></i>Send money instantly – no bank account required</h4>
+                        <p>Send, store, and receive BTC, ETH, USDT and more in your free and secure Paxful cryptocurrency wallet.</p>
+                        <button class="btn-left-curve">Get your wallet</button>
+                  </div>
+            </div>
+            <div class="p2p-style">
+                <h4>The largest global platform for peer-to-peer trading</h4>
+                <div class="flex-list">
+                    <div>
+                        <i class="bi bi-globe"></i>
+                        <p>Trade Digital and Local Currencies</p>
+                        <span>Easily buy and sell both local and digital currencies — including Bitcoin, Ethereum, Tether, and USDC — across 140+ markets and over 500 payment methods.</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-coin"></i>
+                        <p>Instant Money Transfers</p>
+                        <span>Quickly send cash or crypto to anyone, anywhere. Enjoy fast, low-cost, and hassle-free transactions powered by blockchain technology.</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-shop"></i>
+                        <p>Tap into Global Markets</p>
+                        <span>Become a peer-to-peer market maker and take advantage of arbitrage opportunities across different regions and payment systems.</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-arrows-angle-contract"></i>
+                        <p>Connect to the World</p>
+                        <span>Use Paxful to bypass local banking limitations and access the global economy — no bank account required.</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-shield-plus"></i>
+                        <p>Protect Against Inflation</p>
+                        <span>Convert rapidly devaluing fiat currencies into digital assets like Bitcoin or stablecoins to safeguard your wealth and avoid banking disruptions.</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-bar-chart-steps"></i>
+                        <p>Grow Your Business</p>
+                        <span>Boost your business growth by using Paxful’s deep liquidity, global reach, diverse payment options, and robust security features.</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="qr-code" class="no-mobile">
