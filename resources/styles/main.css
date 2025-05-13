@@ -111,6 +111,29 @@ ul li{
   background: var(--fg); 
   width: calc(100% - var(--pd-y));
 }
+.curve-input-n-btn{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    border-radius: 10px;
+    border:1px solid var(--tint);
+}
+.curve-input-n-btn input{
+    width: 60%;
+    display:flex;
+    background: transparent;
+    outline:0;
+    border:none;
+   padding:5px 20px;
+}
+.curve-input-n-btn button{
+    width: calc(40% - 10px);
+    display:flex;
+    outline:0;
+    border:none;
+    padding:5px 20px;
+}
+
 #body{
     margin-top: calc(40px + var(--pd-y)*2);
     overflow-y: auto;
