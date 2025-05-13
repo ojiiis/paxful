@@ -93,18 +93,18 @@
                 <p>Trade crypto with 500+ different payment methods</p>
                 <form>
                     <div class="capsule-form-inline">
-                         <div class="capsule-input flex responsive">
+                         <div class="inner-capsule flex responsive">
                              <div class="label">I want to</div>
                              <div class="input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="label">Buy <i class="bi bi-arrow-down"></i></div>
+                                    <div class="flex label capsule-input">Buy <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
                                         <span>Buy</span>
                                         <span>Sell</span>
                                     </div>
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex"><i class="icon bitcoin"></i> Bitcoin</div>
+                                    <div class="value flex"><i class="icon bitcoin"></i> Bitcoin <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
                                         <span>Bitcoin</span>
                                         <span>Ethereum</span>
@@ -113,17 +113,50 @@
                                 </div>
                              </div>
                          </div>
+                         <div class="inner-capsule flex responsive">
+                             <div class="label">for</div>
+                             <div class="input flex no-gap">
+                                <div class="dropdown-label">
+                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number"></div>
+                                </div>
+                                <div class="dropdown-value">
+                                    <div class="value flex">USD <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options">
+                                        <span>USD</span>
+                                        <span>NGN</span>
+                                        <span>EU</span>
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                         <div class="inner-capsule flex responsive">
+                             <div class="label">with</div>
+                             <div class="input flex no-gap">
+                               
+                                <div class="dropdown-value">
+                                    <div class="value flex">All payment methods <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options">
+                                        <span>USD</span>
+                                        <span>NGN</span>
+                                        <span>EU</span>
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                         <div class="inner-capsule flex responsive">
+                             <button class="btn">Find offers</button>
+                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        <div id="qr-code" class="no-mobile">
+        <!-- <div id="qr-code" class="no-mobile">
             <i class="bi bi-x"></i>
             <p>Get the app</p>
             <div id="qr-code-image">
 
             </div>
-        <!-- </div>
+        </div>
          <div id="cookie-pop" class="space-between responsive">
                 <p>This website uses cookies to ensure you get the best experience on our website.
     <a href="javascript:void(0)">Learn more</a></p>

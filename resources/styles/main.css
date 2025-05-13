@@ -181,9 +181,22 @@ ul li{
    justify-content: center;
 }
 .capsule-form-inline{
-    width:50vw;
+    width:70vw;
     margin:0 auto;
+      border-radius: var(--base-int);
+    border:1px solid var(--tint);
+    padding:var(--pd-y) var(--pd-x);
+    display: flex;
+    flex-wrap: wrap;
+    gap:var(--base-int);
+    justify-content: space-between;
 }
+.capsule-form-inline .inner-capsule{
+  flex-shrink: 0;
+} 
+.capsule-form-inline .inner-capsule .label{
+  min-width:70px;
+} 
 .capsule-form-inline .input{
    border-radius: var(--base-int);
     border:1px solid var(--bg);
@@ -193,7 +206,7 @@ ul li{
      /* background-color: red; */
     position: relative;
 }
-.capsule-form-inline .dropdown-label::after{
+.capsule-form-inline .dropdown-label::after,.capsule-form-inline .capsule-input::after{
     content:"";
     width:2px;
     height:20px;
@@ -210,6 +223,12 @@ ul li{
     justify-content: flex-start;
     position: relative;
     /* background-color: red; */
+}
+
+.capsule-form-inline .capsule-input input{
+  outline: 0;
+  border:none;
+
 }
 
 .capsule-form-inline .dropdown-value .value i{
@@ -360,6 +379,9 @@ justify-content: center;
 
 .capsule-form-inline{
     width:90vw;
+    flex-direction: column;
+    padding:var(--base-int) 0; 
+    
 }
 
 }
