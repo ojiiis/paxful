@@ -3,8 +3,8 @@
     --fg:#fff;
     --rowbg:#f7f7f;
     --bg:#000;
-    --ca:rgb(51, 51, 202);
-    --tint:rgb(92, 92, 255);
+    --ca:#3a53a5;
+    --tint:#647ccb;
     --pd-x:50px;
     --pd-y:20px;
     --mg-x:20px;
@@ -13,7 +13,8 @@
     --small-fs:1rem;
     --tiny-fs:0.5rem;
     --xlarge-fs:2.4rem;
-    --large-fs:1.4rem
+    --large-fs:1.4rem;
+    --xxlarge-fs:3rem;
 }
 body{
     padding:0;
@@ -22,6 +23,11 @@ body{
     color: var(--fg);
     font-family: Arial, Helvetica, sans-serif;
     width:100vw;
+    overflow-x: hidden;
+}
+#wrapper{
+    width: 100%;
+    padding:0;
 }
 h1,h2,h3,h4,h5,h6,p{
     padding:0;
@@ -38,10 +44,21 @@ button{
     outline:0;
     border:none;
 }
+ul{
+    padding:0;
+}
+ul li{
+    list-style-type: none;
+}
+.flex-y{
+    display:flex;
+    flex-direction: column;
+    gap:calc(var(--base-int));
+}
 .flex{
     display:flex;
     align-items: center;
-    gap:calc(var(--base-int) /2);
+    gap:calc(var(--base-int));
 }
 .space-between{
     display:flex;
@@ -50,18 +67,29 @@ button{
     gap:calc(var(--base-int) /2);
     
 }
-
+.dark{
+    background: var(--bg);
+}
 #cookie-pop{
   color:var(--bg);
-  margin-left: calc(var(--pd-x) / 2);
+  padding:calc((--pd-y)/2);
   position: fixed;
   bottom:0;
-  width:calc( 100% - var(--pd-x) / 2);
+  left:0;
+  width:100%;  /* calc( 100% - var(--pd-y) * 2) */
+  z-index: 999999999;
+  background: var(--fg);
+}
+#cookie-pop p{
+   margin-left:var(--base-int);
 }
 #body{
-    
     margin-top: calc(40px + var(--pd-y)*2);
+    overflow-y: auto;
+    height: 1300px;
+    padding:0;
 }
+
 #nav{
     padding:var(--pd-y) var(--pd-x);
     background-color: var(--bg);
@@ -112,6 +140,21 @@ button{
 #menu{
     font-size: var(--xlarge-fs);
 }
+#banner{
+    padding:calc(var(--pd-y) * 4) var(--pd-x);
+}
+#banner div:first-child{
+    width: 50%;
+}
+#banner div:first-child h4{
+    font-size: var(--xxlarge-fs);
+}
+#banner div:nth-child(2){
+    width: 49%;
+}
+#socials-link li a i{
+   font-size: var(--large-fs);
+}
 
 @media screen and (max-width:950px){
  #nav{
@@ -122,6 +165,10 @@ button{
 flex-direction: column;
 justify-content: flex-start;
 }
+.flex-y.responsive{
+flex-direction: row;
+justify-content: center;
+}
 .full-width-mobile{
     width: 100%;
 }
@@ -131,5 +178,13 @@ justify-content: flex-start;
 .no-desktop{
     display:block;
 }
-
+#banner div:first-child,#banner div:nth-child(2){
+    width: 100%;
+}
+#socials-link{
+    margin-bottom: var(--pd-x);
+}
+#cookie-pop p{
+   margin-top:var(--base-int);
+}
 }
