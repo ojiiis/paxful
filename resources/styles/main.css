@@ -18,7 +18,7 @@
 }
 
 .alert{
-    background-color: var(--ca);text-align: center;
+    background-color: var(--tint);text-align: center;
    
 }
 body{
