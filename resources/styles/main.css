@@ -11,13 +11,15 @@
     --mg-y:20px;
     --base-int:20px;
     --small-fs:1rem;
-    --tiny-fs:0.5rem;
+    --tiny-fs:0.6rem;
     --xlarge-fs:2.4rem;
     --large-fs:1.4rem;
     --xxlarge-fs:3rem;
 }
-* {
-  /* outline: 1px solid red; */
+
+.alert{
+    background-color: var(--ca);text-align: center;
+   
 }
 body{
     padding:0;
@@ -27,11 +29,11 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
     box-sizing: border-box;
-    width: 100%;
+    
 }
 #wrapper{
    margin:0 auto;
-  width:100vw;
+   width:100vw;
 }
 h1,h2,h3,h4,h5,h6,p{
     padding:0;
@@ -74,6 +76,31 @@ ul li{
 .dark{
     background: var(--bg);
 }
+#qr-code{
+    position:fixed;
+    padding:var(--pd-y);
+    border-radius: 10px;
+    right:var(--mg-y);
+    bottom:var(--mg-x);
+    background-color: var(--tint);
+}
+#qr-code i{
+   position: absolute;
+   right:0;
+   top:0;
+   font-size: var(--large-fs);
+}
+#qr-code p{
+   margin-bottom: 5px;
+   margin-top: -5px;
+}
+#qr-code-image{
+    height:80px;
+    width:80px;
+    background-image: url('../images/qr-code.png');
+    background-position: center;
+    background-size: cover;
+}
 #cookie-pop{
   color:var(--bg);
   padding:calc(var(--pd-y)/2);
@@ -82,10 +109,7 @@ ul li{
   left:0;
   z-index: 999999999;
   background: var(--fg); 
-
-}
-#cookie-pop p{
-   margin:var(--base-int);
+  width: calc(100% - var(--pd-y));
 }
 #body{
     margin-top: calc(40px + var(--pd-y)*2);
@@ -102,7 +126,7 @@ ul li{
     padding:var(--pd-y) var(--pd-x);
     background-color: var(--bg);
     height:40px;
-  
+    width:calc(100% - var(--pd-x) * 2);
    
    /* border-bottom: 1px solid #6f6b6b; */
 }
@@ -123,7 +147,7 @@ ul li{
     color:var(--fg);
     padding:calc(var(--pd-y) / 2) var(--pd-x);
     border-radius: calc(var(--pd-y) * 2);
-    margin:var(--mg-y) var(--mg-x);
+    /* margin:var(--mg-y) var(--mg-x); */
     
 }
 .btn-nbg{
@@ -132,7 +156,7 @@ ul li{
     border:1px solid var(--fg);
     padding:calc(var(--pd-y) / 2) var(--pd-x);
     border-radius: calc(var(--pd-y) * 2);
-    margin:var(--mg-y) var(--mg-x);
+    /* margin:var(--mg-y) var(--mg-x); */
 }
 .no-mobile{
     display: block;
@@ -189,9 +213,9 @@ justify-content: center;
     width: 100%;
 }
 #socials-link{
-    margin-bottom: var(--pd-x);
+    margin-top: var(--mg-y);
 }
-#cookie-pop{
- /* //  width:    */
+#banner{
+    padding:var(--pd-y);
 }
 }
