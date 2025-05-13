@@ -95,20 +95,20 @@
                     <div class="capsule-form-inline">
                          <div class="inner-capsule flex responsive">
                              <div class="label">I want to</div>
-                             <div class="input flex no-gap">
+                             <div class="type-one input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input">Buy <i class="bi bi-arrow-down"></i></div>
+                                    <div class="flex label capsule-input capsule-show-options">Buy <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
-                                        <span>Buy</span>
+                                        <span class="selected">Buy</span>
                                         <span>Sell</span>
                                     </div>
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex"><i class="icon bitcoin"></i> Bitcoin <i class="bi bi-arrow-down"></i></div>
+                                    <div class="value flex capsule-show-options"><i class="icon bitcoin"></i> Bitcoin <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
-                                        <span>Bitcoin</span>
-                                        <span>Ethereum</span>
-                                        <span>Usdt</span>
+                                        <span class="selected"><i class="icon bitcoin"></i>Bitcoin</span>
+                                        <span><i class="icon ethereum"></i>Ethereum</span>
+                                        <span><i class="icon usdt"></i>Usdt</span>
                                     </div>
                                 </div>
                              </div>
@@ -120,9 +120,9 @@
                                     <div class="flex label capsule-input"><input placeholder="Amount" type="number"></div>
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex">USD <i class="bi bi-arrow-down"></i></div>
+                                    <div class="value flex capsule-show-options">USD <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
-                                        <span>USD</span>
+                                        <span class="selected">USD</span>
                                         <span>NGN</span>
                                         <span>EU</span>
                                     </div>
@@ -150,8 +150,8 @@
                 </form>
             </div>
         </div>
-        <!-- <div id="qr-code" class="no-mobile">
-            <i class="bi bi-x"></i>
+        <div id="qr-code" class="no-mobile">
+            <i class="bi bi-x" id="close-qr-code"></i>
             <p>Get the app</p>
             <div id="qr-code-image">
 
@@ -160,8 +160,36 @@
          <div id="cookie-pop" class="space-between responsive">
                 <p>This website uses cookies to ensure you get the best experience on our website.
     <a href="javascript:void(0)">Learn more</a></p>
-            <button class="btn">I accept</button>
-        </div> -->
+            <button class="btn" id="close-cookie-pop">I accept</button>
+        </div>
     </div>
+    <script>
+       document.getElementById("close-cookie-pop").onclick = () => document.getElementById("cookie-pop").remove();
+       document.getElementById("close-qr-code").onclick = () => document.getElementById("qr-code").remove();
+  [...document.getElementsByClassName("capsule-show-options")].forEach(element => {
+     element.onclick = ()=> {
+        [...document.getElementsByClassName("options")].forEach((elem)=>{
+            if(elem != element.parentElement.children[1]){
+                elem.style.display = "none"; 
+            }
+          
+        });
+       
+        if(element.parentElement.children[1].style.display == "none" || element.parentElement.children[1].style.display == ""){
+            element.parentElement.children[1].style.display = "flex";
+        }else{
+            element.parentElement.children[1].style.display = "none";
+        }
+   
+    if(element.parentElement.children[1].getBoundingClientRect().right > window.innerWidth){
+      let moveBack = element.parentElement.children[1].getBoundingClientRect().right - window.innerWidth;
+      element.parentElement.children[1].style.left = -(moveBack+20)+'px';
+    }
+        
+     }
+   
+  });
+  
+  </script>    
 </body>
 </html>

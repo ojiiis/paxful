@@ -68,6 +68,9 @@ h1,h2,h3,h4,h5,h6,p{
 .pd{
     padding:var(--pd-y)
 }
+.toggle-flex{
+      display: flex !important;
+}
 a{
     text-decoration: none;
     color:var(--tint);
@@ -120,7 +123,7 @@ ul li{
     border-radius: 10px;
     right:var(--mg-y);
     bottom:var(--mg-x);
-    background-color: var(--tint);
+    background-color: color-mix(in srgb, var(--tint) 90%, transparent);
 }
 #qr-code i{
    position: absolute;
@@ -193,10 +196,21 @@ ul li{
 }
 .capsule-form-inline .inner-capsule{
   flex-shrink: 0;
+  width: auth;
 } 
-.capsule-form-inline .inner-capsule .label{
-  min-width:70px;
+/* .capsule-form-inline .inner-capsule > div:first-child{
+  background: orange;
 } 
+.capsule-form-inline .inner-capsule > div:nth-child(2){
+
+} 
+
+.capsule-form-inline .inner-capsule .type-one > div:nth-child(1){
+width: 30%;
+} 
+.capsule-form-inline .inner-capsule .type-one > div:nth-child(2){
+width: 70%;
+}  */
 .capsule-form-inline .input{
    border-radius: var(--base-int);
     border:1px solid var(--bg);
@@ -228,14 +242,39 @@ ul li{
 .capsule-form-inline .capsule-input input{
   outline: 0;
   border:none;
-
 }
 
 .capsule-form-inline .dropdown-value .value i{
  margin-left:5px;
 }
 .capsule-form-inline .options{
-    display:none;
+   
+    position:absolute;
+    top:110%;
+    left:0;
+    min-width:100%;
+    padding:var(--base-int);
+    background-color: var(--tint);
+     display:none;
+    flex-direction: column;   
+    border-radius: var(--base-int);
+    gap:var(--base-int);
+    z-index: 20;
+}
+.capsule-form-inline .options span{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap:var(--base-int);
+    cursor: pointer;
+}
+.capsule-form-inline .options span.selected::after{
+     content: "\F26E";
+  font-family: "bootstrap-icons"; /* Required to render the icon */
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  font-size: var(--large-fs);
 }
 #body{
     margin-top: calc(40px + var(--pd-y)*2);
@@ -383,7 +422,9 @@ justify-content: center;
     padding:var(--base-int) 0; 
     
 }
-
+.capsule-form-inline .capsule-input input{
+max-width:120px;
+}
 }
 
 .fill{
