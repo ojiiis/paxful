@@ -16,18 +16,22 @@
     --large-fs:1.4rem;
     --xxlarge-fs:3rem;
 }
+* {
+  /* outline: 1px solid red; */
+}
 body{
     padding:0;
     margin:0;
     font-size: var(--small-fs);
     color: var(--fg);
     font-family: Arial, Helvetica, sans-serif;
-    width:100vw;
     overflow-x: hidden;
+    box-sizing: border-box;
+    width: 100%;
 }
 #wrapper{
-    width: 100%;
-    padding:0;
+   margin:0 auto;
+  width:100vw;
 }
 h1,h2,h3,h4,h5,h6,p{
     padding:0;
@@ -64,7 +68,7 @@ ul li{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    gap:calc(var(--base-int) /2);
+     gap:calc(var(--base-int));
     
 }
 .dark{
@@ -72,31 +76,34 @@ ul li{
 }
 #cookie-pop{
   color:var(--bg);
-  padding:calc((--pd-y)/2);
+  padding:calc(var(--pd-y)/2);
   position: fixed;
   bottom:0;
   left:0;
-  width:100%;  /* calc( 100% - var(--pd-y) * 2) */
   z-index: 999999999;
-  background: var(--fg);
+  background: var(--fg); 
+
 }
 #cookie-pop p{
-   margin-left:var(--base-int);
+   margin:var(--base-int);
 }
 #body{
     margin-top: calc(40px + var(--pd-y)*2);
     overflow-y: auto;
     height: 1300px;
     padding:0;
+    /* width:100%; */
 }
 
 #nav{
+    position:fixed;
+    top:0;
+    left:0;
     padding:var(--pd-y) var(--pd-x);
     background-color: var(--bg);
     height:40px;
-    position:fixed;
-    top:0;
-   width: calc(100vw - var(--pd-x)*2);
+  
+   
    /* border-bottom: 1px solid #6f6b6b; */
 }
 #nav h2{
@@ -113,7 +120,7 @@ ul li{
 }
 .btn{
     background-color: var(--ca);
-    color:var(--bg);
+    color:var(--fg);
     padding:calc(var(--pd-y) / 2) var(--pd-x);
     border-radius: calc(var(--pd-y) * 2);
     margin:var(--mg-y) var(--mg-x);
@@ -157,10 +164,10 @@ ul li{
 }
 
 @media screen and (max-width:950px){
- #nav{
-    padding:var(--pd-y) var(--pd-y);
-     width: calc(100vw - var(--pd-y)*2);
-}
+  #nav {
+    padding: var(--pd-y);
+    width: calc(100% - var(--pd-y) * 2);
+  }
 .space-between.responsive,.flex.responsive{
 flex-direction: column;
 justify-content: flex-start;
@@ -184,7 +191,7 @@ justify-content: center;
 #socials-link{
     margin-bottom: var(--pd-x);
 }
-#cookie-pop p{
-   margin-top:var(--base-int);
+#cookie-pop{
+ /* //  width:    */
 }
 }
