@@ -42,19 +42,30 @@
   // 
 });
 
-[...document.getElementsByClassName('has-submenu')].forEach(elem=>{
 
-   elem.onclick = (e)=>{
-    e.stopPropagation();
-     [...document.getElementsByClassName('submenu')].forEach((el)=>{
-        if(el != elem){
-            el.classList.remove('toggle-flex');
-        }
-     }); 
-      //console.log()
-      elem.children[1].classList.toggle('toggle-flex');
-   }
+[...document.getElementsByClassName('has-submenu')].forEach(elem => {
+    elem.onclick = (e) => {
+        e.stopPropagation();
+
+        // Hide all other submenus
+        [...document.getElementsByClassName('submenu')].forEach(el => {
+            if (el !== elem.children[1]) {
+               
+            el.parentElement.children[0].children[0].children[1].style.animation = 'rotate-0 0.5s  forwards';
+                 el.classList.remove('toggle-flex');
+            }
+        });
+     
+       if(!elem.children[1].classList.contains('toggle-flex')){
+        elem.children[0].children[0].children[1].style.animation = 'rotate-180 0.5s  forwards';
+       }else{
+       elem.children[0].children[0].children[1].style.animation = 'rotate-0 0.5s  forwards';
+       }
+        // Toggle the clicked submenu
+        elem.children[1].classList.toggle('toggle-flex');
+    }
 });
+
 
 [...document.getElementsByClassName('has-child')].forEach(elem=>{
    elem.onclick = (e)=>{
