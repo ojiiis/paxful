@@ -670,7 +670,7 @@ max-width:120px;
 /* authenthication */
 #auth-wrapper{
     width:100vw;
-    height: 100vh;
+    height: calc(100vh - 80px);
     background: var(--bg);
     display: flex;
       margin-top: calc(40px + var(--pd-y)*2);
@@ -679,19 +679,22 @@ max-width:120px;
 width: 40%;
 height: 100%;
 overflow-y: auto;
-}
-#auth-body form{
-width: 100%;
 
 }
+
+#auth-body form{
+width: 100%;
+}
 #auth-body h1{
-font-size:var(--small-fs)
+font-size:var(--small-fs);
+
 }
 #auth-body h2{
-font-size:var(--xlarge-fs)
+font-size:var(--xlarge-fs);
+
 }
-#auth-body form a{
-display: block;     /* or inline-block, if needed */
+#auth-body form .fp{
+  display: block;     /* or inline-block, if needed */
   margin-left: auto;
   width: max-content;   
 }
@@ -701,9 +704,32 @@ display: block;     /* or inline-block, if needed */
     background-color: var(--bg-2);
 }
 .auth-sections{
+    display:flex;
+flex-direction: column;
+gap:var(--pd-y);
     display: none;
     padding:50px 20px;
     width: calc(100% - 100px);
+    
+}
+.auth-sections form{
+display:flex;
+flex-direction: column;
+gap:var(--pd-y);
+}
+.auth-sections form .form-group{
+display:flex;
+flex-direction: column;
+gap:calc(var(--base-int) / 2);
+}
+.auth-sections form .form-group input{
+padding:calc(var(--base-int) - 5px);
+background-color: var(--bg-2);
+border-radius: var(--base-int);
+border:none;
+outline:var(--tint);
+font-size:var(--small-fs);
+color:var(--fg);
 }
 
 @media screen and (max-width:950px){
