@@ -13,3 +13,6 @@
 
     return params;
 }
+  document.getElementById("close-cookie-pop").onclick = () => document.getElementById("cookie-pop").remove();
+  document.getElementById("close-qr-code").onclick = () => document.getElementById("qr-code").remove();
+  

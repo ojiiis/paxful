@@ -682,6 +682,7 @@ overflow-y: auto;
 }
 #auth-body form{
 width: 100%;
+
 }
 #auth-body h1{
 font-size:var(--small-fs)
@@ -701,6 +702,8 @@ display: block;     /* or inline-block, if needed */
 }
 .auth-sections{
     display: none;
+    padding:50px 20px;
+    width: calc(100% - 100px);
 }
 
 @media screen and (max-width:950px){
