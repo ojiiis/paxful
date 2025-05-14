@@ -43,20 +43,41 @@
 });
 
 [...document.getElementsByClassName('has-submenu')].forEach(elem=>{
- //   console.log()
-   elem.onclick = ()=>{
+
+   elem.onclick = (e)=>{
+    e.stopPropagation();
+     [...document.getElementsByClassName('submenu')].forEach((el)=>{
+        if(el != elem){
+            el.classList.remove('toggle-flex');
+        }
+     }); 
+      //console.log()
       elem.children[1].classList.toggle('toggle-flex');
    }
 });
 
 [...document.getElementsByClassName('has-child')].forEach(elem=>{
-   elem.onclick = ()=>{
-   // console.log(elem.parentElement)
-    elem.parentElement.classList.remove('toggle-flex');
-      elem.parentElement.style.display = 'flex';
-     
-      
+   elem.onclick = (e)=>{
+    e.stopPropagation();
+
+[...document.getElementsByClassName('has-child')].forEach(el=>{
+
+     if(el.getElementsByClassName('child')[0] != elem.getElementsByClassName('child')[0]){
+       el.getElementsByClassName('child')[0].classList.remove('toggle-flex');  
+        el.getElementsByClassName('child')[0].style.display = "none";
+     }
+  
+});
      elem.getElementsByClassName('child')[0].classList.toggle('toggle-flex');
   
    }
 });
+
+document.getElementById("menu").onclick = function(){
+    if(document.getElementsByClassName('navigation-wrapper')[0].style.display == "" || document.getElementsByClassName('navigation-wrapper')[0].style.display == "none"){
+         document.getElementsByClassName('navigation-wrapper')[0].style.setProperty('display', 'flex', 'important');
+    }else{
+         document.getElementsByClassName('navigation-wrapper')[0].style.setProperty('display', 'none', 'important');
+    }
+  
+};

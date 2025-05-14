@@ -37,7 +37,7 @@ body{
 #wrapper{
    margin:0 auto;
    max-width: var(--max-full-width);
-   width:99.98vw;
+   width:100vw;
    overflow-y: hidden;
 }
 .icon{
@@ -302,8 +302,11 @@ nav{
 }
 .navigation-wrapper{
     width: 80%;
-    display:flex !important;flex-direction:row !important;gap:var(--base-int);
+    display:flex !important;
+    flex-direction:row !important;
+    gap:var(--base-int);
     justify-content: flex-start !important;
+  
 }
 .navigation{
    position: relative;
@@ -311,8 +314,11 @@ nav{
 .navigation .navigation-inner{
    position: relative;
 }
+.navigation .navigation-inner a,.child {
+   display:flex;
+   gap:calc(var(--base-int) / 2)
+}
 .navigation .navigation-inner a span i{
-  margin-left:calc(var(--base-int) / 4);
    font-size:calc(var(--small-fs));
 }
 .submenu{
@@ -323,10 +329,19 @@ nav{
     padding:var(--base-int);
     border-radius: var(--base-int);
     flex-direction: column;
-    gap:20px;
+     gap:var(--base-int)
+    /* min-width:; */
 }
 .child{
     display: none;
+    position: absolute;
+    left:150%;
+    top:0;
+    flex-direction: column;
+    background-color: var(--bg-2);
+    padding:var(--base-int);
+    border-radius: var(--base-int);
+    gap:var(--base-int)
 }
 .btn{
     background-color: var(--ca);
@@ -459,7 +474,26 @@ nav{
    
 }
 @media screen and (max-width:950px){
-  
+  .navigation-wrapper{
+    display:none !important;
+    position: fixed;
+    top:calc(40px + (var(--pd-y) * 2));
+    padding:calc(var(--base-int) * 2);
+    width: calc(100% - var(--base-int));
+    left:0;
+    background: var(--bg-2);
+    flex-direction:column !important;
+    z-index: 600;
+    font-size: var(--large-fs);
+}
+
+.submenu,.child{
+  position: relative;
+}
+.child{
+
+  margin-left: -150%;
+}
   #nav {
     padding: var(--pd-y);
     width: calc(100% - var(--pd-y) * 2);
@@ -544,4 +578,24 @@ max-width:120px;
 .no-gap{
     display:flex;
     gap:none;
+}
+
+/* animations */
+
+@keyframes rotate-180 {
+    from{
+      rotate:0deg;
+    }
+    to{
+       rotate:180deg;
+    }
+}
+
+@keyframes rotate-0 {
+    from{
+      rotate:180deg;
+    }
+    to{
+       rotate:0deg;
+    }
 }
