@@ -55,6 +55,7 @@
     elem.parentElement.classList.remove('toggle-flex');
       elem.parentElement.style.display = 'flex';
      
+      
      elem.getElementsByClassName('child')[0].classList.toggle('toggle-flex');
   
    }
