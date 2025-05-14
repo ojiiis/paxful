@@ -41,3 +41,21 @@
     }
   // 
 });
+
+[...document.getElementsByClassName('has-submenu')].forEach(elem=>{
+ //   console.log()
+   elem.onclick = ()=>{
+      elem.children[1].classList.toggle('toggle-flex');
+   }
+});
+
+[...document.getElementsByClassName('has-child')].forEach(elem=>{
+   elem.onclick = ()=>{
+   // console.log(elem.parentElement)
+    elem.parentElement.classList.remove('toggle-flex');
+      elem.parentElement.style.display = 'flex';
+     
+     elem.getElementsByClassName('child')[0].classList.toggle('toggle-flex');
+  
+   }
+});

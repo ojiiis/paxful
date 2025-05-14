@@ -5,6 +5,7 @@
     --bg:#000;
     --ca:#3a53a5;
     --tint:#647ccb;
+    --bg-2:#2b2828;
     --pd-x:50px;
     --pd-y:20px;
     --mg-x:20px;
@@ -300,15 +301,31 @@ nav{
     width: 70%;
 }
 .navigation-wrapper{
-    display: flex;
     width: 80%;
-    background-color: red;
-    justify-content: space-around;
+    display:flex !important;flex-direction:row !important;gap:var(--base-int);
+    justify-content: flex-start !important;
 }
-.navigation a span{
-    font-size:calc(var(--small-fs));
+.navigation{
+   position: relative;
+}
+.navigation .navigation-inner{
+   position: relative;
+}
+.navigation .navigation-inner a span i{
+  margin-left:calc(var(--base-int) / 4);
+   font-size:calc(var(--small-fs));
 }
 .submenu{
+    display: none;
+    position: absolute;
+    top:200%;
+    background-color: var(--bg-2);
+    padding:var(--base-int);
+    border-radius: var(--base-int);
+    flex-direction: column;
+    gap:20px;
+}
+.child{
     display: none;
 }
 .btn{
@@ -407,7 +424,7 @@ nav{
     margin-bottom: var(--base-int);
 }
 .p2p-style{
-    background-color: #2b2828;
+    background-color: var(--bg-2);
     padding:var(--base-int);
 }
 .p2p-style h4{
