@@ -296,6 +296,15 @@ ul li{
 #nav h2 img{
    height: var(--base-int);
 }
+nav{
+    width: 70%;
+}
+.navigation-wrapper{
+    display: flex;
+    width: 80%;
+    background-color: red;
+    justify-content: space-around;
+}
 .navigation a span{
     font-size:calc(var(--small-fs));
 }
@@ -381,7 +390,8 @@ ul li{
 }
 .send-money-style > div:nth-child(1){
      width: 60%;
-     height: 400px;
+     height: 650px;
+     background-image: url(../images/page3.png);background-position: left bottom;background-size: contain;background-repeat: no-repeat;
 }
 .send-money-style > div:nth-child(2){
      width: 40%;
@@ -491,6 +501,7 @@ max-width:120px;
     width:calc(100% - var(--pd-x));
     text-align: right;
     order: 1;
+    height:50px;
 }
 .send-money-style > div:nth-child(1){
     width:calc(100% - var(--pd-x));
