@@ -290,9 +290,15 @@ ul li{
     transform: translate(-50%,0);
   z-index: 500;
 }
+#auth{
+position: relative !important;
+top:0;
+}
+
 #nav h2,#auth{
    margin:0 var(--base-int);
 }
+
 #auth a{
    font-size: var(--small-fs);
 }
@@ -315,6 +321,9 @@ nav{
 }
 .navigation .navigation-inner{
    position: relative;
+}
+.navigation .navigation-inner a span{
+    white-space: nowrap; 
 }
 .navigation .navigation-inner a,.child {
    display:flex;
@@ -498,7 +507,7 @@ nav{
   }
 #hot-links{
    display: flex;
-   gap:70px;
+   gap:50px;
    flex-wrap: wrap;
    width:100%;
 }
@@ -508,6 +517,9 @@ nav{
 #hot-links ul li:first-child{
    font-size: var(--large-fs);
    margin-bottom:calc( var(--base-int) / 2);
+}
+#hot-links ul li{
+ margin-bottom: 5px;
 }
 @media screen and (max-width:950px){
   .navigation-wrapper{
@@ -530,10 +542,18 @@ nav{
 
   margin-left: -150%;
 }
+#nav-wrapper{
+     min-height: 100vh;
+    overflow-y:auto ;
+}
   #nav {
     padding: var(--pd-y);
     width: calc(100% - var(--pd-y) * 2);
+   
+    /* position: relative; */
   }
+  
+
 .space-between.responsive,.flex.responsive{
 flex-direction: column;
 justify-content: flex-start;
@@ -644,4 +664,50 @@ max-width:120px;
     to{
        rotate:0deg;
     }
+}
+
+
+/* authenthication */
+#auth-wrapper{
+    width:100vw;
+    height: 100vh;
+    background: var(--bg);
+    display: flex;
+      margin-top: calc(40px + var(--pd-y)*2);
+}
+#auth-body{
+width: 40%;
+height: 100%;
+overflow-y: auto;
+}
+#auth-body form{
+width: 100%;
+}
+#auth-body h1{
+font-size:var(--small-fs)
+}
+#auth-body h2{
+font-size:var(--xlarge-fs)
+}
+#auth-body form a{
+display: block;     /* or inline-block, if needed */
+  margin-left: auto;
+  width: max-content;   
+}
+#auth-filler{
+    width:60%;
+    height: 100%;
+    background-color: var(--bg-2);
+}
+.auth-sections{
+    display: none;
+}
+
+@media screen and (max-width:950px){
+    #auth-body{
+width: 100%;
+}
+#auth-filler{
+  display:none;
+}
 }
