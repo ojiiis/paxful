@@ -507,12 +507,15 @@ nav{
   }
 #hot-links{
    display: flex;
-   gap:50px;
+   gap:200px;
    flex-wrap: wrap;
    width:100%;
 }
 #hot-links ul{
    flex-shrink: 0;
+}
+#hot-links ul{
+   font-size: var(--small-fs);
 }
 #hot-links ul li:first-child{
    font-size: var(--large-fs);
@@ -632,6 +635,11 @@ max-width:120px;
      width: 100%;
     
 }
+#hot-links{
+  
+   gap:50px;
+  
+}
 }
 
 .fill{
@@ -735,6 +743,10 @@ color:var(--fg);
 @media screen and (max-width:950px){
     #auth-body{
 width: 100%;
+}
+.auth-sections{
+    width: calc(100% - 40px);
+    
 }
 #auth-filler{
   display:none;
