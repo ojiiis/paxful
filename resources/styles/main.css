@@ -406,11 +406,12 @@ nav{
 }
 #banner > div:nth-child(2){
        height: 100%;
- width:60%;
+      width:60%;
      flex-shrink: 0;
-     background-image:url(../images/crypto-globe-desktop.png);
-     background-size: cover;
-     background-position: top right;
+     background-image:url(../images/crypto-globe1.png);
+     background-repeat: no-repeat;
+     background-size:contain;
+     background-position: center;
   padding:0;
      
 }
@@ -594,8 +595,7 @@ justify-content: center;
 #banner > div:nth-child(2){
        height: 300px;
    width:100%;
-   padding:none;  
-   background-image:url(../images/crypto-globe-mobile.png);   
+   padding:none;     
 }
 
 .capsule-form-inline{
@@ -710,6 +710,10 @@ font-size:var(--xlarge-fs);
     width:60%;
     height: 100%;
     background-color: var(--bg-2);
+    background-image: url(../images/auth-bg.png);
+      background-repeat: no-repeat;
+     background-size:contain;
+     background-position: center;
 }
 .auth-sections{
     display:flex;
