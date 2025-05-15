@@ -186,7 +186,7 @@
                     </div>
                 </nav>   
                 <div class="flex no-mobile" id="auth">
-                        <a href="javascript:void(0)" class="btn-nbg md">Start trading</a>
+                        <a href="auth.html?a=sign-in" class="btn-nbg md">Start trading</a>
                 </div>
                 <i class="bi bi-list no-desktop" id="menu"></i>
           </div>
@@ -207,8 +207,9 @@
                     <div class="flex-y mobile-text-center">
                         <h4>The <span style="color:var(--tint)">people-<br>powered</span> way <br>to move <br>money <i style="color:var(--tint)" class="bi bi-arrow-up-right"></i></h4>
                         <p>The largest P2P marketplace to buy, sell, send, and receive crypto and local currencies.</p>
-                        <form class="curve-input-n-btn">
-                            <input placeholder="Enter email here...">
+                        <form class="curve-input-n-btn" action="auth.html">
+                            <input placeholder="Enter email here..." name="email" required>
+                            <input type="hidden" name="a" value="sign-up">
                             <button>Sign up now</button>
                         </form>
                         <p>Download on <a href="javacsript:void(0)">iOS</a> and <a href="javacsript:void(0)">Android</a></p>

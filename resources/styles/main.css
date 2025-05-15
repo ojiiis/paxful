@@ -19,9 +19,27 @@
     --xxlarge-fs:3rem;
     --max-full-width:1400px;
 }
-*{
-    /* border:1px solid red; */
-}
+/* :root{
+    --fg:#000;
+    --rowbg:#f7f7f;
+    --bg:#dd1b1b;
+    --ca:#3a53a5;
+    --tint:#647ccb;
+    --bg-2:#cc3b3b;
+    --pd-x:50px;
+    --pd-y:20px;
+    --mg-x:20px;
+    --mg-y:20px;
+    --base-int:20px;
+    --small-fs:1rem;
+    --tiny-fs:0.6rem;
+    --xlarge-fs:2.4rem;
+    --large-fs:1.4rem;
+    --medium-fs:1.2rem;
+    --xxlarge-fs:3rem;
+    --max-full-width:1400px;
+} */
+
 .alert{
     background-color: var(--tint);text-align: center;
    
@@ -193,7 +211,7 @@ ul li{
     width:70vw;
     margin:0 auto;
       border-radius: var(--base-int);
-    border:1px solid var(--tint);
+    border:1px solid #ddd;
     padding:var(--pd-y) var(--pd-x);
     display: flex;
     flex-wrap: wrap;
@@ -551,10 +569,13 @@ nav{
     overflow-y:auto ;
 }
   #nav {
-    padding: var(--pd-y);
+ /* padding-left: calc(var(--pd-y) * -1); */
     width: calc(100% - var(--pd-y) * 2);
    
     /* position: relative; */
+  }
+  #nav a h2{
+    /* margin-left:-1px; */
   }
   
 
