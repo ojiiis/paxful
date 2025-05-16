@@ -706,6 +706,7 @@ max-width:120px;
    gap:var(--base-int);
    padding: calc(var(--mg-x) * 2) 0;
 }
+
 .responsive-table-section .table-row:last-child{
   border-bottom: none;
 }
@@ -733,7 +734,9 @@ max-width:120px;
 }
 
 
-
+.responsive-table-section .table-row .column-three .btn, .responsive-table-section .table-row .column-three .btn-nbg{
+ padding: calc(var(--pd-y) / 2) var(--pd-y);
+}
 
 #footer{
 
