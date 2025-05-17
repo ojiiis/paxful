@@ -172,102 +172,35 @@
                          <span>Account level: 1</span>
                          <span>Account limit: 160,000 NGN</span>
                      </a> -->
-                    <div class="flex space-between" style="margin-bottom: var(--mg-x);">
+                    <!-- <div class="flex space-between" style="margin-bottom: var(--mg-x);">
                         <a class="btn" href="javascript:void(0)">Buy</a>
                         <a class="btn-nbg-inv" href="javascript:void(0)">Sell</a>
+                     </div> -->
+                     <div id="wallet-balance" class="flex space-between">
+                       <i class="icon bitcoin"></i>  
+                       <div class="flex-y text-right">
+                          <span>0.00000000 BTC</span>
+                           <span>0.00 NGN</span>
+                       </div>
                      </div>
-                     <a href="wallet.html" class="dashboard-link-menu">
-                         <span>Bitcon balance</span>
-                         <span>0.00000000 BTC</span>
-                     </a>
-                     <a href="wallet.html" class="dashboard-link-menu">
-                         <span>Ethereum balance</span>
-                         <span>0.00000000 ETH</span>
-                     </a>
-                     <a href="wallet.html" class="dashboard-link-menu">
-                         <span>Tether balance</span>
-                         <span>0.00000000 USDT</span>
-                     </a>
-                     <a href="wallet.html" class="dashboard-link-menu">
-                         <span>Litecoin balance</span>
-                         <span>0.00000000 LTC</span>
-                     </a>
+                     <div class="flex space-between sr">
+                        <a class="btn" href="javascript:void(0)">Send</a>
+                        <a class="btn-nbg-inv" href="javascript:void(0)">Receive</a>
+                     </div>
+                     <div id="wallet-qr">
+
+                     </div>
+                     <div id="coin-address">
+                        <p>Bicoin address</p>
+                       <div class="curve-input-n-btn">
+                            <input id="bitcoin-address" name="bitcoin-address" value="xxcopy-test-copied" disabled>
+                            <button id="copy-address"><i class="bi bi-copy"></i>&nbsp;Copy</button>
+                        </div>
+                     </div> 
+                    
                  </div>
-                 <div id="app-right" class="responsive-table-section">
+                 <div id="app-right" class="responsive-table-section no-data">
                     <h4>Recent transactions</h4>
-                      <div class="table-row">
-                            <div class="column-one">
-                                <i class="icon bitcoin"></i>
-                                <span>Bitcoin (BTC)</span>
-                            </div>
-                            <div class="column-two">
-                                <b>$100,200.00</b>
-                                <b>Bank transfer</b>
-                            </div>
-                            <div class="column-three">
-                                <span>13th Apr, 2024</span>
-                                <a href="javascript:void(0)" class="btn">View</a>
-                            </div>
-                       </div>
-                       <div class="table-row">
-                            <div class="column-one">
-                                <i class="icon ethereum"></i>
-                                <span>Ethereum (ETH)</span>
-                            </div>
-                            <div class="column-two">
-                                <b>$100,200.00</b>
-                                <b>Gift card</b>
-                            </div>
-                            <div class="column-three">
-                                <span>10th Oct, 2024</span>
-                                <a href="javascript:void(0)" class="btn">View</a>
-                            </div>
-                       </div>
-                       <div class="table-row">
-                            <div class="column-one">
-                                <i class="icon litecoin"></i>
-                                <span>Litecoin (LTC)</span>
-                            </div>
-                            <div class="column-two">
-                                <b>$100,200.00</b>
-                                <b>Bank deposit</b>
-                            </div>
-                            <div class="column-three">
-                                <span>22th Nov, 2023</span>
-                                <a href="javascript:void(0)" class="btn">View</a>
-                            </div>
-                       </div>
-                       <div class="table-row">
-                            <div class="column-one">
-                                <i class="icon ethereum"></i>
-                                <span>Ethereum (ETH)</span>
-                            </div>
-                            <div class="column-two">
-                                <b>$100,200.00</b>
-                                <b>Gift card</b>
-                            </div>
-                            <div class="column-three">
-                                <span>10th May, 2024</span>
-                                <a href="javascript:void(0)" class="btn">View</a>
-                            </div>
-                       </div>
-                       <div class="table-row">
-                            <div class="column-one">
-                                <i class="icon litecoin"></i>
-                                <span>Litecoin (LTC)</span>
-                            </div>
-                            <div class="column-two">
-                                <b>$100,200.00</b>
-                                <b>Bank deposit</b>
-                            </div>
-                            <div class="column-three">
-                                <span>11th Jun, 2025</span>
-                                <a href="javascript:void(0)" class="btn">View</a>
-                            </div>
-                       </div>
-                       <div  class="full-width text-right mg-y">
-                          <a class="btn-nbg-inv">View all</a>
-                       </div>
                  </div>
               </div>
          </div>

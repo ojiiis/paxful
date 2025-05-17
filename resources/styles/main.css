@@ -127,6 +127,7 @@ ul li{
     flex-direction: column;
     gap:var(--base-int);
 }
+
 .flex{
     display:flex;
     align-items: center;
@@ -230,6 +231,7 @@ ul li{
     font-size: var(--small-fs);
    display: flex;
    justify-content: center;
+   color:var(--fg);
 }
 .capsule-form-inline{
     width:70vw;
@@ -600,9 +602,19 @@ text-align: center;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--fg);
 }
-.responsive-table-section .table-row:last-child{
+
+.responsive-table-section .table-row:last-of-type {
   border-bottom: none;
 }
+
+#app-right .table-row {
+  border-bottom: 0.5px solid var(--bg);
+}
+
+#app-right .table-row:last-of-type {
+  border-bottom: none;
+}
+
 .responsive-table-section .table-row .column-one{
   display: flex;
   align-items: center;
@@ -626,6 +638,7 @@ border-radius: 50%;
   justify-content: space-around;
   width:49% ;
 }
+/* dashboard */
 #app{
     display:flex;
     justify-content: space-between;
@@ -638,21 +651,23 @@ border-radius: 50%;
     width:calc(29% - var(--pd-y));
     height: calc(100% - calc(var(--pd-y) * 2));
     display:flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-direction: column;
     flex-shrink: 0;
     overflow-y:auto ;
     flex-wrap:nowrap;
     margin: 0 auto;
-    
+    color:var(--bg);
+    gap:var(--mg-x);
 }
 #app-right{
     height: calc(100% - calc(var(--pd-y) * 2));
     width:70%;
     color:var(--bg);
     overflow-y:auto ;
-   
+    
 }
+
 .dashboard-link-menu{
     flex-shrink: 0;
     padding:var(--pd-y) var(--pd-x);
@@ -671,6 +686,42 @@ border-radius: 50%;
 }
 .dashboard-link-menu span:nth-child(2){
     font-size: var(--small-fs);
+}
+#wallet-balance{
+     flex-shrink: 0;
+    padding:var(--pd-y);
+    background-color: var(--tint);
+    border-radius: calc(var(--base-int) * 2);
+    color:var(--fg);
+    padding-right: var(--pd-x);
+}
+#wallet-balance i{
+     width: 40px;
+     height: 40px;
+}
+.sr .btn,.sr .btn-nbg-inv{
+padding:5px var(--base-int);
+}
+#wallet-qr{
+    width: 240px;
+    height: 240px;
+    background-image: url(../images/qr-code.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin:0 auto;
+}
+#coin-address p{
+ font-size: var(--large-fs);
+}
+#app-left .curve-input-n-btn input{
+    color:var(--bg);
+}
+.no-data{
+    background-image: url(../images/no-data-min.png);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 @media screen and (max-width:950px){
   .navigation-wrapper{
@@ -835,7 +886,7 @@ max-width:120px;
     
 }
 #app-right{
-    height: auto;
+    min-height: 400px;
     width:calc(100% - calc(var(--pd-y) * 2));
     color:var(--bg);
     overflow-y:auto ;
