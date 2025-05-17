@@ -72,6 +72,11 @@ body{
       background-size: cover;
     background-position: center;
 }
+.icon.litecoin{
+     background-image: url(../images/icons/litecoin.png);
+      background-size: cover;
+    background-position: center;
+}
 .icon.ethereum{
      background-image: url(../images/icons/ethereum.png);
       background-size: cover;
@@ -89,6 +94,16 @@ h1,h2,h3,h4,h5,h6,p{
 }
 .pd{
     padding:var(--pd-y)
+}
+.mg{
+    padding:var(--mg-y)
+}
+.mg-y{
+ 
+     padding:var(--pd-x) 0
+}
+.mg-x{
+      padding:0 var(--pd-y)
 }
 .toggle-flex{
       display: flex !important;
@@ -135,6 +150,12 @@ ul li{
 }
 .text-center{
     text-align: center;
+}
+.text-right{
+ text-align: right;
+}
+.full-width {
+    width: 100%;
 }
 .dark{
     background: var(--bg);
@@ -401,6 +422,14 @@ nav{
     font-size: var(--large-fs);
     /* margin:var(--mg-y) var(--mg-x); */
 }
+.btn-nbg-inv{
+      color:var(--ca);
+      background-color: transparent;
+       border:1px solid var(--ca);
+    padding:calc(var(--pd-y) / 2) var(--pd-x);
+    border-radius: calc(var(--pd-y) * 2);
+    font-size: var(--large-fs);
+}
 .no-mobile{
     display: block;
 }
@@ -546,10 +575,17 @@ nav{
 #hot-links ul li{
  margin-bottom: 5px;
 }
-.responsive-table-section{
-   padding:var(--pd-x);
-   text-align: center;
+#choose-currency{
+ padding:var(--pd-x);
+text-align: center;
+}
 
+#app-right.responsive-table-section {
+ padding: var(--base-int);
+}
+#app-right.responsive-table-section .table-row .column-three .btn{
+   font-size: var(--small-fs);
+   padding:calc(var(--base-int) / 2) var(--pd-x);
 }
 .responsive-table-section h4{
    font-size: var(--xlarge-fs);
@@ -559,6 +595,7 @@ nav{
 .responsive-table-section .table-row{
   display: flex;
   height: 100px;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.5px solid var(--fg);
@@ -569,26 +606,71 @@ nav{
 .responsive-table-section .table-row .column-one{
   display: flex;
   align-items: center;
-  gap:50px;
-  width:calc(24% - 50px);
+  gap:var(--base-int);
+  width:calc(20%);
 }
 .responsive-table-section .table-row .column-one i{
 width: 30px;
 height: 30px;
-background-color:#2b2828;
 border-radius: 50%;
 }
 .responsive-table-section .table-row .column-three{
   display: flex;
   align-items: center;
  justify-content: space-between;
-  width:24%;
+  width:30%;
 }
 .responsive-table-section .table-row .column-two{
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width:50% ;
+  width:49% ;
+}
+#app{
+    display:flex;
+    justify-content: space-between;
+   height:calc(100vh - 80px);
+   width: 100vw;
+  
+}
+#app-left{
+    padding:var(--pd-y);
+    width:calc(29% - var(--pd-y));
+    height: calc(100% - calc(var(--pd-y) * 2));
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow-y:auto ;
+    flex-wrap:nowrap;
+    margin: 0 auto;
+    
+}
+#app-right{
+    height: calc(100% - calc(var(--pd-y) * 2));
+    width:70%;
+    color:var(--bg);
+    overflow-y:auto ;
+   
+}
+.dashboard-link-menu{
+    flex-shrink: 0;
+    padding:var(--pd-y) var(--pd-x);
+    background-color: var(--ca);
+    display:flex;
+    gap:calc(var(--base-int) * 0.29);
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin:var(--mg-x) 0;
+    border-radius: calc(var(--base-int) * 2);
+    color:var(--fg);
+}
+.dashboard-link-menu span:first-child{
+    font-size: var(--large-fs);
+}
+.dashboard-link-menu span:nth-child(2){
+    font-size: var(--small-fs);
 }
 @media screen and (max-width:950px){
   .navigation-wrapper{
@@ -736,6 +818,28 @@ max-width:120px;
 
 .responsive-table-section .table-row .column-three .btn, .responsive-table-section .table-row .column-three .btn-nbg{
  padding: calc(var(--pd-y) / 2) var(--pd-y);
+}
+
+#app{
+    display:flex;
+    flex-direction: column;
+    gap:var(--mg-x);
+   height:auto;
+  
+}
+#app-left{
+   
+    width:calc(100% - calc(var(--pd-y) * 2));
+    height: auto;
+    flex-direction: column;
+    
+}
+#app-right{
+    height: auto;
+    width:calc(100% - calc(var(--pd-y) * 2));
+    color:var(--bg);
+    overflow-y:auto ;
+   
 }
 
 #footer{
