@@ -699,6 +699,12 @@ border-radius: 50%;
      width: 40px;
      height: 40px;
 }
+#wallet-balance div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: calc(var(--base-int) / 2);
+}
 .sr .btn,.sr .btn-nbg-inv{
 padding:5px var(--base-int);
 }
