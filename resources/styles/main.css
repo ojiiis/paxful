@@ -82,7 +82,7 @@ body{
       background-size: cover;
     background-position: center;
 }
-.icon.usdt{
+.icon.usdt,.icon.tether{
      background-image: url(../images/icons/usdt.png);
  background-size: cover;
     background-position: center;

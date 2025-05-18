@@ -383,62 +383,7 @@
             <div id="choose-currency" class="responsive-table-section tint-bg">
                 <h4>Choose Your Crypto</h4>
                 <p>Trade anytime with ease—choose from over 20 cryptocurrencies and pay using your preferred method.</p>
-                <div class="table-row">
-                    <div class="column-one">
-                        <i class="icon bitcoin"></i>
-                        <span>Bitcoin (BTC)</span>
-                    </div>
-                    <div class="column-two">
-                        <b>$100,200.00</b>
-                        <b>1.78%</b>
-                    </div>
-                    <div class="column-three">
-                        <a href="javascript:void(0)" class="btn-nbg">Buy</a>
-                        <a href="javascript:void(0)" class="btn">Sell</a>
-                    </div>
-                </div>
-                <div class="table-row">
-                    <div class="column-one">
-                        <i class="icon ethereum"></i>
-                        <span>Ethereum (ETH)</span>
-                    </div>
-                    <div class="column-two">
-                        <b>$100,200.00</b>
-                        <b>1.78%</b>
-                    </div>
-                    <div class="column-three">
-                        <a href="javascript:void(0)" class="btn-nbg">Buy</a>
-                        <a href="javascript:void(0)" class="btn">Sell</a>
-                    </div>
-                </div>
-                <div class="table-row">
-                    <div class="column-one">
-                        <i class="icon litecoin"></i>
-                        <span>Litecoin (LTC)</span>
-                    </div>
-                    <div class="column-two">
-                        <b>$100,200.00</b>
-                        <b>1.78%</b>
-                    </div>
-                    <div class="column-three">
-                        <a href="javascript:void(0)" class="btn-nbg">Buy</a>
-                        <a href="javascript:void(0)" class="btn">Sell</a>
-                    </div>
-                </div>
-                <div class="table-row">
-                    <div class="column-one">
-                        <i class="icon usdt"></i>
-                        <span>Tether (USDT)</span>
-                    </div>
-                    <div class="column-two">
-                        <b>$100,200.00</b>
-                        <b>1.78%</b>
-                    </div>
-                    <div class="column-three">
-                        <a href="javascript:void(0)" class="btn-nbg">Buy</a>
-                        <a href="javascript:void(0)" class="btn">Sell</a>
-                    </div>
-                </div>
+                
             </div>
             <div class="p2p-style">
                 <h4>The largest global platform for peer-to-peer trading</h4>
@@ -537,6 +482,36 @@ Peer-to-Peer Market Prices -->
         </div>
     </div>
      <script src="resources/scripts/util.js"></script>    
-    <script src="resources/scripts/main.js"></script>    
+    <script src="resources/scripts/main.js"></script>   
+    <script>
+        (
+            async ()=>{
+                const req = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,litecoin,tether&price_change_percentage=1h,24h,7d");
+                const res = await req.json();
+                if(res){
+                    let table = '';
+                    [...res].forEach((row)=>{
+                       table += `<div class="table-row">
+                    <div class="column-one">
+                        <i class="icon ${row.id}"></i>
+                        <span>${row.name} (${row.symbol.toUpperCase()})</span>
+                    </div>
+                    <div class="column-two">
+                        <b>${row.current_price.toLocaleString('en-US',{style:'currency',currency:'USD'})}</b>
+                        <b>${row.price_change_percentage_24h}%</b>
+                    </div>
+                    <div class="column-three">
+                        <a href="javascript:void(0)" class="btn-nbg">Buy</a>
+                        <a href="javascript:void(0)" class="btn">Sell</a>
+                    </div>
+                </div>`;
+               
+                    });
+                    document.getElementById("choose-currency").insertAdjacentHTML('beforeend', table);
+                }
+              //  console.log(res);
+            }
+        )();
+    </script> 
 </body>
 </html>
