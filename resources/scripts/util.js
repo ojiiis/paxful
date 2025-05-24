@@ -36,3 +36,25 @@ if(document.getElementById("copy-address")){
   //  alert("Copied: " + input.value);
    }
   }
+
+
+[...document.getElementsByTagName("form")].forEach(item=>{
+item.addEventListener('submit',function(e){
+e.preventDefault();
+var data = {}
+var thisData = new FormData(this);
+thisData.forEach((v,k)=>{
+    data[k] = v;
+})
+let route = this.action.length?api+"/"+this.action.split("/").slice(-1)[0]:api;
+fetch(route,{
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json"
+    },
+    body:JSON.stringify(data)
+}).then(r=>r.json()).then(r=>console.log(r))
+
+
+});
+});
