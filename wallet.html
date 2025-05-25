@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+               <div id="body" class="">
+              <div id="app">
+                 <div id="app-left">
+                     <!-- <a href="javascript:void(0)" class="dashboard-link-menu">
+                         <span>Account level: 1</span>
+                         <span>Account limit: 160,000 NGN</span>
+                     </a> -->
+                    <!-- <div class="flex space-between" style="margin-bottom: var(--mg-x);">
+                        <a class="btn" href="javascript:void(0)">Buy</a>
+                        <a class="btn-nbg-inv" href="javascript:void(0)">Sell</a>
+                     </div> -->
+                     <div id="wallet-balance" class="flex space-between">
+                       <i class="icon bitcoin"></i>  
+                       <div class="text-right">
+                          <span id="address_balance"></span>
+                           <span id="address_value">0.00 NGN</span>
+                       </div>
+                     </div>
+                     <div class="flex space-between sr">
+                        <a class="btn" href="javascript:void(0)">Send</a>
+                        <a class="btn-nbg-inv" href="javascript:void(0)">Receive</a>
+                     </div>
+                     <div id="wallet-qr"></div>
+                     <div id="coin-address">
+                        <p>Bicoin address</p>
+                       <div class="curve-input-n-btn">
+                            <input id="bitcoin-address" name="bitcoin-address" value="" disabled>
+                            <button id="copy-address"><i class="bi bi-copy"></i>&nbsp;Copy</button>
+                        </div>
+                     </div> 
+                    
+                 </div>
+                 <div id="app-right">
+                     <div class="history responsive-table-section no-data">
+                         <h4>Recent transactions</h4>
+                     </div>
+                    
+                 </div>
+              </div>
+         </div>
+
+        
+         <script src="resources/scripts/var.js"></script>
+          <script src="resources/scripts/auth.js"></script>
+        <script src="https://ojiiis.github.io/oLoader/"></script>
+        <script>
+        
+           (async ()=>{
+            const loader = oLoader();
+            loader.head("./global/head.html");
+            loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
+            let stat = await auth;
+            if(!stat.status){
+                 loader.body("./global/header1.html", "b");
+            }else{
+                loader.body("./global/header2.html", "b");
+            }
+            if(!stat.status){
+            loader.body("./global/footer.html", "e");
+            }else{
+            loader.body("./global/pops.html", "e");   
+            }
+            loader.script("./global/script.html");
+            loader.load(async()=>{
+                let de = await fetch(`${api}/wallet/${params['coin']}`,
+                {
+                    method:"POST",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }
+                });
+                let rDe = await de.json();
+                document.getElementById("bitcoin-address").value = rDe.data.address;
+                document.getElementById("address_balance").textContent = rDe.data.balance+' '+params['coin'].toUpperCase();
+              //  document.getElementById("bitcoin-address").textContent = rDe.data.address;
+                document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
+               // console.log(await de.json());
+              // https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example
+              /*
+              #wallet-qr{
+    width: 240px;
+    height: 240px;
+    background-image: url(../images/qr-code.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin:0 auto;
+}
+              */
+            });
+           })();
+        </script>
+
+</body>
+</html>

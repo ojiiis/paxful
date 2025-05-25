@@ -1,3 +1,18 @@
+  function getAllParams(url = window.location.href) {
+    const params = {};
+    const queryString = url.split('?')[1];
+
+    if (!queryString) return params;
+
+    const pairs = queryString.split('&');
+
+    for (const pair of pairs) {
+        const [key, value] = pair.split('=');
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+    }
+
+    return params;
+}
 let params = getAllParams(url = window.location.href);
 if(params['a']!=undefined){
     [...document.getElementsByClassName("auth-sections")].forEach((elem)=>elem.style.display = "none");
@@ -6,5 +21,17 @@ if(params['a']!=undefined){
 document.getElementById('email').value = params['email'];
     }
 }else{
-     document.getElementById("sign-in").style.display = "flex";
+     if(document.getElementById("sign-in"))document.getElementById("sign-in").style.display = "flex";
 }
+
+
+const auth = new Promise((res,rej)=>{
+    (async function(){
+   try{
+     const key = localStorage.getItem('key'); let auth = false; if(key){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
+     res(auth);
+   }catch(e){
+     rej({status:false})
+   }
+})();
+})

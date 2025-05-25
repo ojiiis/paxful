@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- <div id="alert" class="success">Your operation was successfull</div> -->
     <div id="wrapper">
+         
          <div class="space-between" id="nav">
                 <nav class="flex">
                     <a href="./"><h2><img src="resources/images/dark-logo.jpeg">luxpay</h2></a>
@@ -46,11 +48,11 @@
                         <form  redirect="dashboard.html" action="/sign_up">
                             <div class="form-group">
                                 <label>Email / Phone Number*</label>
-                                <input placeholder="Email / Phone Number" id="email">
+                                <input name="email" placeholder="Email / Phone Number" id="email" required>
                             </div>
                             <div class="form-group">
                                 <label>Password*</label>
-                                <input placeholder="Password">
+                                <input  name="password"  placeholder="Password" required>
                             </div>
                             <p id="nb">By signing up you agreeing with our <a href="javascript:void(0)">Terms & Conditions</a> and <a href="javascript:void(0)">Privacy Policy</a>.</p>
                             <div class="auth-btn">

@@ -1,8 +1,8 @@
-  <script src="resources/scripts/var.js"></script>   
-  <script src="resources/scripts/util.js"></script>    
+   <script src="resources/scripts/util.js"></script>    
     <script src="resources/scripts/main.js"></script>   
     <script>
-        (
+      if(document.getElementById("choose-currency")){
+      (
             async ()=>{
                 const req = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,litecoin,tether&price_change_percentage=1h,24h,7d");
                 const res = await req.json();
@@ -30,4 +30,5 @@
               //  console.log(res);
             }
         )();
+        }
     </script> 
