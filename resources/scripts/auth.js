@@ -28,7 +28,7 @@ document.getElementById('email').value = params['email'];
 const auth = new Promise((res,rej)=>{
     (async function(){
    try{
-     const key = localStorage.getItem('key'); let auth = false; if(key){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
+     const key = localStorage.getItem('key'); let auth = {status:false}; if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
      res(auth);
    }catch(e){
      rej({status:false})
