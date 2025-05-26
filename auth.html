@@ -29,11 +29,11 @@
                         <form redirect="dashboard.html" action="/sign_in">
                             <div class="form-group">
                                 <label>Email / Phone Number*</label>
-                                <input placeholder="Email / Phone Number">
+                                <input name="email" placeholder="Email / Phone Number">
                             </div>
                                 <div class="form-group">
                                 <label>Password*</label>
-                                <input placeholder="Password">
+                                <input name="password"  placeholder="Password">
                             </div>
                             <a href="?a=forgot-password" class="fp">Forgot password?</a>
                             <div class="auth-btn">
@@ -48,7 +48,7 @@
                         <form  redirect="dashboard.html" action="/sign_up">
                             <div class="form-group">
                                 <label>Email / Phone Number*</label>
-                                <input name="email" placeholder="Email / Phone Number" id="email" required>
+                                <input name="email" placeholder="Email / Phone Number" required>
                             </div>
                             <div class="form-group">
                                 <label>Password*</label>
@@ -68,7 +68,7 @@
                         <form  redirect="dashboard.html" action="/request_password_reset">
                             <div class="form-group">
                                 <label>Email / Phone Number*</label>
-                                <input placeholder="Email / Phone Number" id="email">
+                                <input name="login" placeholder="Email / Phone Number">
                             </div>
                             <div class="auth-btn">
                                 <button class="btn">Send recovery code</button>

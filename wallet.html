@@ -62,7 +62,7 @@
                 loader.body("./global/header2.html", "b");
             }
             if(!stat.status){
-            loader.body("./global/footer.html", "e");
+             location = './auth.html';
             }else{
             loader.body("./global/pops.html", "e");   
             }
@@ -77,11 +77,15 @@
                     }
                 });
                 let rDe = await de.json();
+                if(rDe.status){ 
                 document.getElementById("bitcoin-address").value = rDe.data.address;
                 document.getElementById("address_balance").textContent = rDe.data.balance+' '+params['coin'].toUpperCase();
               //  document.getElementById("bitcoin-address").textContent = rDe.data.address;
                 document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
-               loaded();
+              }else{
+                    location = './auth.html';
+                }
+                loaded();
             });
            })();
         </script>

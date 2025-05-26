@@ -36,6 +36,7 @@ if(document.getElementById("copy-address")){
     const formData = new FormData(this);
 
     formData.forEach((value, key) => {
+      console.log(key,'form entery key');
       data[key] = value;
     });
 
@@ -56,15 +57,16 @@ if(document.getElementById("copy-address")){
         } else {
           const redirect = form.getAttribute("redirect");
           runAlert(result.message, "success");
-          localStorage.setItem("key",result.data);
+          console.log(result);
+          if(action.split("/").pop() == "sign_up" || action.split("/").pop() == "sign_in"){
+              localStorage.setItem("key",result.data);
+          }
           if (redirect && redirect.length > 0) {
             setTimeout(() => {
               location = redirect;
             }, 2000);
           }
-          if(action.split("/").pop() == "sign_up" || action.split("/").pop() == "sign_in"){
-              localStorage.setItem("key",result.data);
-          }
+         
         }
 
         submitBtn.disabled = false;
