@@ -157,8 +157,8 @@
             loader.head("./global/head.html");
             loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
             const key = localStorage.getItem('key');
-            let auth = false;
-            if(key){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
+            let auth = {status:0};
+            if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
             if(!auth.status){
                  loader.body("./global/header1.html", "b");
             }else{
