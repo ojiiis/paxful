@@ -68,6 +68,7 @@
             }
             loader.script("./global/script.html");
             loader.load(async()=>{
+                loading();
                 let de = await fetch(`${api}/wallet/${params['coin']}`,
                 {
                     method:"POST",
@@ -80,19 +81,7 @@
                 document.getElementById("address_balance").textContent = rDe.data.balance+' '+params['coin'].toUpperCase();
               //  document.getElementById("bitcoin-address").textContent = rDe.data.address;
                 document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
-               // console.log(await de.json());
-              // https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example
-              /*
-              #wallet-qr{
-    width: 240px;
-    height: 240px;
-    background-image: url(../images/qr-code.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin:0 auto;
-}
-              */
+               loaded();
             });
            })();
         </script>

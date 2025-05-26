@@ -684,6 +684,7 @@ border-radius: 50%;
 }
 
 .dashboard-link-menu{
+    position: relative;
     flex-shrink: 0;
     padding:var(--pd-y) var(--pd-x);
     background-color: var(--ca);
@@ -702,6 +703,7 @@ border-radius: 50%;
 .dashboard-link-menu span:nth-child(2){
     font-size: var(--small-fs);
 }
+
 #wallet-balance{
      flex-shrink: 0;
     padding:var(--pd-y);

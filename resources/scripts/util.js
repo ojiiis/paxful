@@ -32,7 +32,6 @@ if(document.getElementById("copy-address")){
     const oldBtnText = submitBtn.textContent;
     submitBtn.textContent = "Processing...";
     submitBtn.disabled = true;
-
     const data = {};
     const formData = new FormData(this);
 
@@ -94,3 +93,4 @@ const runAlert = (message,type = 'success') =>{
        errDiv.style.animation = 'hide_alert 1s forwards';
      },2000);
 }
+
