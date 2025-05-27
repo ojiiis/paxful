@@ -1031,6 +1031,7 @@ gap:calc(var(--base-int) / 2);
 }
 .auth-sections form .form-group input{
 padding:calc(var(--base-int) - 5px);
+width:calc(100% - (calc(var(--base-int) - 5px) * 2));
 background-color: var(--bg-2);
 border-radius: var(--base-int);
 border:none;
@@ -1039,9 +1040,24 @@ font-size:var(--small-fs);
 color:var(--fg);
 }
 
+.form-group .input-i{
+    width:100%;
+    position: relative;
+    display:flex;
+    justify-content: space-between;
+}
+
+.form-group .input-i i{
+  position: absolute;
+  right:calc(var(--base-int) - 5px);
+  top:50%;
+  transform:translate(0,-50%);
+  cursor:pointer;
+}
+
 @media screen and (max-width:950px){
     #auth-body{
-width: 100%;
+   width: 100%;
 }
 .auth-sections{
     width: calc(100% - 40px);

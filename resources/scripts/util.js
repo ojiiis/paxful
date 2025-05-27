@@ -1,6 +1,7 @@
 
   document.getElementById("close-cookie-pop").onclick = () => document.getElementById("cookie-pop").remove();
   document.getElementById("close-qr-code").onclick = () => document.getElementById("qr-code").remove();
+  const coins = {eth:"Ethereum",btc:"Bitcoin",ltc:"Litecoin",usdt:"Tether"};
   const tr = document.querySelectorAll('#app-right .table-row');
   if (tr.length) {
   tr[tr.length - 1].style.borderBottom = 'none';
@@ -17,9 +18,6 @@ if(document.getElementById("copy-address")){
   tempInput.setSelectionRange(0, 99999); // Mobile support
   document.execCommand("copy");
   document.body.removeChild(tempInput);
-
-    // Optional: Show confirmation
-  //  alert("Copied: " + input.value);
    }
   }
 
@@ -36,7 +34,6 @@ if(document.getElementById("copy-address")){
     const formData = new FormData(this);
 
     formData.forEach((value, key) => {
-      console.log(key,'form entery key');
       data[key] = value;
     });
 
@@ -96,3 +93,16 @@ const runAlert = (message,type = 'success') =>{
      },2000);
 }
 
+[...document.getElementsByClassName('show-pass')].forEach((items)=>{
+    items.onclick = function(){
+      if(items.classList.contains('bi-eye')){
+            items.classList.remove('bi-eye');
+            items.classList.add('bi-eye-slash');
+            items.parentElement.children[0].type = 'text';
+            return;
+      }
+      items.classList.remove('bi-eye-slash');
+      items.classList.add('bi-eye');
+      items.parentElement.children[0].type = 'password';
+    }
+});

@@ -28,7 +28,7 @@
                      </div>
                      <div id="wallet-qr"></div>
                      <div id="coin-address">
-                        <p>Bicoin address</p>
+                        <p id="address-label"></p>
                        <div class="curve-input-n-btn">
                             <input id="bitcoin-address" name="bitcoin-address" value="" disabled>
                             <button id="copy-address"><i class="bi bi-copy"></i>&nbsp;Copy</button>
@@ -86,6 +86,7 @@
                     location = './auth.html';
                 }
                 loaded();
+                document.getElementById("address-label").textContent = `${coins[params['coin']]} address`;
             });
            })();
         </script>
