@@ -1,7 +1,6 @@
 
-  document.getElementById("close-cookie-pop").onclick = () => document.getElementById("cookie-pop").remove();
-  document.getElementById("close-qr-code").onclick = () => document.getElementById("qr-code").remove();
-  const coins = {eth:"Ethereum",btc:"Bitcoin",ltc:"Litecoin",usdt:"Tether"};
+  if(document.getElementById("close-cookie-pop"))document.getElementById("close-cookie-pop").onclick = () => document.getElementById("cookie-pop").remove();
+  if(document.getElementById("close-qr-code"))document.getElementById("close-qr-code").onclick = () => document.getElementById("qr-code").remove();
   const tr = document.querySelectorAll('#app-right .table-row');
   if (tr.length) {
   tr[tr.length - 1].style.borderBottom = 'none';
@@ -106,3 +105,4 @@ const runAlert = (message,type = 'success') =>{
       items.parentElement.children[0].type = 'password';
     }
 });
+

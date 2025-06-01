@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+             <div id="body" class="">
+            <!-- <div class="pd tiny-font alert">
+                <p class="">Experience the top-rated P2P crypto trading app.
+<br>Available now on iOS and Android.</p>
+            </div> -->
+        <style>
+            #messenger{
+                width:100%;
+                height:calc(100vh - 80px);
+              display:flex;
+             justify-content: space-between;
+             color:var(--bg);
+            }
+            #lister{
+                padding:var(--pd-y);
+                width: 30%;
+                height:calc(100% - var(--pd-y) * 2);
+                border-right:0.5px solid var(--bg-2);
+                
+            }
+            #chat-container{
+                 padding:var(--pd-y);
+                 width: 70%;
+                 height:calc(100% - var(--pd-y) * 2);
+                 background-color: var(--fg);
+            }
+            #chat-details{
+                height:calc(100% - 50px);
+                overflow-y:auto;
+                position: relative;
+            }
+            #action{
+                height:50px;
+                border:1px solid black;
+                display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding:0 calc(var(--pd-y) / 2);
+               border-radius: var(--pd-x);
+            }
+            #action input{
+              padding:10px;
+              width: calc(calc(100% - 200px) - var(--pd-y) * 2);
+              outline:0;
+              border:none;
+            } 
+            
+            #action button{
+             padding:10px;
+             width:100px;
+             border-radius:0 var(--pd-x) var(--pd-x) 0;
+            } 
+             #action button:first-child{
+            
+             border-radius:var(--pd-x) 0 0 var(--pd-x);
+            } 
+            #search{
+                height:40px;
+                margin-bottom: var(--pd-y);
+            }
+             #search input{
+              width: 100%;
+              padding:5px;
+            }
+            #list{
+                height:calc(100% - 40px);
+                overflow-y: auto;
+            }
+            .chat-list{
+               display:flex;
+               gap:var(--pd-y);
+               align-items: center;
+               color:var(--bg-2);
+               margin-bottom: var(--pd-y);
+            }
+            .chat-list-image{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border:1px solid var(--bg-2);
+            }
+            .chat-list-details{
+                width: calc(calc(100% - 50px) - var(--pd-x));
+                display: flex;
+                flex-direction: column;
+                gap:calc(var(--pd-y) / 4);
+            }
+            .chat-list-details div{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .sticky-menu{
+                padding: calc(var(--pd-y) /2) 0;
+               position: sticky;
+                 top: 0;
+                 background: var(--fg);
+            }
+            @media screen and (max-width:950px){
+                #messenger{
+                    display: block;
+                    position: relative;
+                }
+                #lister,#chat-container{
+                    position: absolute;
+                    z-index: 10;
+                    width: calc(100% - var(--pd-y) * 2);
+                    border:none;
+                    top:0;
+                    left:0;
+                    
+                }
+                #chat-container{
+                    display: none;
+                     z-index: 12;
+                }
+
+            }
+        </style>
+      <div id="messenger">
+          <div id="lister">
+             <div id="search">
+                <input type="search" placeholder="Search chat...">
+             </div>
+             <div id="list">
+                 <a class="chat-list" href="javascript:void(0)">
+                       <div class="chat-list-image"></div>
+                        <div class="chat-list-details">
+                            <small>@username (ongoing trade)</small>
+                            <h3>N2,000 worth of bitcoin for gitcard</h3>
+                            <div><span>Last message...</span> <span>3:43 pm</span></div>
+                        </div>
+                </a>
+                <a class="chat-list" href="javascript:void(0)">
+                       <div class="chat-list-image"></div>
+                        <div class="chat-list-details">
+                            <small>@username (completed trade)</small>
+                            <h3>N2,000 worth of bitcoin for gitcard</h3>
+                            <div><span>Last message...</span> <span>7:38 am</span></div>
+                        </div>
+                </a>
+             </div>
+          </div>
+          <div id="chat-container">
+              <div id="chat-details">
+                  <div class="sticky-menu"> <i class="bi bi-arrow-left close-chat no-desktop"></i> N2,000 worth of bitcoin for gitcard</div>
+                  <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+              </div>
+              <div id="action">
+                <button><i class="bi bi-plus"></i> Media</button>
+                 <input type="text" placeholder="Start typing...">
+                 <button><i class="bi bi-send"></i> Send</button>
+              </div>
+          </div>
+      </div>
+
+        </div>
+        <script src="resources/scripts/var.js"></script>
+        <script src="resources/scripts/auth.js"></script>
+        <script src="https://ojiiis.github.io/oLoader/"></script>
+         <script>
+
+        </script>
+        <script>
+        
+           (async ()=>{
+            const loader = oLoader();
+            loader.head("./global/head.html");
+            loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
+            const key = localStorage.getItem('key');
+            let auth = {status:0};
+            if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
+            if(!auth.status){
+                 loader.body("./global/header1.html", "b");
+            }else{
+                loader.body("./global/header2.html", "b");
+            }
+           // loader.body("./global/footer.html", "e");
+            loader.script("./global/script.html");
+            loader.load(()=>{
+                //chat list clicked
+                 [...document.getElementsByClassName("chat-list")].forEach((items)=>{
+                   items.onclick = function(){
+                   document.getElementById("chat-container").style.display = "block";
+                  }
+                 });
+                 //close chat
+                 [...document.getElementsByClassName("close-chat")].forEach((items)=>{
+                   items.onclick = function(){
+                   document.getElementById("chat-container").style.display = "none";
+                  }
+                 });
+                [...document.getElementsByClassName("acl")].forEach((items)=>{
+                    let params = getAllParams();
+                    items.insertAdjacentText('afterBegin',capitalizeFirstLetter(params['action']));
+                });
+                 [...document.getElementsByClassName("aco")].forEach((items)=>{
+                    let params = getAllParams();
+                    //
+                    if(params['action'].toLowerCase() == items.textContent.toLowerCase()){
+                        items.classList.add("selected");
+                        
+                    }else{
+                        items.classList.remove("selected");
+                    }
+                    
+                });
+           
+               [...document.getElementsByClassName("col")].forEach((items)=>{
+                    let params = getAllParams();
+                    //capitalizeFirstLetter(params['action'])
+                    items.insertAdjacentHTML('afterBegin',`<i class="icon ${coins[params['coin']].toLowerCase()}"></i> ${capitalizeFirstLetter(coins[params['coin']])}`);
+                });
+                 [...document.getElementsByClassName("coo")].forEach((items)=>{
+                    let params = getAllParams();
+                    //<i class="icon ${params['coin'].toLowerCase()}"></i>Bitcoin
+                    if(`<i class="icon ${params['coin'].toLowerCase()}"></i>${capitalizeFirstLetter(coins[params['coin']])}` == items.innerHTML){
+                        items.classList.add("selected");
+                    }else{
+                        items.classList.remove("selected");
+                    }
+                    
+                });
+            });
+           })();
+        </script>
+       
+</body>
+</html>

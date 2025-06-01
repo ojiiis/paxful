@@ -13,7 +13,7 @@
 
     return params;
 }
-let params = getAllParams(url = window.location.href);
+let params = getAllParams();
 if(params['a']!=undefined){
     [...document.getElementsByClassName("auth-sections")].forEach((elem)=>elem.style.display = "none");
     document.getElementById(params['a']).style.display = "flex";
@@ -48,4 +48,9 @@ const loading = () =>{
 const loaded = () =>{
    document.body.style.overflowY = 'auto';
    document.getElementById('app-loading-ani').remove();
+}
+
+function capitalizeFirstLetter(str) {
+  if (!str) return '';
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

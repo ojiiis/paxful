@@ -72,7 +72,7 @@ body{
       background-size: cover;
     background-position: center;
 }
-.icon.litecoin{
+.icon.litecoin,.icon.ltc{
      background-image: url(../images/icons/litecoin.png);
       background-size: cover;
     background-position: center;
@@ -744,6 +744,9 @@ padding:5px var(--base-int);
     background-size: 150px;
     background-position: center;
     background-repeat: no-repeat;
+}
+#offer-search-result{
+    width:calc(100% - var(--pd-y) * 4);margin:0 auto;color:var(--bg);
 }
 @media screen and (max-width:950px){
   .navigation-wrapper{

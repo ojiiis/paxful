@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+             <div id="body" class="">
+            <!-- <div class="pd tiny-font alert">
+                <p class="">Experience the top-rated P2P crypto trading app.
+<br>Available now on iOS and Android.</p>
+            </div> -->
+
+            <div class="pd flex-y text-center" id="buy-crypto">
+                <h4 class="acl"> crypto instantly</h4>
+                <p>Trade crypto with 500+ different payment methods</p>
+                <form>
+                    <div class="capsule-form-inline">
+                         <div class="inner-capsule flex responsive">
+                             <div class="label">I want to</div>
+                             <div class="type-one input flex no-gap">
+                                <div class="dropdown-label">
+                                    <div class="flex label capsule-input capsule-show-options acl"> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options">
+                                        <span class="aco">Buy</span>
+                                        <span class="aco" >Sell</span>
+                                    </div>
+                                    <input type="hidden" name="action">
+                                </div>
+                                <div class="dropdown-value">
+                                    <div class="value flex capsule-show-options col"><!--i class="icon bitcoin"></i-->  <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options">
+                                        <span class="coo selected" ><i class="icon bitcoin"></i>Bitcoin</span>
+                                        <span class="coo"><i class="icon ethereum"></i>Ethereum</span>
+                                        <span class="coo"><i class="icon usdt"></i>Tether</span>
+                                         <span class="coo"><i class="icon ltc"></i>Litecoin</span>
+                                    </div>
+                                    <input type="hidden" name="cryto_currency_type">
+                                </div>
+                             </div>
+                         </div>
+                         <div class="inner-capsule flex responsive">
+                             <div class="label">for</div>
+                             <div class="input flex no-gap">
+                                <div class="dropdown-label">
+                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number" name="amount"></div>
+                                </div>
+                                <div class="dropdown-value">
+                                    <div class="value flex capsule-show-options">USD <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options">
+                                        <span class="selected">USD</span>
+                                        <span>NGN</span>
+                                        <span>EU</span>
+                                    </div>
+                                    <input type="hidden" name="currency">
+                                </div>
+                             </div>
+                         </div>
+                         <div class="inner-capsule flex responsive">
+                             <div class="label">with</div>
+                             <div class="input flex no-gap">
+                                 <div>
+                                 
+                                </div>
+                                <div class="dropdown-value">
+                                    <div class="value flex capsule-show-options">All payment methods <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options">
+                                        <span>Bank transfer</span>
+                                        <span>Gift cards</span>
+                                        <span>Bank deposit</span>
+                                    </div>
+                                    <input type="hidden" name="payment_method">
+                                </div>
+                             </div>
+                         </div>
+                         <div class="inner-capsule flex responsive">
+                             <button class="btn">Find offers</button>
+                         </div>
+                    </div>
+                </form>
+            </div>
+                       <div class="responsive-table-section" id="offer-search-result">
+                               
+                                <div class="table-row">
+                                        <div class="heading">
+                                            <span>Last active</span>
+                                            <span>13th Apr, 2024</span>
+                                        </div>
+                                        <div class="column-one">
+                                            <i class="icon bitcoin"></i>
+                                            <span>Bitcoin (BTC)</span>
+                                        </div>
+                                        <div class="column-two">
+                                            <b>$100,200.00</b>
+                                            <b>Bank transfer</b>
+                                        </div>
+                                        <div class="column-three">
+                                            <span>Pending</span>
+                                            <a href="javascript:void(0)" class="btn">Buy</a>
+                                        </div>
+                                        <div class="footer">Some message if needed</div>
+                                </div>
+                                <div class="table-row">
+                                        <div class="heading">
+                                            <span>Last active</span>
+                                            <span>13th Apr, 2024</span>
+                                        </div>
+                                        <div class="column-one">
+                                            <i class="icon bitcoin"></i>
+                                            <span>Bitcoin (BTC)</span>
+                                        </div>
+                                        <div class="column-two">
+                                            <b>$100,200.00</b>
+                                            <b>Bank transfer</b>
+                                        </div>
+                                        <div class="column-three">
+                                            <span>Pending</span>
+                                            <a href="javascript:void(0)" class="btn">Sell</a>
+                                        </div>
+                                        <div class="footer">Some message if needed</div>
+                                </div>
+                                <div  class="full-width text-right mg-y">
+                                    <a class="btn-nbg-inv">Next</a>
+                                </div>                        
+                       </div>
+        </div>
+        <script src="resources/scripts/var.js"></script>
+        <script src="resources/scripts/auth.js"></script>
+        <script src="https://ojiiis.github.io/oLoader/"></script>
+        <script>
+        
+           (async ()=>{
+            const loader = oLoader();
+            loader.head("./global/head.html");
+            loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
+            const key = localStorage.getItem('key');
+            let auth = {status:0};
+            if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
+            if(!auth.status){
+                 loader.body("./global/header1.html", "b");
+            }else{
+                loader.body("./global/header2.html", "b");
+            }
+            loader.body("./global/footer.html", "e");
+            loader.script("./global/script.html");
+            loader.load(()=>{
+               console.log(coins,' Coins'); 
+                [...document.getElementsByClassName("acl")].forEach((items)=>{
+                    let params = getAllParams();
+                    items.insertAdjacentText('afterBegin',capitalizeFirstLetter(params['action']));
+                });
+                 [...document.getElementsByClassName("aco")].forEach((items)=>{
+                    let params = getAllParams();
+                    //
+                    if(params['action'].toLowerCase() == items.textContent.toLowerCase()){
+                        items.classList.add("selected");
+                        
+                    }else{
+                        items.classList.remove("selected");
+                    }
+                    
+                });
+                //
+               [...document.getElementsByClassName("col")].forEach((items)=>{
+                    let params = getAllParams();
+                    //capitalizeFirstLetter(params['action'])
+                    items.insertAdjacentHTML('afterBegin',`<i class="icon ${coins[params['coin']].toLowerCase()}"></i> ${capitalizeFirstLetter(coins[params['coin']])}`);
+                });
+                 [...document.getElementsByClassName("coo")].forEach((items)=>{
+                    let params = getAllParams();
+                    //<i class="icon ${params['coin'].toLowerCase()}"></i>Bitcoin
+                    if(`<i class="icon ${params['coin'].toLowerCase()}"></i>${capitalizeFirstLetter(coins[params['coin']])}` == items.innerHTML){
+                        items.classList.add("selected");
+                    }else{
+                        items.classList.remove("selected");
+                    }
+                    
+                });
+            });
+           })();
+        </script>
+
+</body>
+</html>

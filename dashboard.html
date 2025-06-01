@@ -12,8 +12,8 @@
                          <span>Account limit: 160,000 NGN</span>
                      </a> -->
                     <div class="flex space-between" style="margin-bottom: var(--mg-x);">
-                        <a class="btn" href="javascript:void(0)">Buy</a>
-                        <a class="btn-nbg-inv" href="javascript:void(0)">Sell</a>
+                        <a class="btn" href="market.html?action=buy&coin=btc">Buy</a>
+                        <a class="btn-nbg-inv" href="market.html?action=sell&coin=btc">Sell</a>
                      </div>
                      <a href="wallet.html?coin=btc" class="dashboard-link-menu">
                          <span>Bitcon balance</span>
@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="column-three">
                                             <span>Pending</span>
-                                            <a href="javascript:void(0)" class="btn">View</a>
+                                            <a href="trade-chat.html" class="btn">View</a>
                                         </div>
                                         <div class="footer">Some message if needed</div>
                                 </div>
@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="column-three">
                                             <span>Successfull</span>
-                                            <a href="javascript:void(0)" class="btn">View</a>
+                                            <a href="trade-chat.html" class="btn">View</a>
                                         </div>
                                         <div class="footer">Some message if needed</div>
                                 </div>
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="column-three">
                                             <span>Successfull</span>
-                                            <a href="javascript:void(0)" class="btn">View</a>
+                                            <a href="trade-chat.html" class="btn">View</a>
                                         </div>
                                         <div class="footer">Some message if needed</div>
                                 </div>
@@ -112,7 +112,7 @@
                                         </div>
                                         <div class="column-three">
                                             <span>Pending</span>
-                                            <a href="javascript:void(0)" class="btn">View</a>
+                                            <a href="trade-chat.html" class="btn">View</a>
                                         </div>
                                         <div class="footer">Some message if needed</div>
                                 </div>
@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="column-three">
                                             <span>Pending</span>
-                                            <a href="javascript:void(0)" class="btn">View</a>
+                                            <a href="trade-chat.html" class="btn">View</a>
                                         </div>
                                         <div class="footer">Some message if needed</div>
                                 </div>
@@ -160,7 +160,7 @@
                                         </div>
                                         <div class="column-three">
                                             <span>Pending</span>
-                                            <a href="javascript:void(0)" class="btn">View</a>
+                                            <a href="trade-chat.html" class="btn">View</a>
                                         </div>
                                         <div class="footer">Some message if needed</div>
                                 </div>
@@ -179,7 +179,7 @@
                                         </div>
                                         <div class="column-three">
                                             <span>Pending</span>
-                                            <a href="javascript:void(0)" class="btn">View</a>
+                                            <a href="trade-chat.html" class="btn">View</a>
                                         </div>
                                         <div class="footer">Some message if needed</div>
                                 </div>
@@ -226,7 +226,7 @@
                     Object.entries(rDd.data[0]).forEach((item)=>{
                         document.getElementById(item[0]+"_balance").textContent = item[1].balance +" "+item[0].toUpperCase();
                         if(item[1].incoming.length){
-                             document.getElementById(item[0]+"_balance").textContent = "Incoming "+JSON.stringify(item[1].incoming);
+                            // document.getElementById(item[0]+"_balance").textContent = "Incoming "+JSON.stringify(item[1].incoming);
                         }
                     });
                    // console.log();
