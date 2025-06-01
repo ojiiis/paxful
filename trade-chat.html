@@ -9,143 +9,6 @@
                 <p class="">Experience the top-rated P2P crypto trading app.
 <br>Available now on iOS and Android.</p>
             </div> -->
-        <style>
-            #messenger{
-                width:100%;
-                height:calc(100vh - 80px);
-              display:flex;
-             justify-content: space-between;
-             color:var(--bg);
-              /* padding-top:180px; */
-            }
-            .lister{
-                padding:var(--pd-y);
-                width: 30%;
-                height:calc(100% - var(--pd-y) * 2);
-                border-right:0.5px solid var(--bg-2);
-                
-            }
-            .chat-container{
-                 padding:var(--pd-y);
-                 width: 70%;
-                 height:calc(100% - var(--pd-y) * 2);
-                 background-color: var(--fg);
-            }
-            .chat-details{
-                height:calc(100% - 50px);
-                overflow-y:auto;
-                position: relative;
-            }
-            .action{
-                height:50px;
-                border:1px solid black;
-                display: flex;
-               justify-content: space-between;
-               align-items: center;
-               padding:0 calc(var(--pd-y) / 2);
-               border-radius: var(--pd-x);
-            }
-            .action input{
-              padding:10px;
-              width: 100%;
-              outline:0;
-              border:none;
-            } 
-            
-            .action button{
-             padding:10px 20px;
-             border-radius:0 var(--pd-x) var(--pd-x) 0;
-             display:flex;
-             justify-content: center;
-             gap:calc(var(--pd-y) / 2)
-            } 
-             .action button:first-child{
-            
-             border-radius:var(--pd-x) 0 0 var(--pd-x);
-            } 
-            .search{
-                height:40px;
-                margin-bottom: var(--pd-y);
-            }
-             .search input{
-              width: 100%;
-              padding:5px;
-            }
-            .list{
-                height:calc(100% - 40px);
-                overflow-y: auto;
-            }
-            .chat-list{
-               display:flex;
-               gap:var(--pd-y);
-               align-items: center;
-               color:var(--bg-2);
-               margin-bottom: var(--pd-y);
-            }
-            .chat-list-image{
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                border:1px solid var(--bg-2);
-            }
-            .chat-list-details{
-                width: calc(calc(100% - 50px) - var(--pd-x));
-                display: flex;
-                flex-direction: column;
-                gap:calc(var(--pd-y) / 4);
-            }
-            .chat-list-details div{
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-            }
-            .sticky-menu{
-                padding: calc(var(--pd-y) /2) 0;
-               position: sticky;
-                 top: 0;
-                 background: var(--fg);
-                 display:flex;
-                 gap:var(--pd-y)
-            }
-            @media screen and (max-width:950px){
-                /* .messenger{
-                    display: block;
-                    position: relative;
-                }
-                .lister,.chat-container{
-                    position: absolute;
-                    z-index: 10;
-                    width: calc(100% - var(--pd-y) * 2);
-                    border:none;
-                    top:0;
-                    left:0;
-                    
-                }
-                .chat-container{
-                    display: none;
-                     z-index: 12;
-                }
-                */
-                 .lister,.chat-container{
-                    position: absolute;
-                    z-index: 10;
-                    width: calc(100% - var(--pd-y) * 2);
-                    border:none;
-                    height: calc(100% - 120px);
-                    left:0;
-                    
-                }
-                 .chat-container{
-                    /* display: none; */
-                     z-index: 12;
-                }
-                .action{
-                    position: fixed;
-                    width: calc(calc(100% - var(--pd-y) * 2) - 20px);
-                    bottom:var(--pd-y);
-                }
-            }
-        </style>
       <div id="messenger">
           <div class="lister">
              <div class="search">
@@ -173,10 +36,60 @@
           <div class="chat-container" id="chat_1">
               <div class="chat-details">
                   <div class="sticky-menu"> <i class="bi bi-arrow-left close-chat no-desktop" data="chat_1"></i> N2,000 worth of bitcoin for gitcard</div>
-                  <p>first</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>last</p>
+ 
+                  <div class="chat-message left">
+    <span>Hey, you still selling BTC? I need around 0.05 urgently. 🔥</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:15 pm</small></div>
+</div>
+<div class="clear"></div>
+
+<div class="chat-message right">
+    <span>Yeah, I’ve got some. What’s your rate?</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:16 pm</small></div>
+</div>
+<div class="clear"></div>
+
+<div class="chat-message left">
+    <span>Willing to do market price + 1%. Can pay via bank or USDT.</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:17 pm</small></div>
+</div>
+<div class="clear"></div>
+
+<div class="chat-message right">
+    <span>Bank is fine. I’ll need ID proof though. Too many scammers lately 😒</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:18 pm</small></div>
+</div>
+<div class="clear"></div>
+
+<div class="chat-message left">
+    <span>No problem, sending my KYC now. Let me know when ready to confirm wallet address.</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:19 pm</small></div>
+</div>
+<div class="clear"></div>
+
+<div class="chat-message right">
+    <span>Got it. Address confirmed: bc1qxy2...7f3. Send proof once transfer is done.</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:20 pm</small></div>
+</div>
+<div class="clear"></div>
+
+<div class="chat-message left">
+    <span>Transfer sent. Here’s the receipt. TXID: 8e1f23...d9c4 ⏱️</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:21 pm</small></div>
+</div>
+<div class="clear"></div>
+
+<div class="chat-message right">
+    <span>Confirmed. BTC released. Pleasure doing business 👍</span>
+    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:22 pm</small></div>
+</div>
+<div class="clear"></div>
+
+
               </div>
               <div class="action">
-                 <button><i class="bi bi-plus"></i> <span class="no-mobile">Media</span></button>
+                <input type="file" id="input_1" style="display:none">
+                 <button class="add-media" data="input_1"><i class="bi bi-plus"></i> <span class="no-mobile">Media</span></button>
                  <input type="text" placeholder="Start typing...">
                  <button><i class="bi bi-send"></i> <span class="no-mobile">Send</span></button>
               </div>
@@ -249,6 +162,12 @@
                         items.classList.remove("selected");
                     }
                     
+                });
+                //start chat app
+                [...document.getElementsByClassName('add-media')].forEach((item)=>{
+                     item.onclick = function(){
+                        document.getElementById(this.getAttribute('data')).click();
+                     }
                 });
             });
            })();
