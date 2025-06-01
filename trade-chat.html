@@ -16,26 +16,27 @@
               display:flex;
              justify-content: space-between;
              color:var(--bg);
+              /* padding-top:180px; */
             }
-            #lister{
+            .lister{
                 padding:var(--pd-y);
                 width: 30%;
                 height:calc(100% - var(--pd-y) * 2);
                 border-right:0.5px solid var(--bg-2);
                 
             }
-            #chat-container{
+            .chat-container{
                  padding:var(--pd-y);
                  width: 70%;
                  height:calc(100% - var(--pd-y) * 2);
                  background-color: var(--fg);
             }
-            #chat-details{
+            .chat-details{
                 height:calc(100% - 50px);
                 overflow-y:auto;
                 position: relative;
             }
-            #action{
+            .action{
                 height:50px;
                 border:1px solid black;
                 display: flex;
@@ -44,31 +45,33 @@
                padding:0 calc(var(--pd-y) / 2);
                border-radius: var(--pd-x);
             }
-            #action input{
+            .action input{
               padding:10px;
-              width: calc(calc(100% - 200px) - var(--pd-y) * 2);
+              width: 100%;
               outline:0;
               border:none;
             } 
             
-            #action button{
-             padding:10px;
-             width:100px;
+            .action button{
+             padding:10px 20px;
              border-radius:0 var(--pd-x) var(--pd-x) 0;
+             display:flex;
+             justify-content: center;
+             gap:calc(var(--pd-y) / 2)
             } 
-             #action button:first-child{
+             .action button:first-child{
             
              border-radius:var(--pd-x) 0 0 var(--pd-x);
             } 
-            #search{
+            .search{
                 height:40px;
                 margin-bottom: var(--pd-y);
             }
-             #search input{
+             .search input{
               width: 100%;
               padding:5px;
             }
-            #list{
+            .list{
                 height:calc(100% - 40px);
                 overflow-y: auto;
             }
@@ -101,13 +104,15 @@
                position: sticky;
                  top: 0;
                  background: var(--fg);
+                 display:flex;
+                 gap:var(--pd-y)
             }
             @media screen and (max-width:950px){
-                #messenger{
+                /* .messenger{
                     display: block;
                     position: relative;
                 }
-                #lister,#chat-container{
+                .lister,.chat-container{
                     position: absolute;
                     z-index: 10;
                     width: calc(100% - var(--pd-y) * 2);
@@ -116,20 +121,38 @@
                     left:0;
                     
                 }
-                #chat-container{
+                .chat-container{
                     display: none;
                      z-index: 12;
                 }
-
+                */
+                 .lister,.chat-container{
+                    position: absolute;
+                    z-index: 10;
+                    width: calc(100% - var(--pd-y) * 2);
+                    border:none;
+                    height: calc(100% - 120px);
+                    left:0;
+                    
+                }
+                 .chat-container{
+                    /* display: none; */
+                     z-index: 12;
+                }
+                .action{
+                    position: fixed;
+                    width: calc(calc(100% - var(--pd-y) * 2) - 20px);
+                    bottom:var(--pd-y);
+                }
             }
         </style>
       <div id="messenger">
-          <div id="lister">
-             <div id="search">
+          <div class="lister">
+             <div class="search">
                 <input type="search" placeholder="Search chat...">
              </div>
-             <div id="list">
-                 <a class="chat-list" href="javascript:void(0)">
+             <div class="list">
+                 <a class="chat-list" href="javascript:void(0)" data="chat_1">
                        <div class="chat-list-image"></div>
                         <div class="chat-list-details">
                             <small>@username (ongoing trade)</small>
@@ -137,7 +160,7 @@
                             <div><span>Last message...</span> <span>3:43 pm</span></div>
                         </div>
                 </a>
-                <a class="chat-list" href="javascript:void(0)">
+                <a class="chat-list" href="javascript:void(0)" data="chat_1">
                        <div class="chat-list-image"></div>
                         <div class="chat-list-details">
                             <small>@username (completed trade)</small>
@@ -147,15 +170,15 @@
                 </a>
              </div>
           </div>
-          <div id="chat-container">
-              <div id="chat-details">
-                  <div class="sticky-menu"> <i class="bi bi-arrow-left close-chat no-desktop"></i> N2,000 worth of bitcoin for gitcard</div>
-                  <p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+          <div class="chat-container" id="chat_1">
+              <div class="chat-details">
+                  <div class="sticky-menu"> <i class="bi bi-arrow-left close-chat no-desktop" data="chat_1"></i> N2,000 worth of bitcoin for gitcard</div>
+                  <p>first</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>last</p>
               </div>
-              <div id="action">
-                <button><i class="bi bi-plus"></i> Media</button>
+              <div class="action">
+                 <button><i class="bi bi-plus"></i> <span class="no-mobile">Media</span></button>
                  <input type="text" placeholder="Start typing...">
-                 <button><i class="bi bi-send"></i> Send</button>
+                 <button><i class="bi bi-send"></i> <span class="no-mobile">Send</span></button>
               </div>
           </div>
       </div>
@@ -187,13 +210,13 @@
                 //chat list clicked
                  [...document.getElementsByClassName("chat-list")].forEach((items)=>{
                    items.onclick = function(){
-                   document.getElementById("chat-container").style.display = "block";
+                   document.getElementById(items.getAttribute('data')).style.display = "block";
                   }
                  });
                  //close chat
                  [...document.getElementsByClassName("close-chat")].forEach((items)=>{
                    items.onclick = function(){
-                   document.getElementById("chat-container").style.display = "none";
+                   document.getElementById(items.getAttribute('data')).style.display = "none";
                   }
                  });
                 [...document.getElementsByClassName("acl")].forEach((items)=>{
