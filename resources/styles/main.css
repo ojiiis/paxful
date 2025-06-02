@@ -819,7 +819,7 @@ padding:5px var(--base-int);
                color:var(--bg-2);
                margin-bottom: var(--pd-y);
             }
-            .chat-list-image{
+            .chat-list-image, .user-details-image{
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
@@ -898,8 +898,73 @@ padding:5px var(--base-int);
                 border-bottom: 10px solid transparent;
                 rotate:25deg;
             }
+            .profile-settings{
+                padding:var(--pd-y) var(--pd-x);
+                color:var(--bg-2);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+             .profile-settings .form-group{
+                width: 48.5%;
+                color:var(--bg-2);
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: var(--base-int);
+            }
+              .profile-settings .form-group label{
+                   margin-bottom:calc( var(--base-int) / 2);
+                    font-size: var(--small-fs);
+            }
+               .profile-settings .form-group :nth-child(2){
+                   padding:15px;
+                   font-size: var(--large-fs);
+            }
+            .user-details{
+                color:var(--bg-2);
+                display: flex;
+                padding:var(--pd-y) var(--pd-x);
+                gap:var(--base-int);
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .user-details-details{
+                display: flex;
+                flex-direction: column;
+                gap:2px;
+            }
+            .settings-tab-header{
+                margin-top: var(--mg-y);
+                display: flex;
+                align-items: center;
+                color:var(--bg-2);
+                height: 40px;
+                overflow-x: auto;
+                /* padding:0 var(--pd-x); */
+                /* gap:var(--base-int) */
+            }
+            .settings-tab-header .tab-btn{
+                height:calc(100% - 2px);
+                padding:0 var(--pd-x);
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+             .settings-tab-header .tab-btn.active{
+              border-bottom: 2px solid var(--ca);
+              color:var(--ca);
+            }
+             .tab{
+            display: none;
+            }
+             .tab.active{
+            display: flex;
+            }
 @media screen and (max-width:950px){
-                
+               
+             .profile-settings .form-group{
+                width: 100%;
+            } 
                  .lister,.chat-container{
                     position: absolute;
                     z-index: 10;

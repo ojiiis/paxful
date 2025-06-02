@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+        <div id="body" class="">
+           <div>
+               <div>
+                   <div class="settings-tab-header">
+                     <a href="?tab=profile" class="tab-btn active" data="profile-settings"><i class="bi bi-person-circle"></i> Profile Settings</a>
+                     <a href="?tab=security" class="tab-btn" data="security-settings"><i class="bi bi-lock-fill"></i> Security Settings</a>
+                     <a href="?tab=privacy" class="tab-btn" data="privacy-settings"><i class="bi bi-shield-lock"></i> Privacy Settings</a>
+                     <a href="?tab=trade" class="tab-btn" data="trade-settings"><i class="bi bi-shop-window"></i> Trade Settings</a>
+                  </div>
+                  <form class="profile-settings tab active" id="profile-settings">
+                        <div class="form-group">
+                            <label>Lastname</label>
+                            <input type="text" name="lastname" placeholder="Update your lastname" >
+                        </div>
+                        <div class="form-group">
+                            <label>Firstname</label>
+                            <input type="text" name="firstname" placeholder="Update your firstname" >
+                        </div>
+                        <div class="form-group">
+                            <label>Middle name</label>
+                            <input type="text" name="middlename" placeholder="Update your middle name" >
+                        </div>
+                        <div class="form-group">
+                            <label>Date of birth</label>
+                            <input type="date" placeholder="Update your lastname" >
+                        </div>
+                        <div class="form-group">
+                            <label>Country of residense</label>
+                            <select>
+                                <option value=""> Select a country </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select a currency</label>
+                            <select>
+                                <option value=""> Select a currency </option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Save</button>
+                  </form>
+                   <form class="profile-settings tab" id="security-settings">
+                     <h3>Here is security settings</h3>
+                   </form>
+                   <form class="profile-settings tab" id="privacy-settings">
+                     <h3>Here is privacy settings</h3>
+                   </form>
+                   <form class="profile-settings tab" id="trade-settings">
+                     <h3>Here is trade settings</h3>
+                   </form>
+                  
+               </div>
+           </div>
+        </div>
+        <script src="resources/scripts/var.js"></script>
+        <script src="resources/scripts/auth.js"></script>
+        <script src="https://ojiiis.github.io/oLoader/"></script>
+        <script>
+        
+           (async ()=>{
+            const loader = oLoader();
+            loader.head("./global/head.html");
+            loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
+            const key = localStorage.getItem('key');
+            let auth = {status:0};
+            if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
+            if(!auth.status){
+                 loader.body("./global/header1.html", "b");
+            }else{
+                loader.body("./global/header2.html", "b");
+            }
+            loader.script("./global/script.html");
+            loader.load(()=>{
+              [...document.getElementsByClassName('tab-btn')].forEach((items)=>{
+                  let params = getAllParams();
+                  console.log(params['tab']);
+                   let currentTab = (params['tab'] != undefined)?params['tab']:'profile'
+                   if(items.getAttribute('data').split("-")[0] ==  currentTab){
+                       items.classList.add('active');
+                          items.scrollIntoView();
+                   }else{
+                     items.classList.remove('active');
+                   }
+                 [...document.getElementsByClassName('tab')].forEach((items)=>{
+                           let tab = `${currentTab}-settings`;  
+                            if(items.id == tab){
+                               items.classList.add('active');
+                            }else{
+                                items.classList.remove('active');
+                            }
+                  })
+
+              });
+            });
+           })();
+        </script>
+
+</body>
+</html>
