@@ -13,36 +13,27 @@
                      <a href="?tab=privacy" class="tab-btn" data="privacy-settings"><i class="bi bi-shield-lock"></i> Privacy Settings</a>
                      <a href="?tab=trade" class="tab-btn" data="trade-settings"><i class="bi bi-shop-window"></i> Trade Settings</a>
                   </div>
-                  <form class="profile-settings tab active" id="profile-settings">
-                        <div class="form-group">
-                            <label>Lastname</label>
-                            <input type="text" name="lastname" placeholder="Update your lastname" >
-                        </div>
-                        <div class="form-group">
-                            <label>Firstname</label>
-                            <input type="text" name="firstname" placeholder="Update your firstname" >
-                        </div>
-                        <div class="form-group">
-                            <label>Middle name</label>
-                            <input type="text" name="middlename" placeholder="Update your middle name" >
-                        </div>
-                        <div class="form-group">
-                            <label>Date of birth</label>
-                            <input type="date" placeholder="Update your lastname" >
-                        </div>
-                        <div class="form-group">
-                            <label>Country of residense</label>
-                            <select>
-                                <option value=""> Select a country </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Select a currency</label>
-                            <select>
-                                <option value=""> Select a currency </option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn">Save</button>
+                  <form class="profile-settings tab settings-form-inline active" id="profile-settings">
+                        <div class="inner-capsule flex">
+                            
+                             <div class="input flex no-gap">
+                                <div class="dropdown-label">
+                                    <div class="flex label capsule-input">Show your lastname on trade</div>
+                                </div>
+                                <div class="dropdown-value">
+                                    <div class="value flex capsule-show-options">Yes <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options">
+                                        <span class="selected">Yes</span>
+                                        <span>No</span>
+                                    </div>
+                                    <input type="hidden" name="currency">
+                                </div>
+                             </div>
+                             
+                         </div>
+
+<a href="javascript:void(0)" class="btn logout">Logout</a>
+<a href="javascript:void(0)" class="btn">Close account</a>                      
                   </form>
                    <form class="profile-settings tab   settings-form-inline" id="security-settings">
 
@@ -153,7 +144,23 @@
                     });
                     
                 }
-
+                [...document.getElementsByClassName('logout')].forEach(elem=>{
+                    elem.onclick = async function (){
+                          loading();
+                           let ld = await fetch(`${api}/logout`,
+                {
+                    method:"POST",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }
+                });
+                let rld = await pd.json();
+              if(rld.staus){
+                localStorage.setItem('key',null);
+              }
+                         loaded();
+                    }
+                    });
               loaded();
             });
            })();

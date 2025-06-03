@@ -24,7 +24,6 @@ document.getElementById('email').value = params['email'];
      if(document.getElementById("sign-in"))document.getElementById("sign-in").style.display = "flex";
 }
 
-
 const auth = new Promise((res,rej)=>{
     (async function(){
    try{
