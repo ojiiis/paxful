@@ -1028,7 +1028,10 @@ padding:5px var(--base-int);
             display: flex;
             }
 @media screen and (max-width:950px){
-               
+            .settings-form-inline .dropdown-label,.settings-form-inline .dropdown-value{
+                 font-size: var(--tiny-fs);
+            }   
+
              .profile-settings .form-group{
                 width: 100%;
             } 
