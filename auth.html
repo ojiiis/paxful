@@ -83,11 +83,15 @@
                   <div class="auth-sections" id="verify-email">
                    
                       <h2>Verify your email</h2>
-                      <p>One time password has been sent to yourname@domain.com.</p>
-                        <form  redirect="dashboard.html" action="/request_password_reset">
+                      <p id="verify-email-info"></p>
+                      <!--  -->
+                        <form redirect="dashboard.html" action="/verify-email">
                             <div class="form-group">
                                 <label>OTP*</label>
-                                <input name="otp" placeholder="*****">
+                                <div class="input-i">
+                                    <input name="otp" placeholder="*****" maxlength="6"> <i id="resend-email-otp">Resend code</i>
+                                </div>
+                               
                             </div>
                             <div class="auth-btn">
                                 <button class="btn">Verify email</button>
@@ -128,6 +132,29 @@
             if(!stat.status){
                  location = './auth.html';
             }
+            let pd = await fetch(`${api}/profile`,
+                {
+                    method:"POST",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }
+                });
+            let rPd = await pd.json();
+            document.getElementById('verify-email-info').textContent = `One time password has been sent to ${rPd.data.email}.`;
+           document.getElementById('resend-email-otp').onclick = async function() {
+                 loading();
+                let req = await fetch(`${api}/resend-otp`,
+                {
+                    method:"POST",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }
+                });
+                 const res = await req.json();
+                 let status = (res.status)?'success':'error';
+                 runAlert(res.message,status);
+                 loaded();
+           }
         }
       })();
     </script>

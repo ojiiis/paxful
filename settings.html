@@ -45,24 +45,7 @@
                         <button type="submit" class="btn">Save</button>
                   </form>
                    <form class="profile-settings tab   settings-form-inline" id="security-settings">
-                         <div class="inner-capsule flex">
-                            
-                             <div class="input flex no-gap">
-                                <div class="dropdown-label">
-                                    <div class="flex label capsule-input">Trade currency</div>
-                                </div>
-                                <div class="dropdown-value">
-                                    <div class="value flex capsule-show-options">USD <i class="bi bi-arrow-down"></i></div>
-                                    <div class="options">
-                                        <span class="selected">USD</span>
-                                        <span>NGN</span>
-                                        <span>EU</span>
-                                    </div>
-                                    <input type="hidden" name="currency">
-                                </div>
-                             </div>
-                             
-                         </div>
+
 
                          <div class="inner-capsule flex">
                             
@@ -99,6 +82,10 @@
                              </div>
                              
                          </div>
+                         <div id="active-devices">
+                            <h2 style="margin-bottom: calc(var(--base-int) /2 );margin-top: var(--base-int);">All active device</h2>
+                            
+                         </div>
                    </form>
                    <form class="profile-settings tab" id="privacy-settings">
                      <h3>Here is privacy settings</h3>
@@ -128,7 +115,8 @@
                 loader.body("./global/header2.html", "b");
             }
             loader.script("./global/script.html");
-            loader.load(()=>{
+            loader.load(async ()=>{
+                  loading();
               [...document.getElementsByClassName('tab-btn')].forEach((items)=>{
                   let params = getAllParams();
                  items.classList.remove('active');
@@ -147,6 +135,25 @@
                   })
 
               });
+            
+             let pd = await fetch(`${api}/settings`,
+                {
+                    method:"POST",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }
+                });
+                let rPd = await pd.json();
+                console.log(rPd);
+                if(rPd.status){
+
+                    rPd.data.devices.forEach(item=>{
+                       document.getElementById("active-devices").insertAdjacentHTML('afterEnd',`<h3>${item.device} <a href="javascript:void(0)">End session</a></h3>`)
+                    });
+                    
+                }
+
+              loaded();
             });
            })();
         </script>

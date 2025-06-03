@@ -8,7 +8,7 @@
            <div>
                <div>
                   <div class="user-details">
-                    <div class="user-details-image"></div>
+                    <div class="user-details-image" id="user-details-image"></div>
                     <div class="user-details-details">
                         <h2 id="user"> <small style="font-size: var(--small-fs);"><a href="javascript:void(0)" id="verify-kyc"></a></small></h2>
                         <h4 id="email"> <small><a href="javascript:void(0)" id="verify-email1"></a></small></h4>
@@ -83,7 +83,7 @@
             loader.script("./global/script.html");
             loader.load(async()=>{
            
-               
+                loading(); 
                 let pd = await fetch(`${api}/profile`,
                 {
                     method:"POST",
@@ -130,7 +130,8 @@
                   document.getElementById("verify-kyc").innerHTML = `<i class="bi bi-info-circle-fill"></i> Verify now`;
                   document.getElementById("verify-kyc").href = rPd.data.kyc_url;
                }
-               
+             
+               document.getElementById("user-details-image").style.cssText = `background-image:url(${rPd.data.image});background-position:center;background-size:cover`;
               document.getElementById("upf").elements[0].value = rPd.data.lastname;
             document.getElementById("upf").elements[1].value = rPd.data.firstname;
             document.getElementById("upf").elements[2].value = rPd.data.middlename;
@@ -139,7 +140,7 @@
             document.getElementById("upf").elements[5].value = rPd.data.email;
             document.getElementById("user").insertAdjacentText('afterBegin',`${rPd.data.lastname} ${rPd.data.firstname}`)
            document.getElementById("email").insertAdjacentText('afterBegin',`${rPd.data.email}`)
-           
+             loaded();
         });
            })();
         </script>
