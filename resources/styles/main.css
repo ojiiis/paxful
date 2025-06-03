@@ -237,6 +237,7 @@ ul li{
 .capsule-form-inline .dropdown-label{
     padding:var(--base-int);
     position: relative;
+    
 }
 .capsule-form-inline .dropdown-label::after,.capsule-form-inline .capsule-input::after{
     content:"";
@@ -254,7 +255,7 @@ ul li{
     flex-direction: row;
     justify-content: flex-start;
     position: relative;
-   z-index: 25;
+   
 }
 
 .capsule-form-inline .capsule-input input{
@@ -277,7 +278,7 @@ ul li{
     flex-direction: column;   
     border-radius: var(--base-int);
     gap:var(--base-int);
-    z-index: 20;
+  z-index: 50;
 }
 .capsule-form-inline .options span{
     width: 100%;
@@ -360,7 +361,7 @@ ul li{
     flex-direction: column;   
     border-radius: var(--base-int);
     gap:var(--base-int);
-    z-index: 20;
+  
 }
 .settings-form-inline .options span{
     width: 100%;
