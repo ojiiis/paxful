@@ -101,7 +101,7 @@
             let auth = {status:0};
             if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
             if(!auth.status){
-                 loader.body("./global/header1.html", "b");
+                 location = './auth.html'
             }else{
                 loader.body("./global/header2.html", "b");
             }
@@ -154,9 +154,10 @@
                         "Authorization":localStorage.getItem('key')
                     }
                 });
-                let rld = await pd.json();
-              if(rld.staus){
+                let rld = await ld.json();
+              if(rld.status){
                 localStorage.setItem('key',null);
+                window.location = './auth.html';
               }
                          loaded();
                     }
