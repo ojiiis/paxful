@@ -254,7 +254,7 @@ ul li{
     flex-direction: row;
     justify-content: flex-start;
     position: relative;
-  
+   z-index: 25;
 }
 
 .capsule-form-inline .capsule-input input{
@@ -287,6 +287,89 @@ ul li{
     cursor: pointer;
 }
 .capsule-form-inline .options span.selected::after{
+     content: "\F26E";
+  font-family: "bootstrap-icons"; /* Required to render the icon */
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  font-size: var(--large-fs);
+}
+
+/*settings capsule input*/
+.settings-form-inline{
+    
+      border-radius: var(--base-int);
+    border:1px solid #ddd;
+    display: flex;
+    flex-wrap: nowrap;
+    gap:var(--base-int);
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+.settings-form-inline .inner-capsule{
+  flex-shrink: 0;
+  width: 100%;
+} 
+
+.settings-form-inline .input{
+   border-radius: var(--base-int);
+  border:1px solid var(--bg);
+  width: 100%;
+  padding:0 0 0 var(--base-int);
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-form-inline .dropdown-label::after,.settings-form-inline .capsule-input::after{
+    content:"";
+    width:2px;
+    height:20px;
+    background: #ddd;
+    position: absolute;
+    right:0;
+    top:50%;
+    transform: translate(0,-50%);
+}
+.settings-form-inline .dropdown-value{
+    padding:var(--base-int);
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+  
+}
+
+.settings-form-inline .capsule-input input{
+  outline: 0;
+  border:none;
+}
+
+.settings-form-inline .dropdown-value .value i{
+ margin-left:5px;
+}
+.settings-form-inline .options{
+   
+    position:absolute;
+    top:110%;
+    left:0;
+    min-width:100%;
+    padding:var(--base-int);
+    background-color: var(--tint);
+     display:none;
+    flex-direction: column;   
+    border-radius: var(--base-int);
+    gap:var(--base-int);
+    z-index: 20;
+}
+.settings-form-inline .options span{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap:var(--base-int);
+    cursor: pointer;
+}
+.settings-form-inline .options span.selected::after{
      content: "\F26E";
   font-family: "bootstrap-icons"; /* Required to render the icon */
   font-style: normal;
@@ -886,6 +969,9 @@ padding:5px var(--base-int);
                 flex-wrap: wrap;
                 justify-content: space-between;
             }
+            .profile-settings.settings-form-inline{
+                justify-content:flex-start;
+            }
              .profile-settings .form-group{
                 width: 48.5%;
                 color:var(--bg-2);
@@ -922,13 +1008,14 @@ padding:5px var(--base-int);
                 color:var(--bg-2);
                 height: 40px;
                 overflow-x: auto;
-               
+               position: sticky;
             }
             .settings-tab-header .tab-btn{
                 height:calc(100% - 2px);
                 padding:0 var(--pd-x);
                 cursor: pointer;
                 flex-shrink: 0;
+                color:var(--bg-2);
             }
              .settings-tab-header .tab-btn.active{
               border-bottom: 2px solid var(--ca);
