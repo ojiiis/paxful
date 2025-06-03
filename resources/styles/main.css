@@ -311,6 +311,7 @@ ul li{
 .settings-form-inline .inner-capsule{
   flex-shrink: 0;
   width: 100%;
+
 } 
 
 .settings-form-inline .input{
@@ -320,6 +321,8 @@ ul li{
   padding:0 0 0 var(--base-int);
   display: flex;
   justify-content: space-between;
+  
+   
 }
 
 .settings-form-inline .dropdown-label::after,.settings-form-inline .capsule-input::after{
@@ -338,7 +341,7 @@ ul li{
     flex-direction: row;
     justify-content: flex-start;
     position: relative;
-  
+   
 }
 
 .settings-form-inline .capsule-input input{
@@ -361,7 +364,7 @@ ul li{
     flex-direction: column;   
     border-radius: var(--base-int);
     gap:var(--base-int);
-  
+   z-index: 150;
 }
 .settings-form-inline .options span{
     width: 100%;
@@ -980,7 +983,17 @@ padding:5px var(--base-int);
                 display: flex;
                 flex-direction: column;
                 margin-bottom: var(--base-int);
+                position: relative;
             }
+            .profile-settings .form-group .options-search{
+              width: 100%;
+              padding:15px;
+              position: absolute;
+              bottom:5px;
+              left:0;
+              display: none;
+            }
+            
               .profile-settings .form-group label{
                    margin-bottom:calc( var(--base-int) / 2);
                     font-size: var(--small-fs);

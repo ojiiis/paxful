@@ -1,5 +1,4 @@
-
-  if(document.getElementById("close-cookie-pop"))document.getElementById("close-cookie-pop").onclick = () => document.getElementById("cookie-pop").remove();
+if(document.getElementById("close-cookie-pop"))document.getElementById("close-cookie-pop").onclick = () => document.getElementById("cookie-pop").remove();
   if(document.getElementById("close-qr-code"))document.getElementById("close-qr-code").onclick = () => document.getElementById("qr-code").remove();
   const tr = document.querySelectorAll('#app-right .table-row');
   if (tr.length) {
@@ -17,6 +16,7 @@ if(document.getElementById("copy-address")){
   tempInput.setSelectionRange(0, 99999); // Mobile support
   document.execCommand("copy");
   document.body.removeChild(tempInput);
+   runAlert('Copied...', "success");
    }
   }
 
@@ -42,7 +42,8 @@ if(document.getElementById("copy-address")){
     fetch(route, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization":localStorage.getItem('key')
       },
       body: JSON.stringify(data)
     })
@@ -53,7 +54,6 @@ if(document.getElementById("copy-address")){
         } else {
           const redirect = form.getAttribute("redirect");
           runAlert(result.message, "success");
-          console.log(result);
           if(action.split("/").pop() == "sign_up" || action.split("/").pop() == "sign_in"){
               localStorage.setItem("key",result.data);
           }

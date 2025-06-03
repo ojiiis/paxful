@@ -202,7 +202,7 @@
             loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
              let stat = await auth;
             if(!stat.status){
-               //  location = './auth.html';
+                 location = './auth.html';
             }else{
                 loader.body("./global/header2.html", "b");
             }
@@ -222,6 +222,7 @@
                     }
                 });
                 let rDd = await dd.json();
+                console.log(rDd);
                 if(rDd.status){
                     Object.entries(rDd.data[0]).forEach((item)=>{
                         document.getElementById(item[0]+"_balance").textContent = item[1].balance +" "+item[0].toUpperCase();

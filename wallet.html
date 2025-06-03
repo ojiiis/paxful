@@ -19,7 +19,7 @@
                        <i class="icon bitcoin"></i>  
                        <div class="text-right">
                           <span id="address_balance"></span>
-                           <span id="address_value">0.00 NGN</span>
+                           <span id="address_value"></span>
                        </div>
                      </div>
                      <div class="flex space-between sr">
@@ -77,11 +77,12 @@
                     }
                 });
                 let rDe = await de.json();
+
                 if(rDe.status){ 
                 document.getElementById("bitcoin-address").value = rDe.data.address;
+                document.getElementById('address_value').textContent = `${rDe.data.value} ${rDe.data.currency}`;
                 document.getElementById("address_balance").textContent = rDe.data.balance+' '+params['coin'].toUpperCase();
-              //  document.getElementById("bitcoin-address").textContent = rDe.data.address;
-                document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
+                 document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
               }else{
                     location = './auth.html';
                 }

@@ -120,5 +120,16 @@
     <script src="resources/scripts/var.js"></script>   
     <script src="resources/scripts/util.js"></script>    
     <script src="resources/scripts/auth.js"></script>    
+    <script>
+       
+      (async ()=>{
+          if(params.a == 'verify-email'){
+              let stat = await auth;
+            if(!stat.status){
+                 location = './auth.html';
+            }
+        }
+      })();
+    </script>
 </body>
 </html>

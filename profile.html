@@ -10,15 +10,15 @@
                   <div class="user-details">
                     <div class="user-details-image"></div>
                     <div class="user-details-details">
-                        <h2>Users fullname <small style="font-size: var(--small-fs);"><a href="javascript:void(0)"><i class="bi bi-info-circle-fill"></i> Verify now</a></small></h2>
-                        <h4>users@domain.com <small><a href="javascript:void(0)"><i class="bi bi-patch-check-fill"></i> Verified</a></small></h4>
+                        <h2 id="user"> <small style="font-size: var(--small-fs);"><a href="javascript:void(0)" id="verify-kyc"></a></small></h2>
+                        <h4 id="email"> <small><a href="javascript:void(0)" id="verify-email1"></a></small></h4>
                     </div>
                     
                   </div>
                    <div class="pd tiny-font alert">
-                <p class="">You are required to update your profile with your real information and complete KYC to enable you to start trading.</p>
+                <p id="verify-process">You are required to update your profile with your real information and complete KYC to enable you to start trading.</p>
                    </div>
-                  <form class="profile-settings">
+                  <form id="upf" class="profile-settings" action="/update-profile">
                      <div class="form-group">
                          <label>Lastname</label>
                          <input type="text" name="lastname" placeholder="Update your lastname" >
@@ -33,19 +33,30 @@
                      </div>
                      <div class="form-group">
                          <label>Date of birth</label>
-                         <input type="date" placeholder="Update your lastname" >
+                         <input type="date" name="brithday" placeholder="Update your lastname" >
+                     </div>
+                      <div class="form-group">
+                         <label>Phone number <small id="phone-status"></small></label>
+                         <input type="number" name="phone" placeholder="Update your phone number" >
+                     </div>
+                      <div class="form-group">
+                         <label>Email address <small><a href="javascript:void(0);" id="email-status"></a></small></label>
+                         <input type="text" name="email" placeholder="Update your email address" >
                      </div>
                      <div class="form-group">
                          <label>Country of residense</label>
-                         <select>
+                         <select id="country" name="country">
                              <option value=""> Select a country </option>
                          </select>
                      </div>
+                     
                      <div class="form-group">
                          <label>Select a currency</label>
-                         <select>
+                        
+                         <select id="currency" name="currency" class="can-search">
                              <option value=""> Select a currency </option>
                          </select>
+                         <input type="search" placeholder="Start typing..." class="options-search">
                      </div>
                      <button type="submit" class="btn">Update profile</button>
                     </form>
@@ -58,21 +69,78 @@
         <script>
         
            (async ()=>{
+          
             const loader = oLoader();
             loader.head("./global/head.html");
             loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
-            const key = localStorage.getItem('key');
-            let auth = {status:0};
-            if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
-            if(!auth.status){
-                 loader.body("./global/header1.html", "b");
+             let stat = await auth;
+            if(!stat.status){
+                 location = './auth.html';
             }else{
                 loader.body("./global/header2.html", "b");
             }
+             loader.body("./global/pops.html", "e");   
             loader.script("./global/script.html");
-            loader.load(()=>{
+            loader.load(async()=>{
            
-            });
+               
+                let pd = await fetch(`${api}/profile`,
+                {
+                    method:"POST",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }
+                });
+                let rPd = await pd.json();
+                console.log(rPd);
+                if(rPd.data.profile_completed){
+                    document.getElementById('verify-process').innerHTML = `Start your KYC process following this <a style="color:var(--fg)" href="${rPd.data.kyc_url}" onclick="">link</a>`;
+                }
+                if(!rPd.email_verified){
+                    document.getElementById('email-status').textContent = '(verify your email address)';
+                        document.getElementById('email-status').href = `auth.html?a=verify-email`;
+                }
+               
+                if(rPd.data.phone == null){
+                    document.getElementById('phone-status').textContent = '(must include country code)';
+                }
+              currencies.forEach(element => {
+                  let op = document.createElement('option');
+                  op.textContent = ` ${element.name} (${element.code}) `;
+                  op.value = element.code;
+                  op.selected = (rPd.data.currency == element.code)?true:false;
+                  document.getElementById("currency").appendChild(op);
+               });
+               countries.forEach(element => {
+                  let op = document.createElement('option');
+                  op.textContent = ` ${element.name} (${element.code}) `;
+                  op.value = element.code;
+                  op.selected = (rPd.data.country == element.code)?true:false;
+                  document.getElementById("country").appendChild(op);
+               });
+               if(rPd.data.email_verified){
+                 document.getElementById("verify-email1").innerHTML = `<i class="bi bi-patch-check-fill"></i> Verified`;
+               }else{
+                  document.getElementById("verify-email1").innerHTML = `<i class="bi bi-info-circle-fill"></i> Verify now`;
+                  document.getElementById("verify-email1").href = 'auth.html?a=verify-email';
+               }
+                if(rPd.data.kyc_status){
+                 document.getElementById("verify-kyc").innerHTML = `<i class="bi bi-patch-check-fill"></i> Verified`;
+               }else{
+                  document.getElementById("verify-kyc").innerHTML = `<i class="bi bi-info-circle-fill"></i> Verify now`;
+                  document.getElementById("verify-kyc").href = rPd.data.kyc_url;
+               }
+               
+              document.getElementById("upf").elements[0].value = rPd.data.lastname;
+            document.getElementById("upf").elements[1].value = rPd.data.firstname;
+            document.getElementById("upf").elements[2].value = rPd.data.middlename;
+            document.getElementById("upf").elements[3].value = rPd.data.birthday;
+            document.getElementById("upf").elements[4].value = rPd.data.phone;
+            document.getElementById("upf").elements[5].value = rPd.data.email;
+            document.getElementById("user").insertAdjacentText('afterBegin',`${rPd.data.lastname} ${rPd.data.firstname}`)
+           document.getElementById("email").insertAdjacentText('afterBegin',`${rPd.data.email}`)
+           
+        });
            })();
         </script>
 
