@@ -93,7 +93,7 @@
             let auth = {status:0};
             if(key != null){let isAuth = await fetch(`${api}/auth/${key}`); auth = await isAuth.json()}
             if(!auth.status){
-                 loader.body("./global/header1.html", "b");
+                  location = './auth.html';
             }else{
                 loader.body("./global/header2.html", "b");
             }

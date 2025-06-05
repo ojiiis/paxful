@@ -1026,7 +1026,7 @@ padding:5px var(--base-int);
                 flex-direction: column;
                 gap:2px;
             }
-            .settings-tab-header{
+            #settings-tab-header{
                 margin-top: var(--mg-y);
                 display: flex;
                 align-items: center;
@@ -1035,14 +1035,14 @@ padding:5px var(--base-int);
                 overflow-x: auto;
                position: sticky;
             }
-            .settings-tab-header .tab-btn{
+            #settings-tab-header .tab-btn{
                 height:calc(100% - 2px);
                 padding:0 var(--pd-x);
                 cursor: pointer;
                 flex-shrink: 0;
                 color:var(--bg-2);
             }
-             .settings-tab-header .tab-btn.active{
+             #settings-tab-header .tab-btn.active{
               border-bottom: 2px solid var(--ca);
               color:var(--ca);
             }
