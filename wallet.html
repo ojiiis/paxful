@@ -22,9 +22,10 @@
                            <span id="address_value"></span>
                        </div>
                      </div>
-                     <div class="flex space-between sr">
-                        <a class="btn" href="javascript:void(0)">Send</a>
-                        <a class="btn-nbg-inv" href="javascript:void(0)">Receive</a>
+                     <div class="flex sr" id="acttbn">
+                        <a class="btn" href="javascript:void(0)">Sell</a>
+                        <a class="btn-nbg-inv" href="javascript:void(0)">Buy</a>
+                        <a class="btn-nbg-inv" href="javascript:void(0)">Send</a>
                      </div>
                      <div id="wallet-qr"></div>
                      <div id="coin-address">
@@ -37,7 +38,7 @@
                     
                  </div>
                  <div id="app-right">
-                     <div class="history responsive-table-section no-data">
+                     <div class="history responsive-table-section no-data" id="history">
                          <h4>Recent transactions</h4>
                      </div>
                     
@@ -57,7 +58,7 @@
             loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
             let stat = await auth;
             if(!stat.status){
-                 loader.body("./global/header1.html", "b");
+                location = './auth.html';
             }else{
                 loader.body("./global/header2.html", "b");
             }
@@ -69,6 +70,8 @@
             loader.script("./global/script.html");
             loader.load(async()=>{
                 loading();
+                document.getElementById('acttbn').children[0].href = `market.html?action=sell&coin=${params['coin']}`;
+                document.getElementById('acttbn').children[1].href = `market.html?action=buy&coin=${params['coin']}`;
                 let de = await fetch(`${api}/wallet/${params['coin']}`,
                 {
                     method:"POST",
@@ -77,12 +80,63 @@
                     }
                 });
                 let rDe = await de.json();
-
+                console.log(rDe);
                 if(rDe.status){ 
+                
+                if(rDe.data.history.length){
+                    
+                    document.getElementById('history').classList.remove('no-data');
+                    let htmlHis = '';
+                    rDe.data.history.forEach(item=>{
+                        
+                       htmlHis += ` <div class="table-row">
+                                        <div class="heading">
+                                            <span>${(item.to.toLowerCase() == rDe.data.address.toLowerCase())?'Received':'Sent'}</span>
+                                            <span>${item.timestamp}</span>
+                                        </div>
+                                        <div class="column-one">
+                                            <i class="icon ${coins[item.type.toLowerCase()].toLowerCase()}"></i>
+                                            <span>${coins[item.type.toLowerCase()]} (${item.type.toUpperCase()})</span>
+                                        </div>
+                                        <div class="column-two">
+                                            <b>${item.value}</b>
+                                            <b>Cypto transaction</b>
+                                        </div>
+                                        <div class="column-three">
+                                            <span>Completed</span>
+                                            <!--a href="trade-chat.html" class="btn">View</a-->
+                                        </div>
+                                        <!--div class="footer">Some message if needed</div-->
+                                </div>`; 
+                    });
+                
+                    document.getElementById('history').insertAdjacentHTML('beforeEnd',htmlHis);
+                    /*                                <h4>Recent crypto transactions</h4>
+                             
+                                <div class="table-row">
+                                        <div class="heading">
+                                            <span>Sents</span>
+                                            <span>13th Apr, 2024</span>
+                                        </div>
+                                        <div class="column-one">
+                                            <i class="icon bitcoin"></i>
+                                            <span>Bitcoin (BTC)</span>
+                                        </div>
+                                        <div class="column-two">
+                                            <b>$100,200.00</b>
+                                            <b>Bank transfer</b>
+                                        </div>
+                                        <div class="column-three">
+                                            <span>Pending</span>
+                                            <a href="trade-chat.html" class="btn">View</a>
+                                        </div>
+                                        <div class="footer">Some message if needed</div>
+                                </div>*/
+                }
                 document.getElementById("bitcoin-address").value = rDe.data.address;
                 document.getElementById('address_value').textContent = `${rDe.data.value} ${rDe.data.currency}`;
                 document.getElementById("address_balance").textContent = rDe.data.balance+' '+params['coin'].toUpperCase();
-                 document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
+                document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
               }else{
                     location = './auth.html';
                 }

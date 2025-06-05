@@ -56,7 +56,7 @@
                              </div>
                          </div>
                          <div class="inner-capsule flex responsive">
-                             <div class="label">with</div>
+                             <div class="label" id="pah">with</div>
                              <div class="input flex no-gap">
                                  <div>
                                  
@@ -143,7 +143,9 @@
             loader.body("./global/footer.html", "e");
             loader.script("./global/script.html");
             loader.load(()=>{
-               console.log(coins,' Coins'); 
+              // console.log(coins,' Coins'); 
+              let pah = (params['action'] == "sell")? 'for':'with';
+              document.getElementById("pah").textContent = pah;
                 [...document.getElementsByClassName("acl")].forEach((items)=>{
                     let params = getAllParams();
                     items.insertAdjacentText('afterBegin',capitalizeFirstLetter(params['action']));
@@ -161,14 +163,10 @@
                 });
                 //
                [...document.getElementsByClassName("col")].forEach((items)=>{
-                    let params = getAllParams();
-                    //capitalizeFirstLetter(params['action'])
-                    items.insertAdjacentHTML('afterBegin',`<i class="icon ${coins[params['coin']].toLowerCase()}"></i> ${capitalizeFirstLetter(coins[params['coin']])}`);
+                  items.insertAdjacentHTML('afterBegin',`<i class="icon ${coins[params['coin']].toLowerCase()}"></i> ${capitalizeFirstLetter(coins[params['coin']])}`);
                 });
                  [...document.getElementsByClassName("coo")].forEach((items)=>{
-                    let params = getAllParams();
-                    //<i class="icon ${params['coin'].toLowerCase()}"></i>Bitcoin
-                    if(`<i class="icon ${params['coin'].toLowerCase()}"></i>${capitalizeFirstLetter(coins[params['coin']])}` == items.innerHTML){
+                     if(`<i class="icon ${params['coin'].toLowerCase()}"></i>${capitalizeFirstLetter(coins[params['coin']])}` == items.innerHTML){
                         items.classList.add("selected");
                     }else{
                         items.classList.remove("selected");

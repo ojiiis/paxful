@@ -23,6 +23,17 @@ document.getElementById('email').value = params['email'];
 }else{
      if(document.getElementById("sign-in"))document.getElementById("sign-in").style.display = "flex";
 }
+const getOrdinalSuffix = (n) => {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+const intDateTimeStr = (dateInt) =>{
+const date = new Date(dateInt * 1000);
+const options = { day: 'numeric', month: 'long', year: 'numeric' };
+const day = date.getDate();
+return `${getOrdinalSuffix(day)} ${date.toLocaleString('en-GB', { month: 'long' })}, ${date.getFullYear()}`;
+}
 
 const auth = new Promise((res,rej)=>{
     (async function(){

@@ -789,9 +789,13 @@ border-radius: 50%;
     justify-content: center;
     gap: calc(var(--base-int) / 4);
 }
+.sr{
+justify-content: space-around;
+}
 .sr .btn,.sr .btn-nbg-inv{
 padding:5px var(--base-int);
 }
+
 #wallet-qr{
     width: 240px;
     height: 240px;
@@ -1002,6 +1006,13 @@ padding:5px var(--base-int);
                    padding:15px;
                    font-size: var(--large-fs);
             }
+            .profile-settings .btn{
+                text-align: center;
+               
+            }
+             .profile-settings .btn.danger{
+                background: rgb(235, 98, 98);
+             }
             .user-details{
                 color:var(--bg-2);
                 display: flex;
