@@ -339,7 +339,11 @@ function createOfferDetails(data) {
     form.setAttribute("data-offer-id", data.id); // Optional: for backend or JS reference
  
       if(!data.url){
-          form.action = "/join_trade";
+      if(data.type == "Buying"){
+        form.action = "/join_trade";
+      }else{
+         form.action = "/pause_trade";
+      }
    form.onsubmit = function(e){
        handleForm(form,e);
     }
