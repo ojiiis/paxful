@@ -58,7 +58,12 @@ try{
  let e = await d.json();
    if (!e.status) {
           runAlert(e.message, "error");
-        }
+        }else if(e.data.redirect){
+             runAlert(e.message, "success");
+                setTimeout(() => {
+              location = e.data.url;
+            }, 2000);
+          }
 }catch(e){
   console.log(e);
         runAlert("An error occurred. Please try again.", "error");
