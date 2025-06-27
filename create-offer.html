@@ -13,18 +13,17 @@
             <div class="pd flex-y text-center" id="buy-crypto">
                 <h4>Create crypto offer</h4>
                 <p>Trade crypto with 500+ different payment methods</p>
-                <form>
+                <form class="create">
                     <div class="capsule-form-inline">
                          <div class="inner-capsule flex responsive">
                              <div class="label">I want to</div>
                              <div class="type-one input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input capsule-show-options acl"> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="flex label capsule-input capsule-show-options">Sell </div>
                                     <div class="options">
-                                        <span class="aco">Buy</span>
-                                        <span class="aco" >Sell</span>
+                                        <span class="" >Sell</span>
                                     </div>
-                                    <input type="hidden" name="action">
+                                    <input type="hidden" name="action" value="sell">
                                 </div>
                                 <div class="dropdown-value">
                                     <div class="value flex capsule-show-options col"><!--i class="icon bitcoin"></i-->  <i class="bi bi-arrow-down"></i></div>
@@ -32,9 +31,10 @@
                                         <span class="coo selected" ><i class="icon bitcoin"></i>Bitcoin</span>
                                         <span class="coo"><i class="icon ethereum"></i>Ethereum</span>
                                         <span class="coo"><i class="icon usdt"></i>Tether</span>
-                                         <span class="coo"><i class="icon ltc"></i>Litecoin</span>
+                                        <span class="coo"><i class="icon ltc"></i>Litecoin</span>
+                                        <span class="coo"><i class="icon sol"></i>Solana</span>
                                     </div>
-                                    <input type="hidden" name="cryto_currency_type">
+                                    <input type="hidden" name="coin" value="Bitcoin">
                                 </div>
                              </div>
                          </div>
@@ -42,43 +42,145 @@
                              <div class="label">for</div>
                              <div class="input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number" name="amount"></div>
+                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number" step="any" name="amount" id="amount"></div>
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex capsule-show-options">USD <i class="bi bi-arrow-down"></i></div>
-                                    <div class="options">
-                                        <span class="selected">USD</span>
-                                        <span>NGN</span>
-                                        <span>EU</span>
+                                    <div class="value flex capsule-show-options"><span id="cl">USD</span> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options" id="currency">
+                                    
                                     </div>
-                                    <input type="hidden" name="currency">
+                                    <input type="hidden" name="currency" value="USD" id="ck">
                                 </div>
                              </div>
                          </div>
                          <div class="inner-capsule flex responsive">
-                             <div class="label">with</div>
+                             <div class="label" id="pah">with</div>
                              <div class="input flex no-gap">
                                  <div>
                                  
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex capsule-show-options">All payment methods <i class="bi bi-arrow-down"></i></div>
-                                    <div class="options">
-                                        <span>Bank transfer</span>
-                                        <span>Gift cards</span>
-                                        <span>Bank deposit</span>
+                                    <div class="value flex capsule-show-options"><span id="pml">All payment methods</span> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options" id="payment-methods">
+                                      
                                     </div>
-                                    <input type="hidden" name="payment_method">
+                                    <input type="hidden" name="payment_method" id="pmk">
                                 </div>
                              </div>
                          </div>
+                         <input name="stage" value="1" type="hidden">
                          <div class="inner-capsule flex responsive">
-                             <button class="btn">Find offers</button>
+                             <button class="btn" type="submit" name="create_offer" value="new">Next</button>
                          </div>
                     </div>
                 </form>
+
+
+
             </div>
-                  
+            <style>
+                 .modals{
+                    width: 100%;
+                     height:100%;
+                     position: fixed;
+                     top:0;
+                     left: 0;
+                     background: rgba(555,555,555,0.5);
+                     z-index: 9999999999999999;
+                     display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    display: none;
+                 }
+                 .modals-container{
+                      width:98%;
+                     height:98%;
+                     background: rgba(555,555,555,0.96);
+                     border-radius: var(--base-int);
+                     display: flex;
+                    
+                     flex-direction: column;
+                 }
+                 .modals-heading{
+                    padding: var(--base-int);
+                    color: var(--bg);
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: var(--xxlarge-fs);
+                 }
+                  .modals-heading i{
+                     cursor:pointer;
+                  }
+                  .modals-content{
+                     height:auto;
+                     overflow-y:auto;
+                     padding: var(--base-int);
+                      color: var(--bg);
+                      
+                  }
+                  .modals-content-heading{
+                    margin-bottom: var(--base-int);
+                    font-size: var(--large-fs);
+                  }
+            </style>
+            <div class="modals" id="create_offer_step">
+                  <div class="modals-container">
+                      <div class="modals-heading">Just one step away <i class="bi bi-x-lg close_modal" data="create_offer_step"></i></div>
+                      <div class="modals-content">
+                        <p class="modals-content-heading">Decide how you want your offer to be displayed and accessible.</p>
+                        <form class="responsive-form create" >
+                             <div class="form-group">
+                                <label>Price Margin</label>
+                                <select name="margin_type" required>
+                                     <option value="fixed"> Fixed rate </option>
+                                     <option value="percentage"> Percentage based </option>
+                                </select>
+                             </div>
+                             <div class="form-group">
+                                <label>Price Margin Value</label>
+                                  <input type="number" name="margin" placeholder="000.03" value="0.00">
+                             </div>
+                             <div class="form-group">
+                                <label>Trade Timeout</label>
+                                <select name="timeout" required>
+                                     <option value="5"> 5 Minutes </option>
+                                     <option value="10"> 10 Minutes </option>
+                                    <option value="15"> 15 Minutes </option>
+                                       <option value="30"> 30 Minutes </option>
+                                     <option value="60"> 60 Minutes </option>
+                                   <option value="open"> No time limit </option>
+                                </select>
+                             </div>
+                              <div class="form-group">
+                                <label>Max Trades Per User</label>
+                                <select name="max_trades_per_user">
+                                     <option value=""> Select one option </option>
+                                     <option value="1"> 1 Trade </option>
+                                     <option value="2"> 2 Trades </option>
+                                     <option value="3"> 3 Trades </option>
+                                     <option value="4"> 4 Trades </option>
+                                    <option value="5"> 5 Trades </option>
+                                     <option value="6"> 6 Trades </option>
+                                    <option value="7"> 7 Trades </option>
+                                </select>
+                             </div>
+                             <div class="form-group">
+                                <label>Trade Terms</label>
+                                <textarea name="trade_terms" placeholder="Instructions or conditions for the buyer"></textarea>
+                             </div>
+                             <div class="form-group">
+                                <label>Auto Reply Message</label>
+                                <textarea  name="auto_reply_message" placeholder="Auto-sent when trade starts"></textarea>
+                             </div>
+                             <input type="hidden" name="stage" value="2">
+                             <div class="form-group action-b">
+                                <label>By creating an offer you have accepted our offer and trade terms.<label>
+                                <button class="btn" type="submit" name="create_offer">Create offer</button>
+                             </div>
+                        </form>
+                    </div>
+                  </div>
+            </div>
         </div>
         <script src="resources/scripts/var.js"></script>
         <script src="resources/scripts/auth.js"></script>
@@ -100,7 +202,17 @@
             loader.body("./global/footer.html", "e");
             loader.script("./global/script.html");
             loader.load(()=>{
-               
+                               majorP2PCurrencies.forEach((v)=>{
+                    let op = document.createElement('span');
+                 op.textContent = v;
+                 document.getElementById('currency').append(op);
+                });   
+               cryptoPaymentMethods.forEach((v)=>{
+                    let op = document.createElement('span');
+                 op.textContent = v.name;
+                   op.classList.add('has-sub');
+                 document.getElementById('payment-methods').append(op);
+                });
                 [...document.getElementsByClassName("acl")].forEach((items)=>{
                     let params = getAllParams();
                     let action = (params['action'] != undefined)?params['action']:'Sell';

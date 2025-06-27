@@ -7,196 +7,131 @@
          <div id="body" class="">
               <div id="app">
                  <div id="app-left">
+                     <div class="l-cs no-desktop">
+                                <h2>Total assets value</h2>
+                                <p id="total_asset_value_mobile"></p>
+                     </div>
+                     <div class="l-cs no-desktop">
+                                <h2>Escrow value</h2>
+                                <p id="escrow_value_mobile"></p>
+                     </div>
                      <!-- <a href="javascript:void(0)" class="dashboard-link-menu">
                          <span>Account level: 1</span>
                          <span>Account limit: 160,000 NGN</span>
                      </a> -->
                     <div class="flex space-between" style="margin-bottom: var(--mg-x);">
                         <a class="btn" href="market.html?action=buy&coin=btc">Buy</a>
-                        <a class="btn-nbg-inv" href="market.html?action=sell&coin=btc">Sell</a>
+                        <a class="btn-nbg-inv" href="create-offer.html">Sell</a>
                      </div>
-                     <a href="wallet.html?coin=btc" class="dashboard-link-menu">
-                         <span>Bitcon balance</span>
-                         <span id="btc_balance"></span>
-                         <span id="btc_incoming"></span>
+                     
+                     <a href="wallet.html?coin=btc" class="asset">
+                        <i class="icon bitcoin"></i>
+                         <div class="coin-content">
+                           <div>
+                             <span>Bitcoin</span>
+                             <span id="btc_local_balace"></span>
+                           </div>
+                           <div>
+                              <span><span id="btc_balance"></span> </span>
+                              <span id="btc_percentage_change">%</span>
+                           </div>
+                         </div>
                      </a>
-                     <a href="wallet.html?coin=eth" class="dashboard-link-menu">
-                         <span>Ethereum balance</span>
-                         <span id="eth_balance"></span>
-                         <span id="eth_incoming"></span>
+                      <a href="wallet.html?coin=eth" class="asset">
+                        <i class="icon ethereum"></i>
+                         <div class="coin-content">
+                           <div>
+                             <span>Ethereum</span>
+                             <span id="eth_local_balace"> </span>
+                           </div>
+                           <div>
+                              <span><span id="eth_balance"></span> </span>
+                              <span id="eth_percentage_change">%</span>
+                           </div>
+                         </div>
                      </a>
-                     <a href="wallet.html?coin=usdt" class="dashboard-link-menu">
-                         <span>Tether balance</span>
-                         <span id="usdt_balance"></span>
-                         <span id="usdt_incoming"></span>
+                     <a href="wallet.html?coin=usdt" class="asset">
+                        <i class="icon tether"></i>
+                         <div class="coin-content">
+                           <div>
+                             <span>Tether</span>
+                             <span id="usdt_local_balace"></span>
+                           </div>
+                           <div>
+                              <span><span id="usdt_balance"></span> </span>
+                              <span id="usdt_percentage_change">%</span>
+                           </div>
+                         </div>
                      </a>
-                     <a href="wallet.html?coin=ltc" class="dashboard-link-menu">
-                         <span>Litecoin balance</span>
-                         <span id="ltc_balance"></span>
-                         <span id="ltc_incoming"></span>
+                      <a href="wallet.html?coin=ltc" class="asset">
+                        <i class="icon litecoin"></i>
+                         <div class="coin-content">
+                           <div>
+                             <span>Litecoin</span>
+                             <span id="ltc_local_balace"></span>
+                           </div>
+                           <div>
+                              <span><span id="ltc_balance"></span> </span>
+                              <span id="ltc_percentage_change">%</span>
+                           </div>
+                         </div>
                      </a>
+                     <a href="wallet.html?coin=sol" class="asset">
+                        <i class="icon solana"></i>
+                         <div class="coin-content">
+                           <div>
+                             <span>Solana</span>
+                             <span id="sol_local_balace"></span>
+                           </div>
+                           <div>
+                              <span><span id="sol_balance"></span> </span>
+                              <span id="sol_percentage_change">%</span>
+                           </div>
+                         </div>
+                     </a>
+                     
+                     
                  </div>
                  <div id="app-right">
-                    
-                       <div class="history responsive-table-section">
-                                <h4>Recent trade transactions</h4>
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Bought</span>
-                                            <span>13th Apr, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Sold</span>
-                                            <span>13th May, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Successfull</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Sold</span>
-                                            <span>13th Jan, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Successfull</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Sold</span>
-                                            <span>13th Mar, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Bought</span>
-                                            <span>13th Apr, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div  class="full-width text-right mg-y">
-                                    <a class="btn-nbg-inv">View all</a>
-                                </div>                        
-                       </div>
 
-
-                       <!--more recent transact-->
-                       <div class="history responsive-table-section">
-                                <h4>Recent crypto transactions</h4>
-                             
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Sents</span>
-                                            <span>13th Apr, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Received</span>
-                                            <span>13th Apr, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div  class="full-width text-right mg-y">
-                                    <a class="btn-nbg-inv">View all</a>
-                                </div>                        
+                       <div class="lcs">
+                            <div class="l-cs no-mobile">
+                                <h2>Total assets value</h2>
+                                <p id="total_asset_value"></p>
+                            </div>
+                             <div class="l-cs no-mobile">
+                                <h2>Escrow value</h2>
+                                <p id="escrow_value"></p>
+                            </div>
+                           <div class="l-cs">
+                                <h2>New notification</h2>
+                                <p>Complete your kyc</p>
+                            </div>
                        </div>
+                       <div class="section no-desktop">
+                          <a class="btn" href="create-offer.html"> Start trading</a>
+                       </div>
+                       <div class="section" id="recent-table">
+                            <h4>Recent trades</h4>
+                                          <div class="history responsive-table-section" id="recent-trades"></div>
+
+                        </div>
+         
+               
                  </div>
               </div>
          </div>
+
+
+
 
         <script src="resources/scripts/var.js"></script>
         <script src="resources/scripts/auth.js"></script>
         <script src="https://ojiiis.github.io/oLoader/"></script>
         <script>
-        
+           
            (async ()=>{
+           
             const loader = oLoader();
             loader.head("./global/head.html");
             loader.head("<title>Secure Bitcoin Trading Platform | Buy & Sell Crypto Instantly</title>");
@@ -213,6 +148,11 @@
             }
             loader.script("./global/script.html");
             loader.load(async ()=>{
+               // return;
+                function showOffer(){
+               document.getElementById('offer-sample').style.display = 'flex';
+            }
+           
                 loading();
               let dd = await fetch(`${api}/dashboard`,
                 {
@@ -225,13 +165,32 @@
                 console.log(rDd);
                 if(rDd.status){
                     Object.entries(rDd.data[0]).forEach((item)=>{
-                        document.getElementById(item[0]+"_balance").textContent = item[1].balance +" "+item[0].toUpperCase();
-                        if(item[1].incoming.length){
+                        document.getElementById(item[0]+"_balance").textContent = item[1].value +" "+item[0].toUpperCase();
+                         document.getElementById(item[0]+"_local_balace").textContent = item[1].balance;
+                         document.getElementById(item[0]+"_percentage_change").textContent = item[1].percentage_change+'%';
+                          if(item[1].incoming.length){
                             // document.getElementById(item[0]+"_balance").textContent = "Incoming "+JSON.stringify(item[1].incoming);
                         }
                     });
-                   // console.log();
-                   // rDd.data[0]['']
+                     document.getElementById("total_asset_value").textContent = rDd.data[1].totalAssert;
+                     document.getElementById("total_asset_value_mobile").textContent = rDd.data[1].totalAssert;
+                      document.getElementById("escrow_value").textContent = rDd.data[1].escrowBal.totalValue;
+                        document.getElementById("escrow_value_mobile").textContent = rDd.data[1].escrowBal.totalValue;
+                    if(rDd.data[2].length == 0){
+                        
+                  document.getElementById("recent-trades").innerHTML = '';
+                   document.getElementById("recent-table").classList.add('no-data');
+                    }else{
+                         document.getElementById("recent-trades").innerHTML = '';
+                          document.getElementById("recent-table").classList.remove('no-data');
+                     rDd.data[2].forEach(v=>{
+
+                   document.getElementById("recent-trades").appendChild(createTradeRow(v));
+                    document.getElementById("recent-trades").appendChild(createOfferDetails(v));
+               
+                     });
+                    }
+                   
                 }else{
                     location = './auth.html';
                 }

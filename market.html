@@ -11,20 +11,19 @@
             </div> -->
 
             <div class="pd flex-y text-center" id="buy-crypto">
-                <h4 class="acl"> crypto instantly</h4>
+                <h4>Buy crypto instantly</h4>
                 <p>Trade crypto with 500+ different payment methods</p>
-                <form>
+                <form id="get" class="search-offers">
                     <div class="capsule-form-inline">
                          <div class="inner-capsule flex responsive">
                              <div class="label">I want to</div>
                              <div class="type-one input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input capsule-show-options acl"> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="flex label capsule-input capsule-show-options">Buy </div>
                                     <div class="options">
                                         <span class="aco">Buy</span>
-                                        <span class="aco" >Sell</span>
                                     </div>
-                                    <input type="hidden" name="action">
+                                    <input type="hidden" name="action" value="buy">
                                 </div>
                                 <div class="dropdown-value">
                                     <div class="value flex capsule-show-options col"><!--i class="icon bitcoin"></i-->  <i class="bi bi-arrow-down"></i></div>
@@ -33,8 +32,9 @@
                                         <span class="coo"><i class="icon ethereum"></i>Ethereum</span>
                                         <span class="coo"><i class="icon usdt"></i>Tether</span>
                                          <span class="coo"><i class="icon ltc"></i>Litecoin</span>
+                                          <span class="coo"><i class="icon sol"></i>Solana</span>
                                     </div>
-                                    <input type="hidden" name="cryto_currency_type">
+                                    <input type="hidden" name="coin" value="Bitcoin"  id="coin">
                                 </div>
                              </div>
                          </div>
@@ -42,16 +42,14 @@
                              <div class="label">for</div>
                              <div class="input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number" name="amount"></div>
+                                    <div class="flex label capsule-input"><input step="any" placeholder="Amount" type="number" name="amount" id="amount"></div>
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex capsule-show-options">USD <i class="bi bi-arrow-down"></i></div>
-                                    <div class="options">
-                                        <span class="selected">USD</span>
-                                        <span>NGN</span>
-                                        <span>EU</span>
+                                    <div class="value flex capsule-show-options"><span id="cl">USD</span> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options" id="currency">
+                                      
                                     </div>
-                                    <input type="hidden" name="currency">
+                                    <input type="hidden" name="currency" value="USD" id="ck">
                                 </div>
                              </div>
                          </div>
@@ -62,65 +60,28 @@
                                  
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex capsule-show-options">All payment methods <i class="bi bi-arrow-down"></i></div>
-                                    <div class="options">
-                                        <span>Bank transfer</span>
-                                        <span>Gift cards</span>
-                                        <span>Bank deposit</span>
+                                    <div class="value flex capsule-show-options"><span id="pml">All payment methods</span> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options" id="payment-methods">
+                                      
                                     </div>
-                                    <input type="hidden" name="payment_method">
+                                    <input type="hidden" name="payment_method" id="pmk">
                                 </div>
                              </div>
                          </div>
                          <div class="inner-capsule flex responsive">
-                             <button class="btn">Find offers</button>
+                             <button class="btn" name="find_offer" value="now">Find offers</button>
                          </div>
                     </div>
                 </form>
             </div>
-                       <div class="responsive-table-section" id="offer-search-result">
-                               
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Last active</span>
-                                            <span>13th Apr, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="javascript:void(0)" class="btn">Buy</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Last active</span>
-                                            <span>13th Apr, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="javascript:void(0)" class="btn">Sell</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>
-                                <div  class="full-width text-right mg-y">
+            
+       
+                      <div class="responsive-table-section" id="offer-search-result">
+                             
+     
+                                <!--div  class="full-width text-right mg-y">
                                     <a class="btn-nbg-inv">Next</a>
-                                </div>                        
+                                </div-->                        
                        </div>
         </div>
         <script src="resources/scripts/var.js"></script>
@@ -142,9 +103,22 @@
             }
             loader.body("./global/footer.html", "e");
             loader.script("./global/script.html");
-            loader.load(()=>{
-              // console.log(coins,' Coins'); 
+            loader.load(async()=>{
+
+                majorP2PCurrencies.forEach((v)=>{
+                    let op = document.createElement('span');
+                 op.textContent = v;
+                 document.getElementById('currency').append(op);
+                });   
+               cryptoPaymentMethods.forEach((v)=>{
+                    let op = document.createElement('span');
+                 op.textContent = v.name;
+                   op.classList.add('has-sub');
+                 document.getElementById('payment-methods').append(op);
+                });   
               let pah = (params['action'] == "sell")? 'for':'with';
+              document.getElementById('coin').value = coins[params['coin']];
+             // console.log(coinsName[params['coin']]);
               document.getElementById("pah").textContent = pah;
                 [...document.getElementsByClassName("acl")].forEach((items)=>{
                     let params = getAllParams();
@@ -161,7 +135,21 @@
                     }
                     
                 });
-                //
+                //new update
+                if(params['payment_method'] != null && params['payment_method'] != ""){
+                  document.getElementById("pmk").value =  decodeURIComponent(params['payment_method'].replace(/\+/g, ' '));
+                 document.getElementById("pml").textContent =  decodeURIComponent(params['payment_method'].replace(/\+/g, ' '));
+                }
+                if(params['currency'] != null && params['currency'] != ""){
+                 document.getElementById("ck").value =  decodeURIComponent(params['currency'].replace(/\+/g, ' '));
+                 document.getElementById("cl").textContent =  decodeURIComponent(params['currency'].replace(/\+/g, ' '));
+                }
+                if(params['payment_method_selected'] != null && params['payment_method_selected'] != ""){
+                insertHiddenOption(document.getElementById('pml'),params['payment_method_selected']);
+                }
+               if(params['amount'] != null && params['amount'] != ""){
+                 document.getElementById("amount").value =  params['amount'];
+                }
                [...document.getElementsByClassName("col")].forEach((items)=>{
                   items.insertAdjacentHTML('afterBegin',`<i class="icon ${coins[params['coin']].toLowerCase()}"></i> ${capitalizeFirstLetter(coins[params['coin']])}`);
                 });
@@ -173,8 +161,22 @@
                     }
                     
                 });
+
+              let rt = await fetch(api+'/market?'+location.href.split('?')[1],  {
+                    method:"POST",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }
+                });
+                let rtj = await rt.json();
+                  rtj.data.forEach(v=>{
+                      document.getElementById("offer-search-result").appendChild(createTradeRow(v));
+                    document.getElementById("offer-search-result").appendChild(createOfferDetails(v));
+               
+                     });
             });
            })();
+         
         </script>
 
 </body>

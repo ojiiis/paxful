@@ -1,3 +1,28 @@
+  function insertHiddenOption(elements,value = null){
+               let sub =  [...cryptoPaymentMethods].filter(i=>{
+           
+             return i.name == elements.textContent;
+           });
+          let op = '';
+         sub[0].methods.forEach((v)=>{
+            op += `<span onclick='handleOptionsMenu(this)'>${v.name}</span>`;
+         });
+                elements.parentElement.parentElement.parentElement.parentElement.insertAdjacentHTML('afterend',`<div id="op-menu" class="inner-capsule flex responsive">
+                             <div class="label" id="pah">using</div>
+                             <div class="input flex no-gap">
+                                 <div>
+                                 
+                                </div>
+                                <div class="dropdown-value">
+                                    <div class="value flex capsule-show-options" onclick="handleOptions(this)">${(value == null)?sub[0].methods[0].name:value} <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options" id="payment_method_selected">
+                                      ${op}
+                                    </div>
+                                    <input type="hidden" name="payment_method_selected" value="${(value == null)?sub[0].methods[0].name:value}">
+                                </div>
+                             </div>
+                         </div>`);
+}
   function getAllParams(url = window.location.href) {
     const params = {};
     const queryString = url.split('?')[1];

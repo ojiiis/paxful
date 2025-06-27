@@ -10,7 +10,7 @@
                   <div class="user-details">
                     <div class="user-details-image" id="user-details-image"></div>
                     <div class="user-details-details">
-                        <h2 id="user"> <small style="font-size: var(--small-fs);"><a href="javascript:void(0)" id="verify-kyc"></a></small></h2>
+                        <h2 id="user" style="display:none"> <small style="font-size: var(--small-fs);"><a href="javascript:void(0)" id="verify-kyc"></a></small></h2>
                         <h4 id="email"> <small><a href="javascript:void(0)" id="verify-email1"></a></small></h4>
                     </div>
                     
@@ -45,7 +45,7 @@
                      </div>
                       <div class="form-group">
                          <label>Gender</label>
-                         <select name="gender">
+                         <select name="gender" id="gender">
                              <option value=""> Select a gender </option>
                              <option value="M"> Male </option>
                              <option value="F"> Female </option>
@@ -107,6 +107,7 @@
                 console.log(rPd);
                 if(rPd.data.profile_completed){
                     document.getElementById('verify-process').innerHTML = `Start your KYC process following this <a style="color:var(--fg)" href="${rPd.data.kyc_url}" onclick="">link</a>`;
+                    document.getElementById("user").style.display = 'block';
                 }
               
                
@@ -141,7 +142,10 @@
                   document.getElementById("verify-kyc").innerHTML = `<i class="bi bi-info-circle-fill"></i> Verify now`;
                   document.getElementById("verify-kyc").href = rPd.data.kyc_url;
                }
-             
+          
+            [...document.getElementById("gender").children].forEach((opt)=>{
+                if(opt.value == rPd.data.gender){opt.selected = true}
+            });
                document.getElementById("user-details-image").style.cssText = `background-image:url(${rPd.data.image});background-position:center;background-size:cover`;
               document.getElementById("upf").elements[0].value = rPd.data.lastname;
             document.getElementById("upf").elements[1].value = rPd.data.firstname;

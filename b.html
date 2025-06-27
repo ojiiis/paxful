@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Original Color Template Variables (as provided) */
+        :root {
+            --fg:#fff;          /* Foreground (text) */
+            --rowbg:#f7f7f7;    /* Row background - corrected typo to #f7f7f7 */
+            --bg:#000;          /* Main background - this will be used minimally for a lighter aesthetic */
+            --ca:#3a53a5;       /* Primary accent/call to action blue */
+            --tint:#647ccb;     /* Lighter tint of the accent blue */
+            --bg-2:#2b2828;     /* Secondary background, dark grey */
+
+            /* Original layout variables - adjust as needed */
+            --pd-x: 25px;       /* Horizontal padding */
+            --pd-y: 20px;       /* Vertical padding */
+            --mg-x: 20px;       /* Horizontal margin */
+            --mg-y: 20px;       /* Vertical margin */
+            --base-int: 15px;   /* Base spacing for elements */
+            --small-fs: 0.9rem; /* Small font size */
+            --tiny-fs: 0.75rem; /* Tiny font size */
+            --xlarge-fs: 1.8rem;/* Extra large font size */
+            --large-fs: 1.2rem; /* Large font size - adjusted for buttons */
+            --medium-fs: 1rem;  /* Medium font size */
+            --xxlarge-fs: 2.2rem;/* XX Large font size */
+            --max-full-width: 1000px; /* Adjusted for better content focus */
+        }
+
+        /* offer-single-descp Styles */
+       
+        .offer-single-descp{
+            width: 100vw;
+            height: 100vh;
+              color: var(--bg-2); /* Darker text for readability on light background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-size: var(--medium-fs);
+                       z-index: 99999999999999999999999999999999999999999999999999999999999;
+            position: fixed;
+            top:0;
+            left:0;
+        }
+        .offer-wrapper {
+            display: flex;
+            background-color: var(--fg); /* Use --fg (white) for the main card background */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: var(--max-full-width);
+            width: 90%;
+            overflow: hidden; /* Ensures inner borders respect radius */
+        }
+
+        /* Left Panel Styles */
+        .left-panel {
+            flex: 1;
+            padding: var(--pd-y) var(--pd-x);
+            border-right: 1px solid #eee; /* Light grey separator, not using --bg-2 directly to keep it light */
+            display: flex;
+            flex-direction: column;
+            gap: var(--base-int);
+            min-width: 320px; /* Prevent panel from becoming too narrow */
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: var(--base-int);
+            margin-bottom: var(--base-int);
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fca311; /* Example initial color, consistent with image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            font-size: var(--large-fs);
+        }
+
+        .user-details h3 {
+            margin: 0;
+            font-size: var(--large-fs);
+            font-weight: 600;
+            color: var(--bg-2); /* Use dark grey for main text */
+        }
+
+        .user-stats {
+            font-size: var(--small-fs);
+            color: #777; /* Slightly lighter grey for secondary text */
+            display: flex;
+            gap: 10px;
+        }
+
+        .verification-status {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            gap: 15px;
+            font-size: var(--small-fs);
+            color: #777;
+        }
+
+        .verification-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .verification-item svg {
+            width: 16px;
+            height: 16px;
+            fill: #28a745; /* Green checkmark */
+        }
+
+        .offer-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--medium-fs);
+        }
+
+        .detail-row span:first-child {
+            color: #777; /* Label color */
+        }
+
+        .detail-row span:last-child {
+            font-weight: 500;
+            color: var(--bg-2); /* Main text color */
+        }
+
+        .detail-row .price {
+            font-size: var(--large-fs);
+            font-weight: 600;
+            color: var(--ca); /* Use the primary accent for price */
+        }
+
+        .limits {
+            font-size: var(--small-fs);
+            color: #777;
+        }
+
+        .payment-method-tag {
+            background-color: #eee; /* Light grey tag background */
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: var(--small-fs);
+            font-weight: 500;
+            color: var(--bg-2); /* Dark text on light tag */
+        }
+
+        .notes {
+            font-size: var(--small-fs);
+            color: #777;
+        }
+
+        /* Right Panel Styles */
+        .right-panel {
+            flex: 1;
+            padding: var(--pd-y) var(--pd-x);
+            display: flex;
+            flex-direction: column;
+            gap: var(--base-int);
+            min-width: 320px; /* Prevent panel from becoming too narrow */
+        }
+
+        .input-group {
+            margin-bottom: var(--base-int);
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: var(--medium-fs);
+            font-weight: 500;
+            color: var(--bg-2); /* Dark text for labels */
+        }
+
+        .input-field {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd; /* Lighter border for input fields */
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--fg); /* White background for input fields */
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .input-field input {
+            flex-grow: 1;
+            border: none;
+            padding: 12px 15px;
+            font-size: var(--large-fs);
+            outline: none;
+            color: var(--bg-2); /* Dark text for input */
+            background-color: transparent;
+        }
+
+        .input-field .currency-prefix,
+        .input-field .unit-suffix {
+            padding: 0 15px;
+            font-weight: 600;
+            color: #777; /* Lighter grey for currency suffixes */
+            background-color: #f5f5f5; /* Very light grey for suffix background */
+            border-left: 1px solid #eee; /* Visual separator */
+            display: flex;
+            align-items: center;
+            min-width: 60px; /* Give space for text */
+            justify-content: center;
+            height: 100%;
+        }
+
+        .currency-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #5cb85c; /* Example color for RM, USDT */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 500;
+            font-size: var(--small-fs);
+            margin-right: 8px;
+        }
+        .currency-icon.rm { background-color: #5cb85c; } /* Example green */
+        .currency-icon.usdt { background-color: #2a734e; } /* Example dark green */
+
+
+        .input-field .all-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--ca); /* Use primary accent for "All" button */
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0 15px;
+            font-size: var(--small-fs);
+            transition: color 0.2s ease;
+        }
+
+        .input-field .all-btn:hover {
+            color: var(--tint); /* Use tint for hover */
+        }
+
+    
+        .disclaimer {
+            font-size: var(--tiny-fs);
+            color: #777; /* Light grey for disclaimer text */
+            margin-top: var(--base-int);
+            padding-top: var(--base-int);
+            border-top: 1px dashed #ddd; /* Lighter dashed border */
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .offer-wrapper {
+                flex-direction: column;
+                width: 95%;
+            }
+
+            .left-panel, .right-panel {
+                border-right: none;
+                border-bottom: 1px solid #eee; /* Consistent light border */
+                padding: var(--pd-y) var(--pd-x);
+            }
+
+            .right-panel {
+                border-bottom: none; /* No bottom border for the last panel */
+            }
+
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .user-details {
+                text-align: center;
+            }
+
+            .verification-status {
+                justify-content: center;
+            }
+
+            .buttons-group {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --pd-x: 15px;
+                --pd-y: 15px;
+                --base-int: 10px;
+                --large-fs: 1.1rem; /* Adjust for smaller screens */
+                --medium-fs: 0.95rem;
+                --small-fs: 0.85rem;
+                --tiny-fs: 0.7rem;
+            }
+
+            .input-field input {
+                padding: 10px 12px;
+                font-size: var(--medium-fs);
+            }
+
+            .btn {
+                padding: calc(var(--pd-y) / 1.5) var(--pd-x); /* Maintain relative padding */
+                font-size: var(--medium-fs); /* Adjust for smaller screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="offer-single-descp">
+    <div class="offer-wrapper">
+        <div class="left-panel">
+            <div class="user-info">
+                <div class="avatar">S</div>
+                <div class="user-details">
+                    <h3>Sxxxxxx</h3>
+                    <div class="user-stats">
+                        <span>99 Order(s)</span>
+                        <span>|</span>
+                        <span>100 %</span>
+                        <span style="color: #999;">1 hour ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verification-status">
+                <div class="verification-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                    Email
+                </div>
+                <div class="verification-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                    SMS
+                </div>
+                <div class="verification-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                    Identity Verification
+                </div>
+            </div>
+
+            <div class="offer-details">
+                <div class="detail-row">
+                    <span>Price</span>
+                    <span class="price">4.750 MYR</span>
+                </div>
+                <div class="detail-row">
+                    <span>Available</span>
+                    <span>6,964.9098 USDT</span>
+                </div>
+                <div class="detail-row">
+                    <span>Limits</span>
+                    <span class="limits">3,000.000 ~ 33,083.321 MYR</span>
+                </div>
+                <div class="detail-row">
+                    <span>Payment Duration</span>
+                    <span>30 Minute(s)</span>
+                </div>
+                <div class="detail-row">
+                    <span>Payment Method</span>
+                    <span class="payment-method-tag">Bank Transfer</span>
+                </div>
+                <div class="detail-row">
+                    <span>Notes:</span>
+                    <span class="notes">[Censored notes from image]</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="input-group">
+                <label for="pay-amount">I will pay</label>
+                <div class="input-field">
+                    <input type="number" id="pay-amount" placeholder="0.00">
+                    <span class="currency-icon rm">RM</span>
+                    <span class="unit-suffix">MYR</span>
+                    <button class="all-btn">All</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="receive-amount">I will receive</label>
+                <div class="input-field">
+                    <input type="number" id="receive-amount" placeholder="0.00">
+                    <span class="currency-icon usdt">T</span>
+                    <span class="unit-suffix">USDT</span>
+                    <button class="all-btn">All</button>
+                </div>
+            </div>
+
+            <div class="buttons-group">
+                <button class="btn btn-buy">Buy</button>
+                <button class="btn btn-cancel">Cancel</button>
+            </div>
+
+            <p class="disclaimer">
+                If trading is risky, the crypto you purchased will be locked for 24 hours.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

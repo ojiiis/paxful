@@ -21,9 +21,9 @@
                         <h4>The <span style="color:var(--tint)">people-<br>powered</span> way <br>to transfer <br>money <i style="color:var(--tint)" class="bi bi-arrow-up-right"></i></h4>
                         <p>The leading P2P marketplace to buy, sell, send, and receive cryptocurrencies and local currencies.</p>
                         <form class="curve-input-n-btn" action="auth.html">
-                            <input placeholder="Enter your email..." name="email" required>
+                            <input placeholder="Enter your email..." name="email">
                             <input type="hidden" name="a" value="sign-up">
-                            <button>Join now</button>
+                            <button onclick="location.href='auth.html?a=sign-up'">Join now</button>
                         </form>
                         <p>Get the app on <a href="javascript:void(0)">iOS</a> and <a href="javascript:void(0)">Android</a></p>
                      </div>
@@ -34,59 +34,57 @@
             <div class="pd flex-y text-center" id="buy-crypto">
                 <h4>Buy crypto instantly</h4>
                 <p>Trade crypto with 500+ different payment methods</p>
-                <form>
+            <form class="search-offers" action="market.html">
                     <div class="capsule-form-inline">
                          <div class="inner-capsule flex responsive">
                              <div class="label">I want to</div>
                              <div class="type-one input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input capsule-show-options">Buy <i class="bi bi-arrow-down"></i></div>
+                                    <div class="flex label capsule-input capsule-show-options acl">Buy <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
-                                        <span class="selected">Buy</span>
-                                        <span>Sell</span>
+                                        <span class="aco selected">Buy</span>
+                                        <span class="aco" >Sell</span>
                                     </div>
-                                    <input type="hidden" name="action">
+                                    <input type="hidden" name="action" value="buy">
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex capsule-show-options"><i class="icon bitcoin"></i> Bitcoin <i class="bi bi-arrow-down"></i></div>
+                                    <div class="value flex capsule-show-options col"><i class="icon bitcoin"></i>Bitcoin  <i class="bi bi-arrow-down"></i></div>
                                     <div class="options">
-                                        <span class="selected"><i class="icon bitcoin"></i>Bitcoin</span>
-                                        <span><i class="icon ethereum"></i>Ethereum</span>
-                                        <span><i class="icon usdt"></i>Usdt</span>
+                                        <span class="coo selected" ><i class="icon bitcoin"></i>Bitcoin</span>
+                                        <span class="coo"><i class="icon ethereum"></i>Ethereum</span>
+                                        <span class="coo"><i class="icon usdt"></i>Tether</span>
+                                        <span class="coo"><i class="icon ltc"></i>Litecoin</span>
+                                        <span class="coo"><i class="icon sol"></i>Solana</span>
                                     </div>
-                                    <input type="hidden" name="cryto_currency_type">
+                                    <input type="hidden" name="coin" value="Bitcoin">
                                 </div>
                              </div>
                          </div>
-                         <div class="inner-capsule flex responsive">
+                        <div class="inner-capsule flex responsive">
                              <div class="label">for</div>
                              <div class="input flex no-gap">
                                 <div class="dropdown-label">
-                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number" name="amount"></div>
+                                    <div class="flex label capsule-input"><input placeholder="Amount" type="number" name="amount" id="amount"></div>
                                 </div>
                                 <div class="dropdown-value">
-                                    <div class="value flex capsule-show-options">USD <i class="bi bi-arrow-down"></i></div>
-                                    <div class="options">
-                                        <span class="selected">USD</span>
-                                        <span>NGN</span>
-                                        <span>EU</span>
+                                    <div class="value flex capsule-show-options"><span id="cl">USD</span> <i class="bi bi-arrow-down"></i></div>
+                                    <div class="options" id="currency">
+                                      
                                     </div>
-                                    <input type="hidden" name="currency">
+                                    <input type="hidden" name="currency" value="USD" id="ck">
                                 </div>
                              </div>
                          </div>
                          <div class="inner-capsule flex responsive">
-                             <div class="label">with</div>
+                             <div class="label" id="pah">with</div>
                              <div class="input flex no-gap">
                                  <div>
                                  
                                 </div>
                                 <div class="dropdown-value">
                                     <div class="value flex capsule-show-options">All payment methods <i class="bi bi-arrow-down"></i></div>
-                                    <div class="options">
-                                        <span>Bank transfer</span>
-                                        <span>Gift cards</span>
-                                        <span>Bank deposit</span>
+                                    <div class="options" id="payment-methods">
+                                      
                                     </div>
                                     <input type="hidden" name="payment_method">
                                 </div>
@@ -149,6 +147,7 @@
             </div>
         </div>
         <script src="resources/scripts/var.js"></script>
+          <script src="resources/scripts/auth.js"></script>
         <script src="https://ojiiis.github.io/oLoader/"></script>
         <script>
         
@@ -166,7 +165,19 @@
             }
             loader.body("./global/footer.html", "e");
             loader.script("./global/script.html");
-            loader.load();
+            loader.load(()=>{
+                  majorP2PCurrencies.forEach((v)=>{
+                    let op = document.createElement('span');
+                 op.textContent = v;
+                 document.getElementById('currency').append(op);
+                });   
+               cryptoPaymentMethods.forEach((v)=>{
+                    let op = document.createElement('span');
+                 op.textContent = v.name;
+                   op.classList.add('has-sub');
+                 document.getElementById('payment-methods').append(op);
+                });   
+            });
            })();
         </script>
 

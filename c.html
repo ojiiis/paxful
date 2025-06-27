@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trade Interface</title>
+  <style>
+    .gbtp-trade-container {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .gbtp-trade-seller,
+    .gbtp-trade-form {
+      flex: 1;
+      padding: 32px;
+    }
+
+    .gbtp-trade-seller {
+      background-color: var(--rowbg);
+      border-right: 1px solid #eee;
+    }
+
+    .gbtp-seller-header {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+
+    .gbtp-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--ca);
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .gbtp-seller-name {
+      font-size: var(--medium-fs);
+      font-weight: 600;
+    }
+
+    .gbtp-seller-meta {
+      font-size: var(--tiny-fs);
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .gbtp-badges {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .gbtp-badge {
+      font-size: var(--tiny-fs);
+      background-color: var(--tint);
+      color: var(--fg);
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .gbtp-seller-stats .gbtp-stat {
+      margin-bottom: 16px;
+    }
+
+    .gbtp-stat label {
+      font-size: var(--tiny-fs);
+      color: #666;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .gbtp-stat .gbtp-value {
+      font-size: var(--small-fs);
+      font-weight: 500;
+    }
+
+    .gbtp-price {
+      color: green;
+      font-weight: bold;
+    }
+
+    .gbtp-notes-box {
+      height: 80px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+
+    .gbtp-trade-form {
+      background-color: #fff;
+    }
+
+    .gbtp-form-group {
+      margin-bottom: 24px;
+    }
+
+    .gbtp-form-group label {
+      font-size: var(--small-fs);
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .gbtp-input-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px 14px;
+      gap: 10px;
+    }
+
+    .gbtp-input-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: var(--medium-fs);
+      color: #111;
+    }
+
+    .gbtp-currency {
+      font-size: var(--tiny-fs);
+      color: #777;
+      white-space: nowrap;
+    }
+
+    .gbtp-link {
+      color: var(--ca);
+      font-size: var(--tiny-fs);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .gbtp-action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .gbtp-btn,
+    .gbtp-btn-nbg {
+      flex: 1;
+    }
+
+    .gbtp-disclaimer {
+      font-size: var(--tiny-fs);
+      margin-top: 18px;
+      color: #777;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gbtp-trade-container {
+        flex-direction: column;
+      }
+
+      .gbtp-trade-seller,
+      .gbtp-trade-form {
+        padding: 24px;
+      }
+
+      .gbtp-action-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gbtp-trade-container">
+    <!-- Seller Info Section -->
+    <div class="gbtp-trade-seller">
+      <div class="gbtp-seller-header">
+        <div class="gbtp-avatar">S</div>
+        <div class="gbtp-seller-details">
+          <div class="gbtp-seller-name">Seller Name</div>
+          <div class="gbtp-seller-meta">99 Orders • 100% | 1 hour ago</div>
+          <div class="gbtp-badges">
+            <span class="gbtp-badge">Email</span>
+            <span class="gbtp-badge">SMS</span>
+            <span class="gbtp-badge">Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gbtp-seller-stats">
+        <div class="gbtp-stat">
+          <label>Price</label>
+          <span class="gbtp-value gbtp-price">4.750 MYR</span>
+        </div>
+        <div class="gbtp-stat">
+          <label>Available</label>
+          <span class="gbtp-value">6,964.9098 USDT</span>
+        </div>
+        <div class="gbtp-stat">
+          <label>Limits</label>
+          <span class="gbtp-value">3,000 – 33,083.321 MYR</span>
+        </div>
+        <div class="gbtp-stat">
+          <label>Payment Duration</label>
+          <span class="gbtp-value">30 Minutes</span>
+        </div>
+        <div class="gbtp-stat">
+          <label>Payment Method</label>
+          <span class="gbtp-btn-small">Bank Transfer</span>
+        </div>
+        <div class="gbtp-stat gbtp-notes">
+          <label>Notes</label>
+          <div class="gbtp-notes-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trade Form Section -->
+    <div class="gbtp-trade-form">
+      <div class="gbtp-form-group">
+        <label>I will pay</label>
+        <div class="gbtp-input-box">
+          <input type="number" placeholder="0.00">
+          <span class="gbtp-currency">MYR</span>
+          <a href="#" class="gbtp-link">All</a>
+        </div>
+      </div>
+
+      <div class="gbtp-form-group">
+        <label>I will receive</label>
+        <div class="gbtp-input-box">
+          <input type="number" placeholder="0.00">
+          <span class="gbtp-currency">USDT</span>
+        </div>
+      </div>
+
+      <div class="gbtp-action-buttons">
+        <button class="gbtp-btn">Buy</button>
+        <button class="gbtp-btn-nbg">Cancel</button>
+      </div>
+
+      <p class="gbtp-disclaimer">If trading is risky, the crypto you purchased will be locked for 24 hours.</p>
+    </div>
+  </div>
+
+</body>
+</html>

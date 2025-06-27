@@ -15,17 +15,24 @@
                         <a class="btn" href="javascript:void(0)">Buy</a>
                         <a class="btn-nbg-inv" href="javascript:void(0)">Sell</a>
                      </div> -->
-                     <div id="wallet-balance" class="flex space-between">
-                       <i class="icon bitcoin"></i>  
-                       <div class="text-right">
-                          <span id="address_balance"></span>
-                           <span id="address_value"></span>
-                       </div>
-                     </div>
-                     <div class="flex sr" id="acttbn">
+                     <a href="wallet.html?coin=ltc" class="asset">
+                        <i class="icon" id="coin-icon"></i>
+                         <div class="coin-content">
+                           <div>
+                             <span id="coin-name"> </span>
+                             <span><span id="address_balance">0.00</span></span>
+                           </div>
+                           <div>
+                              <span><span id="address_value"></span></span>
+                              <span id="percent_change_24h"></span>
+                           </div>
+                         </div>
+                     </a>
+                    
+                     <div class="flex sr" id="acttbn" style="overflow-x: auto;">
                         <a class="btn" href="javascript:void(0)">Sell</a>
-                        <a class="btn-nbg-inv" href="javascript:void(0)">Buy</a>
-                        <a class="btn-nbg-inv" href="javascript:void(0)">Send</a>
+                        <a class="btn" href="javascript:void(0)">Buy</a>
+                        <a class="btn" href="javascript:void(0)">Send</a>
                      </div>
                      <div id="wallet-qr"></div>
                      <div id="coin-address">
@@ -111,36 +118,19 @@
                     });
                 
                     document.getElementById('history').insertAdjacentHTML('beforeEnd',htmlHis);
-                    /*                                <h4>Recent crypto transactions</h4>
-                             
-                                <div class="table-row">
-                                        <div class="heading">
-                                            <span>Sents</span>
-                                            <span>13th Apr, 2024</span>
-                                        </div>
-                                        <div class="column-one">
-                                            <i class="icon bitcoin"></i>
-                                            <span>Bitcoin (BTC)</span>
-                                        </div>
-                                        <div class="column-two">
-                                            <b>$100,200.00</b>
-                                            <b>Bank transfer</b>
-                                        </div>
-                                        <div class="column-three">
-                                            <span>Pending</span>
-                                            <a href="trade-chat.html" class="btn">View</a>
-                                        </div>
-                                        <div class="footer">Some message if needed</div>
-                                </div>*/
+                
                 }
                 document.getElementById("bitcoin-address").value = rDe.data.address;
-                document.getElementById('address_value').textContent = `${rDe.data.value} ${rDe.data.currency}`;
-                document.getElementById("address_balance").textContent = rDe.data.balance+' '+params['coin'].toUpperCase();
+                document.getElementById('address_value').textContent = `${rDe.data.value} ${params['coin'].toUpperCase()}`;
+                document.getElementById('percent_change_24h').textContent  =  rDe.data.percent_change_24h;
+                document.getElementById("address_balance").textContent = rDe.data.balance;
                 document.getElementById("wallet-qr").style.backgroundImage = `url(https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${rDe.data.address})`;
               }else{
                     location = './auth.html';
                 }
                 loaded();
+                 document.getElementById("coin-icon").classList.add(`${coins[params['coin']].toLowerCase()}`);
+                document.getElementById("coin-name").insertAdjacentText('afterbegin',`${coins[params['coin']]}`);
                 document.getElementById("address-label").textContent = `${coins[params['coin']]} address`;
             });
            })();
