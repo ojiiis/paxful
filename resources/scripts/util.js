@@ -238,7 +238,7 @@ function createTradeRow(v) {
 
     // Heading
     const heading = el("div", "heading");
-    heading.appendChild(el("span", "", v.type === "sell" ? "Selling" : "Buying"));
+    heading.appendChild(el("span", "", (v.type === "sell" || v.type === "Selling") ? "Selling" : "Buying"));
     heading.appendChild(el("span", "", v.date));
     row.appendChild(heading);
 
@@ -344,7 +344,7 @@ function createOfferDetails(data) {
     form.setAttribute("data-offer-id", data.id); // Optional: for backend or JS reference
  
       if(!data.url){
-      if(data.type == "Buying"){
+      if(data.type == "Buying" || data.type == "buy"){
         form.action = "/join_trade";
       }else{
          form.action = "/pause_trade";
@@ -368,7 +368,7 @@ form.appendChild(hiddenInput1);
 form.appendChild(hiddenInput2);
    const actionButtons = el("div", "gbtp-action-buttons");
    
-if(data.type == "Buying"){
+if(data.type == "Buying" || data.type == "buy"){
     const formGroup = (labelText, currency, isReceive = false) => {
         const group = el("div", "gbtp-form-group");
         group.appendChild(el("label", "", labelText));
@@ -394,7 +394,7 @@ if(data.type == "Buying"){
      receiveField = formGroup("I will receive", data.coinSymbol.toUpperCase(), true);
   }else{
       payField = formGroup("I am paying", data.currency);
-      payField.input.value = data.localValue.split(' ')[0];
+      payField.input.value = data.localValuePlain;
       payField.input.disabled = true;
      receiveField = formGroup("To receive", data.coinSymbol.toUpperCase(), true);
       receiveField.input.value = data.value;
@@ -404,7 +404,7 @@ if(data.type == "Buying"){
 
     const pricePerCoin = parseFloat(data.sellingPrice.split(" ")[0].replace(/,/g, ""));
     const availableAmount = parseFloat(data.value);
-
+    console.log(pricePerCoin,' price / coin line 407');
     payField.input.addEventListener("input", () => {
         const payAmount = parseFloat(payField.input.value.replace(',', ''));
         if (isNaN(payAmount) || payAmount <= 0) {
@@ -462,9 +462,10 @@ if(data.type == "Buying"){
         return { group, input };
     };
   let payField,receiveField;
-  if(data.url){
+ 
+  if(data.url && data.url.length > 0){
         payField = formGroup("I receive", data.currency);
-      payField.input.value = data.localValue.split(' ')[0];
+      payField.input.value = data.localValuePlain;
       payField.input.disabled = true;
      receiveField = formGroup("To send", data.coinSymbol.toUpperCase(), true);
       receiveField.input.value = data.value;

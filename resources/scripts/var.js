@@ -1,6 +1,6 @@
 //const api = "http://192.168.149.65:3000";
-//const api = "http://0.0.0.0:3000";
-const api = "https://lin.com.ng/ocoin/paxful";
+ const api = "http://0.0.0.0:3000";
+//const api = "https://lin.com.ng/ocoin/paxful";
 const coins = {eth:"Ethereum",btc:"Bitcoin",ltc:"Litecoin",usdt:"Tether",sol:"Solana"};
 const coinsName = {"Ethereum":"eth","Bitcoin":"btc","Litecoin":"ltc","Tether":"usdt"};
 const majorP2PCurrencies = ["USD", "EUR", "GBP", "NGN", "KES", "ZAR", "GHS", "INR", "PKR", "BDT", "VND", "THB", "IDR", "PHP", "MYR", "TRY", "BRL", "ARS", "MXN", "RUB", "UAH", "CNY", "HKD", "AUD", "CAD", "JPY", "KRW", "EGP", "TWD", "AED"];
