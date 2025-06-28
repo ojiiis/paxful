@@ -406,7 +406,7 @@ if(data.type == "Buying"){
     const availableAmount = parseFloat(data.value);
 
     payField.input.addEventListener("input", () => {
-        const payAmount = parseFloat(payField.input.value);
+        const payAmount = parseFloat(payField.input.value.replace(',', ''));
         if (isNaN(payAmount) || payAmount <= 0) {
             receiveField.input.value = "";
             return;
