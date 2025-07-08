@@ -1,5 +1,5 @@
 //const api = "http://192.168.149.65:3000";
- //const api = "http://0.0.0.0:3000";
+// const api = "http://0.0.0.0:3000";
 const api = "https://lin.com.ng/ocoin/paxful";
 const coins = {eth:"Ethereum",btc:"Bitcoin",ltc:"Litecoin",usdt:"Tether",sol:"Solana"};
 const coinsName = {"Ethereum":"eth","Bitcoin":"btc","Litecoin":"ltc","Tether":"usdt"};

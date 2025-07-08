@@ -404,7 +404,6 @@ if(data.type == "Buying" || data.type == "buy"){
 
     const pricePerCoin = parseFloat(data.sellingPrice.split(" ")[0].replace(/,/g, ""));
     const availableAmount = parseFloat(data.value);
-    console.log(pricePerCoin,' price / coin line 407');
     payField.input.addEventListener("input", () => {
         const payAmount = parseFloat(payField.input.value.replace(',', ''));
         if (isNaN(payAmount) || payAmount <= 0) {

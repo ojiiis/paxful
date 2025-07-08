@@ -4,102 +4,23 @@
 
 </head>
 <body>
-             <div id="body" class="">
-            <!-- <div class="pd tiny-font alert">
-                <p class="">Experience the top-rated P2P crypto trading app.
-<br>Available now on iOS and Android.</p>
-            </div> -->
-      <div id="messenger">
+        <div id="body" class="" style="width: 100%;height: calc(100svh - 80px);">
+        <div id="messenger">
           <div class="lister">
              <div class="search">
                 <input type="search" placeholder="Search chat...">
              </div>
-             <div class="list">
-                 <a class="chat-list" href="javascript:void(0)" data="chat_1">
-                       <div class="chat-list-image"></div>
-                        <div class="chat-list-details">
-                            <small>@username (ongoing trade)</small>
-                            <h3>N2,000 worth of bitcoin for gitcard</h3>
-                            <div><span>Last message...</span> <span>3:43 pm</span></div>
-                        </div>
-                </a>
-                <a class="chat-list" href="javascript:void(0)" data="chat_1">
-                       <div class="chat-list-image"></div>
-                        <div class="chat-list-details">
-                            <small>@username (completed trade)</small>
-                            <h3>N2,000 worth of bitcoin for gitcard</h3>
-                            <div><span>Last message...</span> <span>7:38 am</span></div>
-                        </div>
-                </a>
+             <div class="list" id="lists" >
+               
              </div>
           </div>
-          <div class="chat-container" id="chat_1">
-              <div class="chat-details">
-                  <div class="sticky-menu"> <i class="bi bi-arrow-left close-chat no-desktop" data="chat_1"></i> N2,000 worth of bitcoin for gitcard</div>
- 
-                  <div class="chat-message left">
-    <span>Hey, you still selling BTC? I need around 0.05 urgently. 🔥</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:15 pm</small></div>
-</div>
-<div class="clear"></div>
-
-<div class="chat-message right">
-    <span>Yeah, I’ve got some. What’s your rate?</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:16 pm</small></div>
-</div>
-<div class="clear"></div>
-
-<div class="chat-message left">
-    <span>Willing to do market price + 1%. Can pay via bank or USDT.</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:17 pm</small></div>
-</div>
-<div class="clear"></div>
-
-<div class="chat-message right">
-    <span>Bank is fine. I’ll need ID proof though. Too many scammers lately 😒</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:18 pm</small></div>
-</div>
-<div class="clear"></div>
-
-<div class="chat-message left">
-    <span>No problem, sending my KYC now. Let me know when ready to confirm wallet address.</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:19 pm</small></div>
-</div>
-<div class="clear"></div>
-
-<div class="chat-message right">
-    <span>Got it. Address confirmed: bc1qxy2...7f3. Send proof once transfer is done.</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:20 pm</small></div>
-</div>
-<div class="clear"></div>
-
-<div class="chat-message left">
-    <span>Transfer sent. Here’s the receipt. TXID: 8e1f23...d9c4 ⏱️</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all read"></i> <small>9:21 pm</small></div>
-</div>
-<div class="clear"></div>
-
-<div class="chat-message right">
-    <span>Confirmed. BTC released. Pleasure doing business 👍</span>
-    <div style="text-align: right;"><i class="bi bi-check2-all"></i> <small>9:22 pm</small></div>
-</div>
-<div class="clear"></div>
-
-
-              </div>
-              <div class="action">
-                <input type="file" id="input_1" style="display:none">
-                 <button class="add-media" data="input_1"><i class="bi bi-plus"></i> <span class="no-mobile">Media</span></button>
-                 <input type="text" placeholder="Start typing...">
-                 <button><i class="bi bi-send"></i> <span class="no-mobile">Send</span></button>
-              </div>
-          </div>
+         <div class="chat-container" id="chat-container-background"></div>
       </div>
-
         </div>
         <script src="resources/scripts/var.js"></script>
         <script src="resources/scripts/auth.js"></script>
         <script src="https://ojiiis.github.io/oLoader/"></script>
+         <script src="https://lin.com.ng/om/lib/script/default.js"></script>
          <script>
 
         </script>
@@ -119,57 +40,33 @@
             }
            // loader.body("./global/footer.html", "e");
             loader.script("./global/script.html");
-            loader.load(()=>{
-                //chat list clicked
-                 [...document.getElementsByClassName("chat-list")].forEach((items)=>{
-                   items.onclick = function(){
-                   document.getElementById(items.getAttribute('data')).style.display = "block";
-                  }
-                 });
-                 //close chat
-                 [...document.getElementsByClassName("close-chat")].forEach((items)=>{
-                   items.onclick = function(){
-                   document.getElementById(items.getAttribute('data')).style.display = "none";
-                  }
-                 });
-                [...document.getElementsByClassName("acl")].forEach((items)=>{
-                    let params = getAllParams();
-                    items.insertAdjacentText('afterBegin',capitalizeFirstLetter(params['action']));
-                });
-                 [...document.getElementsByClassName("aco")].forEach((items)=>{
-                    let params = getAllParams();
-                    //
-                    if(params['action'].toLowerCase() == items.textContent.toLowerCase()){
-                        items.classList.add("selected");
-                        
-                    }else{
-                        items.classList.remove("selected");
+            loader.load(async()=>{
+              let getName = await fetch(`${api}/myname`,
+                {
+                    method:"GET",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
                     }
-                    
                 });
-           
-               [...document.getElementsByClassName("col")].forEach((items)=>{
-                    let params = getAllParams();
-                    //capitalizeFirstLetter(params['action'])
-                    items.insertAdjacentHTML('afterBegin',`<i class="icon ${coins[params['coin']].toLowerCase()}"></i> ${capitalizeFirstLetter(coins[params['coin']])}`);
-                });
-                 [...document.getElementsByClassName("coo")].forEach((items)=>{
-                    let params = getAllParams();
-                    //<i class="icon ${params['coin'].toLowerCase()}"></i>Bitcoin
-                    if(`<i class="icon ${params['coin'].toLowerCase()}"></i>${capitalizeFirstLetter(coins[params['coin']])}` == items.innerHTML){
-                        items.classList.add("selected");
-                    }else{
-                        items.classList.remove("selected");
+                let username = await getName.text();
+               // console.log(username);
+               (params['u'] == undefined)?location='trade-chat.html?u='+username:'';
+
+              let url = `${api}/get_chats/${params['u']}/${params['c']}`;
+            
+            let getchats = await fetch(url,
+                {
+                    method:"GET",
+                    headers:{
+                        "Authorization":localStorage.getItem('key')
                     }
-                    
                 });
-                //start chat app
-                [...document.getElementsByClassName('add-media')].forEach((item)=>{
-                     item.onclick = function(){
-                        document.getElementById(this.getAttribute('data')).click();
-                     }
-                });
+                let res = await getchats.json();
+               
+                 omClientChat(params['u'],res.message,res.data);
             });
+                //chat list clicked
+                 
            })();
         </script>
        
