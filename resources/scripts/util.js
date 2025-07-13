@@ -190,11 +190,14 @@ function handleForm(form,e){
 }
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("close-modal")) {
-        const targetId = e.target.getAttribute("target-modal");
-        const modal = document.getElementById(targetId);
-        if (modal) modal.style.display = 'none';
+       closeModal1(e.target);
     }
 });
+const closeModal1 = (elem)=> {
+   const targetId = elem.getAttribute("target-modal");
+        const modal = document.getElementById(targetId);
+        if (modal) modal.style.display = 'none';
+}
 const runAlert = (message,type = 'success') =>{
        if(document.getElementById("alert"))document.getElementById("alert").remove();
      let errDiv = document.createElement("div");
@@ -258,7 +261,10 @@ function createTradeRow(v) {
     const colThree = el("div", "column-three");
     colThree.appendChild(el("span", "", `${v.sellingPrice} / ${v.coinSymbol.toUpperCase()}`));
     const viewBtn = el("a", "btn", "View");
-    viewBtn.onclick = () => document.getElementById(v.id).style.display = "flex";
+    viewBtn.onclick = () => {
+      document.getElementById(v.id).style.display = "flex";
+      document.getElementById(v.id).style.overflowY = "auto";
+    };
     colThree.appendChild(viewBtn);
     row.appendChild(colThree);
 
@@ -269,8 +275,23 @@ function createTradeRow(v) {
 }
 
 
-
-
+let isSendingOtp = 0;
+async function send_otp(){
+  if(isSendingOtp == 0){
+    isSendingOtp = 1;
+  this.textContent = "...";
+const req = await fetch(api+"/resend-otp",{
+  method:"POST",
+    headers:{
+                        "Authorization":localStorage.getItem('key')
+ }
+});
+const res = await req.json();
+isSendingOtp = 0;
+ this.textContent = "Send";
+runAlert(res.message);
+  }
+}
 function createOfferDetails(data) {
     const el = (tag, className, text) => {
         const e = document.createElement(tag);
@@ -323,17 +344,81 @@ function createOfferDetails(data) {
         }
         stats.appendChild(stat);
     };
-
+   
     addStat("Price", data.sellingPrice);
     if(!data.url){
     addStat("Available", `${data.value} ${data.coinSymbol.toUpperCase()}`);
     }
-
+  
     addStat("Payment Duration", data.duration);
     addStat("Payment Method", data.paymentMethod, true);
     if (data.tradeTerms) addStat("Notes", data.tradeTerms);
+    let ab = document.createElement("a");
+    ab.href= "javascript:void(0)";
+  
+   if(data.type == "Buying" || data.type == "buy"){
 
-    seller.appendChild(stats);
+      if(data.status == null || data.status == ""){
+ ab.textContent = 'Make as paid';
+     ab.onclick = ()=> {
+     showModal('crypto-trade-action');
+         let tac = ` <p>Click the button below to confirm that you have made the payment. Clicking the confirmation button without making the payment may result in your account being blocked.</p>
+                  <br><form method="POST" class="form"  action="/trade_action" onsubmit="handleForm(this,event)">
+                      
+                            <input type="hidden" name="tid" value="${data.id}">
+                            <div class="auth-btn">
+                                <button class="btn">I've made payment</button>
+                            </div>
+                </form>       `;
+     
+      document.getElementById("trade-action-content").innerHTML =tac;
+    };
+    }else if(data.status == "payed"){
+     ab.textContent = 'You make trade as paid'; 
+    }else if(data.status == "completed"){
+      ab.textContent = 'Trade concluded'; 
+    }else{
+       ab.textContent = 'Trade is now on dispute'; 
+    }
+   
+   }else{
+      if(data.status == null || data.status == "" || data.status == "payed"){
+    ab.onclick = ()=> {
+       showModal('crypto-trade-action');   
+        document.getElementById('crypto-trade-action').style.display = 'flex';
+        let tac = ` <p>Ensure that funds have been properly confirmed as received before releasing the coins, as released coins may not be recoverable.</p>
+                  <form method="POST" class="form"  action="/trade_action"  onsubmit="handleForm(this,event)">
+                            <div class="form-group">
+                                <label>Enter your transaction pin</label>
+                                <input type="password" name="tp" placeholder="1234">
+                            </div>
+                            <div class="form-group">
+                                <label>Otp*</label>
+                                <div class="input-i">
+                                    <input type="password" name="otp"  placeholder="1234"><i class="btn-input-i" onclick="send_otp()">send</i>
+                                </div>
+                            </div>
+                            <input type="hidden" name="tid" value="${data.id}">
+                            <div class="auth-btn">
+                                <button class="btn">Release coin</button>
+                            </div>
+                </form>       `;
+          document.getElementById("trade-action-content").innerHTML =tac;
+    };
+    ab.textContent = 'Release coin';
+      }else if(data.status == "completed"){
+      ab.textContent = 'Trade concluded'; 
+    }else{
+       ab.textContent = 'Trade is now on dispute'; 
+    }
+   }
+ const stat = el("div", "gbtp-stat");
+    if(data.status == null || data.status == ""){
+ stat.appendChild(el("label", "", 'Action'));
+    }
+   stat.appendChild(ab);
+   stats.appendChild(stat);
+   seller.appendChild(stats);
 
     // Trade Form Section (use real <form> instead of div)
    
@@ -479,7 +564,7 @@ if(data.type == "Buying" || data.type == "buy"){
       view_chat.onclick = () =>window.location.href = data.url;
       view_chat.className = "btn gbtp-btn";
        view_chat.textContent = "View chat";
-       actionButtons.append(view_chat);
+       actionButtons.append(view_chat,dispute);
   }else{
   
   const pauseBtn = document.createElement("button");
@@ -513,3 +598,47 @@ if(data.type == "Buying" || data.type == "buy"){
 
     return wrapper;
 }
+
+
+             function showModal(data){
+                if(document.getElementById(data))document.getElementById(data).style.display = "flex";
+                 document.getElementById("body").style.overflowY = 'hidden';
+               
+             }
+             function closeModal(data){
+               if(document.getElementById(data))document.getElementById(data).style.display = "none";
+                document.getElementById("body").style.overflowY = 'auto';
+              
+             }
+             [...document.getElementsByClassName("modal-header-btn")].forEach(el=>{
+              
+              el.onclick = ()=>closeModal(el.getAttribute("data"));
+            
+             });
+              [...document.getElementsByClassName("show-modal")].forEach(el=>{
+               
+              el.onclick = ()=>showModal(el.getAttribute("data"));
+             
+             });
+            document.getElementById("show-active-trade").onclick = async function(){
+                   
+                   
+                   loading();
+                   let req = await fetch(api+"/active_trades",{ 
+                     method:"POST",
+                     headers:{
+                        "Authorization":localStorage.getItem('key')
+                    }});
+                   let res = await req.json();
+                    loaded();
+                    showModal('active-trade');
+                    if(res.data.length == 0)document.getElementById("active-trade-content").classList.add('no-data');
+                   if(res.status){
+                    document.getElementById("active-trade-content").innerHTML = "";
+                     for(let v of res.data){
+                         document.getElementById("active-trade-content").append(createTradeRow(v));
+                         document.getElementById("active-trade-content").append(createOfferDetails(v));
+                     }
+                   }
+            };
+        

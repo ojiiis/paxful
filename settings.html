@@ -10,9 +10,10 @@
                    <div id="settings-tab-header">
                      <a href="?tab=profile" class="tab-btn active" data="profile-settings"><i class="bi bi-person-circle"></i> Profile Settings</a>
                      <a href="?tab=security" class="tab-btn" data="security-settings"><i class="bi bi-lock-fill"></i> Security Settings</a>
-                     <a href="?tab=privacy" class="tab-btn" data="privacy-settings"><i class="bi bi-shield-lock"></i> Privacy Settings</a>
                      <a href="?tab=trade" class="tab-btn" data="trade-settings"><i class="bi bi-shop-window"></i> Trade Settings</a>
-                  </div>
+                    <a href="?tab=privacy" class="tab-btn" data="privacy-settings"><i class="bi bi-shield-lock"></i> Privacy Settings</a>
+                   
+                    </div>
                   <form class="profile-settings  tab settings-form-inline active" id="profile-settings">
                         <div class="inner-capsule flex">
                             
@@ -36,7 +37,7 @@
 <a href="javascript:void(0)" class="btn danger">Close account</a>                      
                   </form>
                    <form class="profile-settings tab   settings-form-inline" id="security-settings">
-
+                        <a href="javascript:void(0)" class="btn primary show-modal" data="update-pin">Update transaction pin</a>
                           <div class="inner-capsule flex">
                             
                              <div class="input flex no-gap">
@@ -59,14 +60,42 @@
                             
                          </div>
                    </form>
+                   <form class="profile-settings tab" id="trade-settings">
+                     <h3>....</h3>
+                    
+                   </form>
                    <form class="profile-settings tab" id="privacy-settings">
                      <h3>Here is privacy settings</h3>
                    </form>
-                   <form class="profile-settings tab" id="trade-settings">
-                     <h3>Here is trade settings</h3>
-                   </form>
+                   
                   
                </div>
+               
+
+        <div class="modal cover-layer" id="update-pin">
+           <div class="modal-inner-responsive"> 
+               <div class="modal-header-wrapper">
+                  <div class="modal-heder">Update transaction pin</div>
+                  <i class="modal-header-btn bi bi-x-lg" data="update-pin"></i>
+               </div>
+               <div class="modal-content-wrapper" id="">
+                     <form class="form" action="update_pin">
+                        <div class="form-group">
+                                <label>Enter new transaction pin</label>
+                                <input type="password" name="tp1" placeholder="1234">
+                         </div>
+                         <div class="form-group">
+                                <label>Confirm transaction pin</label>
+                                <input type="password" name="tp2" placeholder="1234">
+                         </div>
+                         <div class="form-group">
+                             <button class="btn">Submit</button>
+                         </div>
+                     </form>
+               </div>
+           </div>
+        </div>
+
            </div>
         </div>
         <script src="resources/scripts/var.js"></script>

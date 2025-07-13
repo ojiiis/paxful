@@ -49,7 +49,7 @@
                     }
                 });
                 let username = await getName.text();
-               // console.log(username);
+              
                (params['u'] == undefined)?location='trade-chat.html?u='+username:'';
 
               let url = `${api}/get_chats/${params['u']}/${params['c']}`;

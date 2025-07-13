@@ -75,7 +75,7 @@ const auth = new Promise((res,rej)=>{
 const loading = () =>{
       var loading = document.createElement("div");
     loading.id = 'app-loading-ani';
-    loading.style.cssText = `background:rgba(0,0,0,0.5);display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('resources/images/laoding.gif');background-position:center;background-size:200px;background-repeat:no-repeat`;
+    loading.style.cssText = `z-index:99999999999999999999999999;background:rgba(0,0,0,0.5);display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('resources/images/laoding.gif');background-position:center;background-size:200px;background-repeat:no-repeat`;
     document.body.style.overflowY = 'hidden';
     document.body.appendChild(loading);
 }
