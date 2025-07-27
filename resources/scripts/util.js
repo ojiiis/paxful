@@ -137,6 +137,7 @@ function handleForm(form,e){
     const submitBtn = e.submitter;
     const oldBtnText = submitBtn.textContent;
     submitBtn.textContent = "Processing...";
+    
     submitBtn.disabled = true;
     const data = {};
     const formData = new FormData(form);
@@ -179,7 +180,7 @@ function handleForm(form,e){
         }
 
         submitBtn.disabled = false;
-        submitBtn.textContent = oldBtnText;
+        submitBtn.textContent =  oldBtnText
       })
       .catch(error => {
         console.error("Fetch error:", error);

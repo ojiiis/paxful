@@ -179,7 +179,47 @@
           </div>
         
 
-
+        <div class="modal cover-layer" id="send-coin">
+           <div class="modal-inner-responsive"> 
+               <div class="modal-header-wrapper">
+                  <div class="modal-heder">Send coins</div>
+                  <i class="modal-header-btn bi bi-x-lg" data="send-coin"></i>
+               </div>
+               <div class="modal-content-wrapper">
+                    <p>Please ensure that you provide the correct recipient's address to prevent the loss of funds.</p>
+                  <form method="POST" id="send_coin_form" class="form"  action="">
+                            <div class="form-group">
+                                <label>Choose wallet</label>
+                                  <div><input style="width: 40px;" type="radio" name="wallet" value="main" required> Main wallet (<span id="form_wallet_balance"></span>)</div>
+                                  <div><input style="width: 40px;" type="radio" name="wallet" value="trade" required> Trade wallet (<span id="form_trade_balance"></span>) </div>
+                             
+                                </div>
+                            <div class="form-group">
+                                <label>Enter recipient's wallet address</label>
+                                <input type="text" name="to" required>
+                            </div>
+                              <div class="form-group">
+                                <label>Value</label>
+                                <input type="number" step="any" name="value" required>
+                            </div>
+                           <div class="form-group">
+                                <label>Enter your transaction pin</label>
+                                <input type="password" name="tp" placeholder="1234" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Otp*</label>
+                                <div class="input-i">
+                                    <input type="password" name="otp"  placeholder="1234" required><i class="btn-input-i" onclick="send_otp()">send</i>
+                                </div>
+                            </div>
+                           
+                            <div class="auth-btn">
+                                <button class="btn">Send coin</button>
+                            </div>
+                </form>  
+               </div>
+           </div>
+        </div>
         <div class="modal cover-layer" id="crypto-trade-action">
            <div class="modal-inner-responsive"> 
                <div class="modal-header-wrapper">
@@ -187,7 +227,7 @@
                   <i class="modal-header-btn bi bi-x-lg" data="crypto-trade-action"></i>
                </div>
                <div class="modal-content-wrapper" id="trade-action-content">
-                      <h1>Testing 123</h1>
+                      <h1></h1>
                </div>
            </div>
         </div>

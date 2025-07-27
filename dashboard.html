@@ -103,9 +103,9 @@
                                 <h2>Escrow value</h2>
                                 <p id="escrow_value"></p>
                             </div>
-                           <div class="l-cs">
+                           <div class="l-cs" class="notification-section">
                                 <h2>New notification</h2>
-                                <p>Complete your kyc</p>
+                                <p id="notification"></p>
                             </div>
                        </div>
                        <div class="section no-desktop">
@@ -170,12 +170,17 @@
                 let rDd = await dd.json();
                 console.log(rDd);
                 if(rDd.status){
-                    Object.entries(rDd.data[0]).forEach((item)=>{
+                 if(rDd.data[4][0] != ""){
+                  document.getElementById("notification").innerHTML = `${rDd.data[4][0]} <a href="${rDd.data[4][1]}">${rDd.data[4][2]}</a>`;
+                   }else{
+             document.getElementById("notification-section").remove();
+                   }
+                     Object.entries(rDd.data[0]).forEach((item)=>{
                         document.getElementById(item[0]+"_balance").textContent = item[1].value +" "+item[0].toUpperCase();
                          document.getElementById(item[0]+"_local_balace").textContent = item[1].balance;
                          document.getElementById(item[0]+"_percentage_change").textContent = item[1].percentage_change+'%';
                           if(item[1].incoming.length){
-                            // document.getElementById(item[0]+"_balance").textContent = "Incoming "+JSON.stringify(item[1].incoming);
+        // document.getElementById(item[0]+"_balance").textContent = "Incoming "+JSON.stringify(item[1].incoming);
                         }
                     });
                      document.getElementById("total_asset_value").textContent = rDd.data[1].totalAssert;

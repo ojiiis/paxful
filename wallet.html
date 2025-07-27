@@ -15,7 +15,7 @@
                         <a class="btn" href="javascript:void(0)">Buy</a>
                         <a class="btn-nbg-inv" href="javascript:void(0)">Sell</a>
                      </div> -->
-                     <a href="wallet.html?coin=ltc" class="asset">
+                     <a href="javascript:void(0)" class="asset">
                         <i class="icon" id="coin-icon"></i>
                          <div class="coin-content">
                            <div>
@@ -32,7 +32,7 @@
                      <div class="flex sr" id="acttbn" style="overflow-x: auto;">
                         <a class="btn" href="javascript:void(0)">Sell</a>
                         <a class="btn" href="javascript:void(0)">Buy</a>
-                        <a class="btn" href="javascript:void(0)">Send</a>
+                        <a class="btn show-modal" data="send-coin" href="javascript:void(0)">Send</a>
                      </div>
                      <div id="wallet-qr"></div>
                      <div id="coin-address">
@@ -77,6 +77,8 @@
             loader.script("./global/script.html");
             loader.load(async()=>{
                 loading();
+                document.getElementById("send_coin_form").action = `/send_coin_${params['coin']}`;
+               
                 document.getElementById('acttbn').children[0].href = `market.html?action=sell&coin=${params['coin']}`;
                 document.getElementById('acttbn').children[1].href = `market.html?action=buy&coin=${params['coin']}`;
                 let de = await fetch(`${api}/wallet/${params['coin']}`,
@@ -89,7 +91,8 @@
                 let rDe = await de.json();
                 console.log(rDe);
                 if(rDe.status){ 
-                
+                 document.getElementById("form_wallet_balance").textContent = rDe.data.walletBalance[0];
+                document.getElementById("form_trade_balance").textContent = rDe.data.walletBalance[1];
                 if(rDe.data.history.length){
                     
                     document.getElementById('history').classList.remove('no-data');
