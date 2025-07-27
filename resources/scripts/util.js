@@ -351,7 +351,7 @@ function createOfferDetails(data) {
         el(
             "div",
             "gbtp-seller-meta",
-            `99 Orders • 100% | ${new Date(+data.lastActive * 1000).toLocaleString()}`
+            `Feedback • 100% | ${new Date(+data.lastActive * 1000).toLocaleString()}`
         )
     );
 
