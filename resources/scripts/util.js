@@ -293,6 +293,39 @@ isSendingOtp = 0;
 runAlert(res.message);
   }
 }
+
+function startFutureCountdown(futureTime) {
+  // Future time should be a Date object or timestamp
+  const futureDate = new Date(futureTime);
+
+  // Set up an interval to update the countdown every second
+  const countdownInterval = setInterval(() => {
+    const currentTime = new Date().getTime(); // Get current time in milliseconds
+    const timeRemaining = futureDate - currentTime; // Difference in milliseconds
+
+    // If the countdown has finished
+    if (timeRemaining <= 0) {
+      clearInterval(countdownInterval);
+      console.log("Time's up!");
+    } else {
+      // Calculate minutes and seconds from milliseconds
+      const minutes = Math.floor(timeRemaining / 60000); // 60,000 ms in a minute
+      const seconds = Math.floor((timeRemaining % 60000) / 1000); // Remaining seconds
+
+      // Format time as mm:ss
+      const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      
+      // Log the remaining time (you can update the DOM instead)
+      console.log(formattedTime);
+    }
+  }, 1000); // Update every second (1000 ms)
+}
+
+// Example: Countdown to a time 5 minutes from now
+//const futureTime = new Date().getTime() + 5 * 60 * 1000; // 5 minutes from current time
+//startFutureCountdown(futureTime);
+
+
 function createOfferDetails(data) {
     const el = (tag, className, text) => {
         const e = document.createElement(tag);
@@ -354,6 +387,8 @@ function createOfferDetails(data) {
     addStat("Payment Duration", data.duration);
     addStat("Payment Method", data.paymentMethod, true);
     if (data.tradeTerms) addStat("Notes", data.tradeTerms);
+
+if(data.status !== undefined){
     let ab = document.createElement("a");
     ab.href= "javascript:void(0)";
   
@@ -419,6 +454,7 @@ function createOfferDetails(data) {
     }
    stat.appendChild(ab);
    stats.appendChild(stat);
+  }
    seller.appendChild(stats);
 
     // Trade Form Section (use real <form> instead of div)
@@ -567,11 +603,15 @@ if(data.type == "Buying" || data.type == "buy"){
        view_chat.textContent = "View chat";
        actionButtons.append(view_chat,dispute);
   }else{
-  
-  const pauseBtn = document.createElement("button");
+    let pauseBtn;
+  if(data.value > 0){ 
+     pauseBtn = document.createElement("button");
     pauseBtn.type = "submit";
     pauseBtn.className = "btn gbtp-btn";
     pauseBtn.textContent = "Pause";
+  }else{
+     pauseBtn = "";
+  }
    const deleteBtn = document.createElement("button");
     deleteBtn.type = "button";
     deleteBtn.className = "btn gbtp-btn-nbg btn-danger";
