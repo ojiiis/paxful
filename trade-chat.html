@@ -41,6 +41,7 @@
            // loader.body("./global/footer.html", "e");
             loader.script("./global/script.html");
             loader.load(async()=>{
+                loading();
               let getName = await fetch(`${api}/myname`,
                 {
                     method:"GET",
@@ -64,6 +65,7 @@
                 let res = await getchats.json();
                
                  omClientChat(params['u'],res.message,res.data);
+                 loaded();
             });
                 //chat list clicked
                  
