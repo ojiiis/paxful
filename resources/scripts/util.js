@@ -371,7 +371,8 @@ function createOfferDetails(data) {
             const box = el("div", "gbtp-notes-box");
             box.textContent = data.tradeTerms || "—";
             stat.appendChild(box);
-        } else if(label === "Payment Duration" && data.url && data.status == "null"){
+        } else if(label === "Payment Duration" && data.url){
+          //&& data.status == "null"
            const e = document.createElement("span");
            e.className = "gbtp-value";
            stat.appendChild(e);
