@@ -306,7 +306,7 @@ function startFutureCountdown(futureTime,elem) {
     // If the countdown has finished
     if (timeRemaining <= 0) {
       clearInterval(countdownInterval);
-      console.log("Time's up!");
+      elem.textContent = "Time's up!";
     } else {
       // Calculate minutes and seconds from milliseconds
       const minutes = Math.floor(timeRemaining / 60000); // 60,000 ms in a minute
