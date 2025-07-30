@@ -294,9 +294,9 @@ runAlert(res.message);
   }
 }
 
-function startFutureCountdown(futureTime) {
+function startFutureCountdown(futureTime,elem) {
   // Future time should be a Date object or timestamp
-  const futureDate = new Date(futureTime);
+  const futureDate = futureTime * 1000;
 
   // Set up an interval to update the countdown every second
   const countdownInterval = setInterval(() => {
@@ -313,10 +313,10 @@ function startFutureCountdown(futureTime) {
       const seconds = Math.floor((timeRemaining % 60000) / 1000); // Remaining seconds
 
       // Format time as mm:ss
-      const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      
+       elem.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
       // Log the remaining time (you can update the DOM instead)
-      console.log(formattedTime);
+     // console.log(formattedTime);
     }
   }, 1000); // Update every second (1000 ms)
 }
@@ -371,7 +371,12 @@ function createOfferDetails(data) {
             const box = el("div", "gbtp-notes-box");
             box.textContent = data.tradeTerms || "—";
             stat.appendChild(box);
-        } else if (isButton) {
+        } else if(label === "Payment Duration" && data.url){
+           const e = document.createElement("span");
+           e.className = "gbtp-value";
+           stat.appendChild(e);
+          startFutureCountdown(data.endingAt,e);
+        }else if (isButton) {
             stat.appendChild(el("span", "gbtp-btn-small", value));
         } else {
             stat.appendChild(el("span", "gbtp-value", value));
